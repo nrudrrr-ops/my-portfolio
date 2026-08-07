@@ -1,0 +1,188 @@
+.abi-wrap{
+  --abi-red:#c81e1e;
+  --abi-red-soft:#e0402c;
+  --abi-orange:#f0a03c;
+  --abi-text:#f5efe9;
+  --abi-text-soft:rgba(245,239,233,0.6);
+  --abi-card-border:rgba(255,255,255,0.08);
+
+  background:
+    radial-gradient(ellipse 900px 500px at 8% 0%, rgba(220,50,20,0.25), transparent 60%),
+    linear-gradient(180deg,#0d0505 0%, #060303 100%);
+  color:var(--abi-text);
+  font-family:'Segoe UI', Arial, sans-serif;
+  padding:48px 56px 40px;
+  position:relative;
+  overflow-x:hidden;
+  border-radius:20px;
+}
+.abi-wrap *{ box-sizing:border-box; }
+
+/* decorative triangles top-left */
+.abi-tri-field{ position:absolute; top:0; left:0; width:340px; height:220px; pointer-events:none; z-index:0; }
+.abi-tri{ position:absolute; width:0; height:0; border-style:solid; }
+.abi-tri-1{ border-width:0 0 160px 200px; border-color:transparent transparent rgba(200,30,30,0.55) transparent; top:0; left:0; }
+.abi-tri-2{ border-width:0 0 90px 110px; border-color:transparent transparent rgba(240,160,60,0.45) transparent; top:20px; left:60px; }
+.abi-tri-3{ border-width:0 0 60px 70px; border-color:transparent transparent rgba(240,160,60,0.6) transparent; top:100px; left:140px; }
+.abi-tri-4{ border-width:0 0 40px 50px; border-color:transparent transparent rgba(200,30,30,0.4) transparent; top:150px; left:40px; }
+
+.abi-container{ position:relative; z-index:1; max-width:1280px; margin:0 auto; }
+
+/* HEADER */
+.abi-header{ text-align:center; position:relative; margin-bottom:34px; }
+.abi-pill{
+  display:inline-flex; align-items:center; gap:8px;
+  border:1px solid rgba(255,255,255,0.2);
+  background:rgba(255,255,255,0.03);
+  padding:8px 20px; border-radius:999px;
+  font-size:0.72rem; font-weight:700; letter-spacing:0.12em;
+  color:#eee;
+}
+.abi-dot{ width:6px; height:6px; border-radius:50%; background:var(--abi-orange); box-shadow:0 0 8px var(--abi-orange); }
+.abi-title{ margin-top:18px; font-size:3.2rem; font-weight:800; letter-spacing:-0.01em; }
+.abi-accent{
+  background:linear-gradient(90deg,var(--abi-red-soft),var(--abi-orange));
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.abi-subtitle{
+  margin-top:10px; color:var(--abi-text-soft); font-size:1.05rem; font-weight:500;
+  position:relative; display:inline-block; padding-bottom:10px;
+}
+.abi-subtitle::after{
+  content:""; position:absolute; bottom:0; left:50%; transform:translateX(-50%);
+  width:36px; height:2px; background:var(--abi-red-soft);
+}
+.abi-logo-corner{ position:absolute; top:0; right:0; display:flex; flex-direction:column; align-items:center; gap:6px; }
+.abi-logo-mark{
+  width:72px; height:72px; border-radius:14px; overflow:hidden; position:relative;
+  display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr;
+}
+.abi-logo-mark div:nth-child(1){ background:#c81e1e; }
+.abi-logo-mark div:nth-child(2){ background:#f0a03c; }
+.abi-logo-mark div:nth-child(3){ background:#f0a03c; }
+.abi-logo-mark div:nth-child(4){ background:#c81e1e; }
+.abi-logo-mark::after{
+  content:""; position:absolute; inset:0; border-radius:50% 50% 0 0 / 60% 60% 0 0;
+  background:radial-gradient(circle at 50% 100%, #6b0f0f 0%, transparent 65%);
+}
+.abi-logo-caption{ font-size:0.68rem; font-weight:800; letter-spacing:0.08em; color:var(--abi-red-soft); }
+
+/* MAIN ROW */
+.abi-main-row{
+  display:grid; grid-template-columns:420px 300px 1fr; gap:28px;
+  margin-top:44px; align-items:start;
+}
+
+/* laptop mockup */
+.abi-laptop{ position:relative; }
+.abi-screen{
+  background:#111; border-radius:14px 14px 4px 4px; padding:14px 14px 30px;
+  box-shadow:0 30px 60px rgba(0,0,0,0.55);
+  border:1px solid #222;
+}
+.abi-screen-inner{ background:#f4f6f8; border-radius:6px; padding:12px; color:#222; font-size:0.62rem; }
+.abi-sap-topbar{ display:flex; align-items:center; gap:8px; margin-bottom:8px; }
+.abi-sap-badge{ background:#0854a0; color:#fff; font-weight:800; font-size:0.6rem; padding:2px 6px; border-radius:3px; }
+.abi-sap-title{ font-weight:700; color:#333; font-size:0.68rem; }
+.abi-sap-icons{ display:flex; gap:5px; margin:6px 0 8px; }
+.abi-sap-icons span{ width:14px; height:12px; background:#dbe2ea; border-radius:2px; display:inline-block; }
+.abi-ledger-grid{ display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.abi-ledger-table{ background:#fff; border-radius:4px; padding:6px; }
+.abi-ledger-row{ display:flex; justify-content:space-between; font-size:0.5rem; color:#555; padding:2px 0; border-bottom:1px solid #eee; }
+.abi-ledger-row span:first-child{ color:#888; }
+.abi-chart-box{ background:#fff; border-radius:4px; padding:8px; display:flex; flex-direction:column; gap:6px; }
+.abi-chart-label{ font-size:0.55rem; color:#666; font-weight:700; }
+.abi-donut{
+  width:56px; height:56px; border-radius:50%; align-self:center;
+  background:conic-gradient(#2fa8e0 0 40%, #6be0a8 40% 70%, #f0a03c 70% 100%);
+  display:flex; align-items:center; justify-content:center; position:relative;
+}
+.abi-donut::after{
+  content:"8.35M"; position:absolute; width:32px; height:32px; background:#fff; border-radius:50%;
+  display:flex; align-items:center; justify-content:center; font-size:0.42rem; font-weight:800; color:#222;
+}
+.abi-bars{ display:flex; align-items:flex-end; gap:4px; height:44px; }
+.abi-bars i{ display:block; width:8px; border-radius:2px 2px 0 0; }
+.abi-keyboard-base{
+  height:14px; background:linear-gradient(#2a2a2a,#151515);
+  border-radius:0 0 10px 10px; margin-top:-6px;
+  box-shadow:0 8px 18px rgba(0,0,0,0.5);
+}
+
+/* middle info column */
+.abi-info-col{ padding-top:6px; }
+.abi-role-pill{
+  display:inline-flex; align-items:center; gap:8px;
+  border:1px solid rgba(255,255,255,0.18); border-radius:999px;
+  padding:8px 16px; font-size:0.8rem; font-weight:700; color:var(--abi-red-soft);
+  background:rgba(200,30,30,0.08);
+}
+.abi-company{ font-size:1.6rem; font-weight:800; margin-top:16px; }
+.abi-desc{ margin-top:12px; color:var(--abi-text-soft); font-size:0.92rem; line-height:1.6; }
+.abi-meta-box{
+  margin-top:22px; border:1px solid var(--abi-card-border); border-radius:12px;
+  padding:14px 16px; font-size:0.82rem; color:var(--abi-text-soft);
+  display:flex; flex-direction:column; gap:8px;
+}
+.abi-row{ display:flex; align-items:center; gap:8px; }
+
+/* feature grid (right) */
+.abi-feature-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.abi-feature-card{
+  background:linear-gradient(160deg, rgba(120,10,10,0.35), rgba(40,4,4,0.5));
+  border:1px solid var(--abi-card-border); border-radius:14px; padding:16px;
+}
+.abi-feature-icon{
+  width:38px; height:38px; border-radius:50%; background:#c81e1e; color:#fff;
+  display:flex; align-items:center; justify-content:center; font-size:0.9rem; font-weight:800; margin-bottom:10px;
+}
+.abi-feature-card h4{ font-size:0.95rem; font-weight:800; margin-bottom:6px; }
+.abi-feature-card p{ font-size:0.76rem; color:var(--abi-text-soft); line-height:1.4; }
+
+/* PROJECTS SECTION */
+.abi-projects-section{ margin-top:60px; }
+.abi-projects-heading{ display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; }
+.abi-projects-heading h2{ font-size:1.3rem; font-weight:800; display:flex; align-items:center; gap:10px; }
+.abi-projects-heading h2::before{ content:""; width:4px; height:20px; background:var(--abi-red-soft); border-radius:2px; }
+.abi-view-all{ color:var(--abi-red-soft); font-size:0.85rem; font-weight:700; }
+
+.abi-projects-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
+.abi-project-card{
+  background:linear-gradient(165deg, rgba(90,8,8,0.4), rgba(20,4,4,0.6));
+  border:1px solid var(--abi-card-border); border-radius:16px; padding:16px;
+}
+.abi-project-card .abi-top{ display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+.abi-project-icon{
+  width:32px; height:32px; border-radius:50%; background:#c81e1e; color:#fff;
+  display:flex; align-items:center; justify-content:center; font-size:0.85rem; flex-shrink:0;
+}
+.abi-project-card h4{ font-size:0.9rem; font-weight:700; }
+.abi-project-card p{ font-size:0.75rem; color:var(--abi-text-soft); line-height:1.4; margin-bottom:10px; }
+.abi-thumb{ height:70px; border-radius:8px; background:#fff; position:relative; overflow:hidden; }
+.abi-chart-thumb{ background:linear-gradient(180deg,#fff,#eee); display:flex; align-items:flex-end; gap:3px; padding:8px; }
+.abi-chart-thumb i{ flex:1; border-radius:2px 2px 0 0; }
+.abi-people-thumb{ background:#fff; display:flex; align-items:center; justify-content:center; gap:6px; }
+.abi-people-thumb span{ width:18px; height:18px; border-radius:50%; background:#c9c9d8; }
+.abi-flow-thumb{ background:#fff; }
+
+/* STATS BAR */
+.abi-stats-bar{
+  margin-top:48px; border:1px solid var(--abi-card-border); border-radius:18px;
+  background:rgba(120,10,10,0.12);
+  display:grid; grid-template-columns:repeat(4,1fr);
+  padding:30px 10px;
+}
+.abi-stat{ display:flex; align-items:center; gap:14px; justify-content:center; }
+.abi-stat-icon{
+  width:42px; height:42px; border-radius:50%; background:#c81e1e; color:#fff;
+  display:flex; align-items:center; justify-content:center; font-size:1rem; flex-shrink:0;
+}
+.abi-stat strong{ font-size:1.6rem; font-weight:800; display:block; }
+.abi-num-accent{ color:var(--abi-red-soft); }
+.abi-stat span{ font-size:0.78rem; color:var(--abi-text-soft); }
+
+@media (max-width: 1100px){
+  .abi-main-row{ grid-template-columns:1fr; }
+  .abi-projects-grid{ grid-template-columns:1fr 1fr; }
+  .abi-stats-bar{ grid-template-columns:1fr 1fr; gap:20px; }
+}

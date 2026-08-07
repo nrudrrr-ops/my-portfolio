@@ -1,0 +1,313 @@
+/* ═══════════════════════════════════════════════════════
+   GUESS THE BRAND — footer mini-game card
+   Sits inside the two-column .footer-grid alongside the Connect card.
+   Reuses the portfolio's existing color variables.
+═══════════════════════════════════════════════════════ */
+
+.gtb-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 32px 30px 30px;
+  border-radius: var(--radius-xl, 28px);
+  background: linear-gradient(160deg, rgba(40, 6, 8, 0.75) 0%, rgba(80, 8, 10, 0.55) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 24px 60px rgba(20, 0, 0, 0.45);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  overflow: hidden;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── HEADER ── */
+.gtb-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.gtb-icon-badge {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 107, 129, 0.16);
+  font-size: 1.3rem;
+}
+
+.gtb-header-text { flex: 1; min-width: 0; }
+
+.gtb-title {
+  font-family: var(--font-display, sans-serif);
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: var(--ink, #fff5f2);
+  letter-spacing: -0.01em;
+}
+
+.gtb-subtitle {
+  margin-top: 4px;
+  font-size: 0.84rem;
+  color: var(--ink-soft, rgba(255,245,242,0.7));
+  line-height: 1.4;
+}
+
+.gtb-score-badge {
+  flex-shrink: 0;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--ink, #fff5f2);
+  white-space: nowrap;
+}
+
+.gtb-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.12);
+  margin-bottom: 22px;
+}
+
+/* ── META ROW ── */
+.gtb-meta-row {
+  margin-bottom: 16px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--ink-soft, rgba(255,245,242,0.7));
+}
+
+/* ── TAGLINE BOX ── */
+.gtb-tagline-box {
+  position: relative;
+  padding: 18px 22px;
+  margin-bottom: 20px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  text-align: center;
+  font-family: var(--font-display, sans-serif);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--ink, #fff5f2);
+  line-height: 1.4;
+}
+
+.gtb-quote-mark {
+  color: var(--purple-2, #b1a4f8);
+  font-size: 1.3rem;
+  opacity: 0.7;
+}
+
+/* ── OPTIONS ── */
+.gtb-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.gtb-option {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px 16px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--ink, #fff5f2);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.gtb-option-dot {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.gtb-option:hover:not(:disabled) {
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+.gtb-option:focus-visible {
+  outline: 2px solid var(--purple-2, #b1a4f8);
+  outline-offset: 2px;
+}
+
+.gtb-option.is-selected {
+  border-color: #78dfaf;
+  background: rgba(120, 223, 175, 0.14);
+}
+.gtb-option.is-selected .gtb-option-dot {
+  border-color: #78dfaf;
+  background: #78dfaf;
+}
+
+.gtb-option:disabled { cursor: default; }
+
+.gtb-option.is-reveal-correct {
+  border-color: rgba(120, 223, 175, 0.7);
+  background: rgba(120, 223, 175, 0.14);
+}
+.gtb-option.is-reveal-correct .gtb-option-dot {
+  border-color: #78dfaf;
+  background: #78dfaf;
+}
+
+.gtb-option.is-reveal-wrong {
+  border-color: rgba(255, 107, 107, 0.7);
+  background: rgba(255, 107, 107, 0.14);
+}
+.gtb-option.is-reveal-wrong .gtb-option-dot {
+  border-color: #ff6b6b;
+  background: #ff6b6b;
+}
+
+@media (max-width: 480px) {
+  .gtb-options { grid-template-columns: 1fr; }
+}
+
+/* ── BUTTONS ── */
+.gtb-submit-btn,
+.gtb-next-btn {
+  width: 100%;
+  padding: 13px 24px;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, #ff6b81, #ff4757);
+  color: #fff;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.25s ease, opacity 0.2s ease;
+}
+
+.gtb-submit-btn:hover:not(:disabled),
+.gtb-next-btn:hover {
+  transform: scale(1.03);
+  box-shadow: 0 10px 26px rgba(255, 71, 87, 0.35);
+}
+
+.gtb-submit-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.gtb-submit-btn:focus-visible,
+.gtb-next-btn:focus-visible {
+  outline: 2px solid var(--purple-2, #b1a4f8);
+  outline-offset: 3px;
+}
+
+/* ── FEEDBACK ── */
+.gtb-feedback {
+  text-align: center;
+  animation: gtbFadeUp 0.35s ease both;
+}
+
+.gtb-feedback-title {
+  font-family: var(--font-display, sans-serif);
+  font-weight: 800;
+  font-size: 1.15rem;
+  margin-bottom: 8px;
+}
+.gtb-feedback-correct { color: #78dfaf; }
+.gtb-feedback-wrong { color: #ff6b6b; }
+
+.gtb-feedback-text {
+  font-size: 0.86rem;
+  color: var(--ink-soft, rgba(255,245,242,0.7));
+  margin-bottom: 6px;
+  line-height: 1.5;
+}
+.gtb-feedback-text strong { color: var(--ink, #fff5f2); }
+
+.gtb-feedback-points {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: 999px;
+  background: rgba(120, 223, 175, 0.14);
+  font-family: var(--font-display, sans-serif);
+  font-weight: 700;
+  color: #78dfaf;
+  margin-bottom: 18px;
+  font-size: 0.85rem;
+}
+
+@keyframes gtbFadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── COMPLETION SCREEN ── */
+.gtb-complete {
+  text-align: center;
+  animation: gtbFadeUp 0.45s ease both;
+  margin: auto 0;
+}
+
+.gtb-complete-title {
+  font-family: var(--font-display, sans-serif);
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: var(--ink, #fff5f2);
+  margin-bottom: 8px;
+}
+
+.gtb-complete-score {
+  font-size: 1rem;
+  color: var(--purple-2, #b1a4f8);
+  font-weight: 700;
+  margin-bottom: 22px;
+}
+
+/* ── CONFETTI ── */
+.gtb-confetti {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.gtb-confetti-piece {
+  position: absolute;
+  top: -12px;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  opacity: 0.9;
+  animation-name: gtbFall;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
+@keyframes gtbFall {
+  to {
+    transform: translateY(340px) rotate(340deg);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .gtb-card { padding: 26px 22px 24px; }
+  .gtb-title { font-size: 1.15rem; }
+  .gtb-tagline-box { font-size: 1rem; padding: 16px 18px; }
+}

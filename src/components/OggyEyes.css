@@ -1,0 +1,35 @@
+.oggy-stage {
+  position: relative;
+  display: inline-block;
+  height: 100%;
+}
+
+.oggy-img {
+  height: 100%;
+  width: auto;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.oggy-pupil {
+  position: absolute;
+  width: 15.6%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #3a2a1a 0%, #0d0805 70%);
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.8);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.oggy-highlight {
+  position: absolute;
+  top: 24%;
+  left: 24%;
+  width: 36%;
+  height: 36%;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 50%;
+  pointer-events: none;
+}
