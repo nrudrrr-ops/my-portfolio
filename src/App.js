@@ -9,7 +9,7 @@ function App() {
     // NAV HIGHLIGHT
     const navLinks = document.querySelectorAll('.topnav a');
     const sections = [
-      { id: null,       href: '#'         },
+      { id: null,       href: '#top'       },
       { id: 'featured', href: '#featured' },
       { id: 'projects', href: '#projects' },
       { id: 'journey',  href: '#journey'  },
@@ -17,7 +17,7 @@ function App() {
     ];
     const setActiveNav = () => {
       const scrollY = window.scrollY + 120;
-      let current = '#';
+      let current = '#top';
       for (const s of sections) {
         if (!s.id) continue;
         const el = document.getElementById(s.id);
@@ -29,11 +29,6 @@ function App() {
     };
     window.addEventListener('scroll', setActiveNav, { passive: true });
     setActiveNav();
-    navLinks.forEach(link => {
-      link.addEventListener('click', e => {
-        if (link.getAttribute('href') === '#') e.preventDefault();
-      });
-    });
 
     // CAROUSEL
     const wrapper = document.getElementById('carousel-wrapper');
@@ -133,18 +128,18 @@ function App() {
     <div>
       <canvas id="kevin-canvas"></canvas>
 
-      <div className="frame">
+      <div className="frame" id="top">
 
         {/* NAVIGATION */}
         <header className="topbar">
           <div className="nav-pill">
-            <a href="#" className="brand">
+            <a href="#top" className="brand">
               <span className="mark">✦</span>
               <span className="brand-name">Nitesh Singh</span>
             </a>
             <span className="nav-divider"></span>
             <nav className="topnav" aria-label="Primary">
-              <a href="#" className="active" aria-label="Home">
+              <a href="#top" className="active" aria-label="Home">
                 <svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v9a1 1 0 0 0 1 1H9a1 1 0 0 0 1-1v-4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v4a1 1 0 0 0 1 1h2.5a1 1 0 0 0 1-1v-9"/></svg>
               </a>
               <a href="#featured" aria-label="Featured">
@@ -177,7 +172,9 @@ function App() {
             <div className="avatar-wrap">
               <div className="halo"></div>
               <div className="avatar">
-                <img src={process.env.PUBLIC_URL + '/profile.jpg'} alt="Profile" />
+                <img
+                  src={process.env.PUBLIC_URL + '/profile.jpg'}
+                  alt="Profile"
                   onError={e => {
                     e.target.style.display = 'none';
                     e.target.parentElement.classList.add('fallback');
@@ -266,7 +263,7 @@ function App() {
                   <div className="project-meta"><span>{p.cat}</span><span>{p.year}</span></div>
                   <h3>{p.title}</h3>
                   <p>{p.desc}</p>
-                  <a href="#" className="project-link">View case study <span>↗</span></a>
+                  <button type="button" className="project-link">View case study <span>↗</span></button>
                 </div>
               </article>
             ))}

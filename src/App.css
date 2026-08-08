@@ -778,23 +778,29 @@ a { color: inherit; text-decoration: none; }
   transform: translateY(8px);
   transition: opacity 250ms ease, transform 300ms ease;
 }
-.project-copy a {
+
+/* .project-link is a <button> (there's no real "case study" page to link to
+   yet). Reset it to look and behave like the plain-text link it visually
+   replaces, and keep the same hover/reveal animation it had as an <a>. */
+.project-copy .project-link {
   display: inline-flex; gap: 7px; margin-top: 10px; padding-bottom: 3px;
-  border-bottom: 1px solid rgba(255,255,255,.48); font-size: .68rem; font-weight: 600;
+  border: none; border-bottom: 1px solid rgba(255,255,255,.48);
+  background: none; font: inherit; font-size: .68rem; font-weight: 600;
+  color: inherit; cursor: pointer;
   opacity: 0;
   transform: translateY(8px);
   transition: opacity 250ms ease, transform 300ms ease;
 }
 
 .project-card:hover .project-copy p,
-.project-card:hover .project-copy a,
+.project-card:hover .project-copy .project-link,
 .project-card:focus-visible .project-copy p,
-.project-card:focus-visible .project-copy a {
+.project-card:focus-visible .project-copy .project-link {
   opacity: 1;
   transform: translateY(0);
 }
-.project-copy a span { transition: transform 180ms ease; }
-.project-copy a:hover span { transform: translate(3px,-3px); }
+.project-copy .project-link span { transition: transform 180ms ease; }
+.project-copy .project-link:hover span { transform: translate(3px,-3px); }
 
 .project-violet .project-visual { background: radial-gradient(circle at 70% 25%,#dfd9ff,transparent 27%),linear-gradient(145deg,#4d3bd0,#9a8dff); }
 .project-violet .project-visual::after {
