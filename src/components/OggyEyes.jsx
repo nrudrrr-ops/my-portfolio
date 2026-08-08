@@ -123,7 +123,7 @@ export default function OggyEyes() {
 
   return (
     <div className="oggy-stage">
-      <img ref={oggyRef} className="oggy-img" src="/images/oggy.png" alt="Oggy" />
+      <img ref={oggyRef} className="oggy-img" src={process.env.PUBLIC_URL + '/images/oggy.png'} alt="Oggy" />
       <div ref={pupilLeftRef} className="oggy-pupil">
         <div ref={highlightLeftRef} className="oggy-highlight" />
       </div>
