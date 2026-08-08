@@ -1,269 +1,967 @@
-import React, { useRef, useState, useLayoutEffect, useCallback } from 'react';
-import gsap from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-/* ------------------------------------------------------------------
-   SIZING SYSTEM — single source of truth for every card size.
-   distance 0 = active, 1 = near side, 2+ = far side.
-------------------------------------------------------------------- */
-const SIZES = {
-  active: { height: 76 },   // vh — width auto via 3:4 aspect-ratio
-  near:   { height: 34 },
-  far:    { height: 22 },
-  gap: 18,                  // px
-  mobile: {
-    active: { height: 48 },
-    near:   { height: 26 },
-    far:    { height: 16 },
-    gap: 10,
-  },
-};
-
 const PROJECTS = [
-  { id: 1, title: 'Smart Workflow System', tag: 'Process Design', year: '2026', image: '/images/1.jpeg' },
-  { id: 2, title: 'QueueFlow', tag: 'Service Ops', year: '2025', image: '/images/2s.jpeg' },
-  { id: 3, title: 'Northline Identity', tag: 'Brand Strategy', year: '2025', image: '/images/3.jpeg' },
-  { id: 4, title: 'Performance Dashboard', tag: 'Analytics', year: '2024', image: '/images/4.jpeg' },
-  { id: 5, title: 'Make It Matter', tag: 'Marketing', year: '2024', image: '/images/5.jpeg' },
-  { id: 6, title: 'Canvas Design System', tag: 'Systems', year: '2024', image: '/images/6.jpeg' },
+  {
+    id: 1,
+    title: "SMART WORKFLOW SYSTEM",
+    tag: "PROCESS DESIGN",
+    year: "2026",
+    image: "/images/1.jpeg",
+  },
+  {
+    id: 2,
+    title: "QUEUEFLOW",
+    tag: "SERVICE OPERATIONS",
+    year: "2025",
+    image: "/images/2s.jpeg",
+  },
+  {
+    id: 3,
+    title: "NORTHLINE IDENTITY",
+    tag: "BRAND STRATEGY",
+    year: "2025",
+    image: "/images/3.jpeg",
+  },
+  {
+    id: 4,
+    title: "PERFORMANCE DASHBOARD",
+    tag: "ANALYTICS",
+    year: "2024",
+    image: "/images/4.jpeg",
+  },
+  {
+    id: 5,
+    title: "MAKE IT MATTER",
+    tag: "MARKETING",
+    year: "2024",
+    image: "/images/5.jpeg",
+  },
+  {
+    id: 6,
+    title: "CANVAS DESIGN SYSTEM",
+    tag: "SYSTEMS",
+    year: "2024",
+    image: "/images/6.jpeg",
+  },
 ];
 
 const ScrollShowcase = () => {
   const sectionRef = useRef(null);
-  const trackRef = useRef(null);
-  const viewportRef = useRef(null);
-  const cardRefs = useRef([]);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const stageRef = useRef(null);
+  const cardsRef = useRef([]);
+  const activeIndexRef = useRef(0);
 
-  // SCROLL -> INDEX
-  useLayoutEffect(() => {
+  useEffect(() => {
     const section = sectionRef.current;
-    if (!section) return;
+    const stage = stageRef.current;
+
+    if (!section || !stage) return;
 
     const ctx = gsap.context(() => {
-      const getScrollLength = () => window.innerHeight * 0.7 * (PROJECTS.length - 1);
+      const cards = cardsRef.current.filter(Boolean);
+      const total = cards.length;
 
-      ScrollTrigger.create({
+      /*
+      =====================================================
+      YOUR EXISTING CUSTOM SIZES
+      =====================================================
+      */
+
+      const SMALL_W = 180;
+      const SMALL_H = 265;
+
+      const LARGE_W = 400;
+      const LARGE_H = 540;
+
+      const GAP = 28;
+
+      /*
+      =====================================================
+      POSITION ALL CARDS
+      =====================================================
+      */
+
+      const positionCards = (
+        activeIndex,
+        animate = false
+      ) => {
+        cards.forEach((card, index) => {
+          let relative = index - activeIndex;
+
+          /*
+          Circular positioning
+          */
+
+          if (relative > total / 2) {
+            relative -= total;
+          }
+
+          if (relative < -total / 2) {
+            relative += total;
+          }
+
+          /*
+          =================================================
+          CENTER IMAGE
+          =================================================
+          */
+
+          if (Math.abs(relative) < 0.5) {
+            const props = {
+              x: 0,
+              y: 0,
+              width: LARGE_W,
+              height: LARGE_H,
+              scale: 1,
+              opacity: 1,
+              zIndex: 30,
+            };
+
+            if (animate) {
+              gsap.to(card, {
+                ...props,
+                duration: 0.55,
+                ease: "power3.inOut",
+                overwrite: true,
+              });
+            } else {
+              gsap.set(card, props);
+            }
+
+            return;
+          }
+
+          /*
+          =================================================
+          SIDE IMAGES
+          =================================================
+          */
+
+          const distance = Math.abs(relative);
+
+          let x;
+
+          /*
+          LEFT
+          */
+
+          if (relative < 0) {
+            x =
+              -(LARGE_W / 2) -
+              GAP -
+              SMALL_W / 2 -
+              (distance - 1) *
+                (SMALL_W + GAP);
+          }
+
+          /*
+          RIGHT
+          */
+
+          else {
+            x =
+              LARGE_W / 2 +
+              GAP +
+              SMALL_W / 2 +
+              (distance - 1) *
+                (SMALL_W + GAP);
+          }
+
+          const props = {
+            x,
+            y: 0,
+            width: SMALL_W,
+            height: SMALL_H,
+            scale: 1,
+            opacity:
+              distance > 2
+                ? 0.35
+                : 0.78,
+            zIndex: 10 - distance,
+          };
+
+          if (animate) {
+            gsap.to(card, {
+              ...props,
+              duration: 0.55,
+              ease: "power3.inOut",
+              overwrite: true,
+            });
+          } else {
+            gsap.set(card, props);
+          }
+        });
+      };
+
+      /*
+      =====================================================
+      INITIAL STATE
+      =====================================================
+      */
+
+      activeIndexRef.current = 0;
+
+      positionCards(0, false);
+
+      /*
+      =====================================================
+      SCROLL TRIGGER
+      =====================================================
+
+      IMPORTANT:
+
+      Section starts
+           ↓
+      IMAGE 1 CENTER
+           ↓ scroll
+      IMAGE 2 CENTER
+           ↓ scroll
+      IMAGE 3 CENTER
+           ↓ scroll
+      IMAGE 4 CENTER
+           ↓ scroll
+      IMAGE 5 CENTER
+           ↓ scroll
+      IMAGE 6 CENTER
+           ↓
+      NEXT SECTION
+      =====================================================
+      */
+
+      const trigger = ScrollTrigger.create({
         trigger: section,
-        start: 'top top',
-        end: () => `+=${getScrollLength()}`,
-        pin: true,
-        scrub: 0.4,
+
+        start: "top top",
+
+        /*
+        5 transitions:
+
+        1 → 2
+        2 → 3
+        3 → 4
+        4 → 5
+        5 → 6
+        */
+
+        end: () =>
+          `+=${window.innerHeight * 5}`,
+
+        /*
+        THIS IS THE IMPORTANT PART.
+        Gallery remains on screen while
+        images are changing.
+        */
+
+        pin: section,
+
+        pinSpacing: true,
+
+        scrub: true,
+
         anticipatePin: 1,
+
         invalidateOnRefresh: true,
+
+        /*
+        Snap to each image.
+        */
+
+        snap: {
+          snapTo:
+            1 / (total - 1),
+
+          duration: {
+            min: 0.25,
+            max: 0.55,
+          },
+
+          delay: 0.05,
+
+          ease: "power2.out",
+        },
+
         onUpdate: (self) => {
-          const raw = self.progress * (PROJECTS.length - 1);
-          const idx = Math.min(PROJECTS.length - 1, Math.max(0, Math.round(raw)));
-          setActiveIndex((prev) => (prev === idx ? prev : idx));
+          /*
+          Convert scroll progress
+          into image number.
+
+          0.00 = Image 1
+          0.20 = Image 2
+          0.40 = Image 3
+          0.60 = Image 4
+          0.80 = Image 5
+          1.00 = Image 6
+          */
+
+          const rawIndex =
+            self.progress *
+            (total - 1);
+
+          /*
+          Make a real center image.
+          */
+
+          const nextIndex =
+            Math.round(rawIndex);
+
+          /*
+          Only animate when
+          center image changes.
+          */
+
+          if (
+            nextIndex !==
+            activeIndexRef.current
+          ) {
+            activeIndexRef.current =
+              nextIndex;
+
+            positionCards(
+              nextIndex,
+              true
+            );
+          }
         },
       });
+
+      /*
+      =====================================================
+      RESIZE
+      =====================================================
+      */
+
+      const handleResize = () => {
+        positionCards(
+          activeIndexRef.current,
+          false
+        );
+
+        ScrollTrigger.refresh();
+      };
+
+      window.addEventListener(
+        "resize",
+        handleResize
+      );
+
+      /*
+      =====================================================
+      CLEANUP
+      =====================================================
+      */
+
+      return () => {
+        window.removeEventListener(
+          "resize",
+          handleResize
+        );
+
+        trigger.kill();
+
+        gsap.killTweensOf(cards);
+      };
     }, section);
 
-    return () => ctx.revert();
-  }, []);
-
-  // INDEX -> CENTER the active card inside the full-width viewport
-  useLayoutEffect(() => {
-    const track = trackRef.current;
-    const viewport = viewportRef.current;
-    const activeCard = cardRefs.current[activeIndex];
-    if (!track || !viewport || !activeCard) return;
-
-    const viewportWidth = viewport.offsetWidth;
-    const offset =
-      viewportWidth / 2 - activeCard.offsetWidth / 2 - activeCard.offsetLeft;
-
-    gsap.to(track, {
-      x: offset,
-      duration: 0.3,
-      ease: 'power3.out',
-    });
-  }, [activeIndex]);
-
-  const setCardRef = useCallback((el, index) => {
-    cardRefs.current[index] = el;
+    return () => {
+      ctx.revert();
+    };
   }, []);
 
   return (
-    <div className="featured-showcase" id="featured" ref={sectionRef}>
+    <section
+      ref={sectionRef}
+      className="oryzo-scroll-section"
+    >
+      <div
+        ref={stageRef}
+        className="oryzo-stage"
+      >
+
+        {/* =====================================
+            TOP LEFT NAME
+        ====================================== */}
+
+        <div className="oryzo-name">
+          NITESH SINGH
+        </div>
+
+
+        {/* =====================================
+            GALLERY
+        ====================================== */}
+
+        <div className="oryzo-gallery">
+
+          {/* ===================================
+              CENTER DOTTED BORDER
+          ==================================== */}
+
+          <div className="oryzo-active-border" />
+
+
+          {/* ===================================
+              TEXT ABOVE LEFT IMAGE
+          ==================================== */}
+
+          <div className="oryzo-text">
+
+            <div className="oryzo-text-small">
+              SO PORTABLE,
+            </div>
+
+            <div className="oryzo-text-large">
+              it’s wearable
+            </div>
+
+          </div>
+
+
+          {/* ===================================
+              PROJECT IMAGES
+          ==================================== */}
+
+          {PROJECTS.map(
+            (project, index) => (
+              <div
+                key={project.id}
+
+                ref={(element) => {
+                  cardsRef.current[index] =
+                    element;
+                }}
+
+                className="oryzo-card"
+              >
+
+                <img
+                  src={
+                    process.env.PUBLIC_URL +
+                    project.image
+                  }
+
+                  alt={project.title}
+
+                  draggable="false"
+
+                  onError={(event) => {
+                    event.currentTarget.src =
+                      process.env.PUBLIC_URL +
+                      "/images/1.jpeg";
+                  }}
+                />
+
+              </div>
+            )
+          )}
+
+        </div>
+
+
+        {/* =====================================
+            SCROLL INDICATOR
+        ====================================== */}
+
+        <div className="oryzo-scroll">
+
+          <div className="oryzo-scroll-circle">
+            ↓
+          </div>
+
+          <span>
+            SCROLL TO CONTINUE
+          </span>
+
+        </div>
+
+      </div>
+
+
+      {/* =====================================
+          INLINE CSS
+      ====================================== */}
+
       <style>{`
-        .featured-showcase {
+
+        /* =====================================
+           MAIN SECTION
+        ====================================== */
+
+        .oryzo-scroll-section {
+          position: relative;
+
           width: 100vw;
-          position: relative;
-          left: 50%;
-          right: 50%;
-          margin-left: -50vw;
-          margin-right: -50vw;
+
+          /*
+          IMPORTANT:
+
+          Section itself is only one viewport.
+          GSAP creates the pin spacing for
+          the 5 image transitions.
+          */
+
           height: 100vh;
-          overflow: hidden;
-          background:
-            radial-gradient(ellipse 55% 65% at 64% 50%, rgba(255,70,40,0.35), transparent 65%),
-            linear-gradient(135deg, #4a0000 0%, #1a0000 100%);
-          color: #fff;
-          font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+          margin-left:
+            calc(50% - 50vw);
+
+          background: transparent;
         }
 
-        .featured-inner {
-          display: flex;
-          align-items: center;
-          height: 100%;
-          width: 100%;
-        }
 
-        /* ---- Cards fill the full width edge-to-edge (no left text panel) ---- */
-        .featured-cards-viewport {
-          flex: 1 1 100%;
-          width: 100%;
-          height: 100%;
-          display: flex;
-          align-items: center;
-          overflow: hidden;
+        /* =====================================
+           FULL SCREEN STAGE
+        ====================================== */
+
+        .oryzo-stage {
           position: relative;
-        }
 
-        .featured-track {
-          display: flex;
-          align-items: center;
-          gap: ${SIZES.gap}px;
-          will-change: transform;
-        }
+          width: 100vw;
 
-        .featured-card {
-          position: relative;
-          flex-shrink: 0;
-          aspect-ratio: 3 / 4;
-          border-radius: 14px;
+          height: 100vh;
+
+          min-height: 680px;
+
           overflow: hidden;
-          background: #000;
-          cursor: pointer;
-          box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
-          transition: height 0.28s cubic-bezier(0.22, 1, 0.36, 1),
-                      opacity 0.28s ease,
-                      outline-offset 0.28s ease;
-          height: ${SIZES.far.height}vh;
-          opacity: 0.3;
-          filter: grayscale(25%);
+
+          background: transparent;
+
+          color: #fff5f2;
         }
 
-        .featured-card.is-near {
-          height: ${SIZES.near.height}vh;
-          opacity: 0.55;
-          filter: grayscale(10%);
+
+        /* =====================================
+           NAME
+        ====================================== */
+
+        .oryzo-name {
+          position: absolute;
+
+          top: 32px;
+
+          left: 44px;
+
+          z-index: 100;
+
+          font-family:
+            "Poppins",
+            sans-serif;
+
+          font-size: 1.35rem;
+
+          font-weight: 700;
+
+          line-height: 1;
+
+          letter-spacing: -0.04em;
+
+          color: #fff5f2;
         }
 
-        .featured-card.is-active {
-          height: ${SIZES.active.height}vh;
-          opacity: 1;
-          filter: grayscale(0%);
-          z-index: 5;
-        }
 
-        .featured-card img {
+        /* =====================================
+           GALLERY
+        ====================================== */
+
+        .oryzo-gallery {
+          position: absolute;
+
+          inset: 0;
+
           width: 100%;
+
           height: 100%;
-          object-fit: cover;
-          display: block;
+
+          pointer-events: none;
         }
 
-        .featured-card-label {
+
+        /* =====================================
+           IMAGE CARD
+        ====================================== */
+
+        .oryzo-card {
           position: absolute;
-          bottom: 0;
-          left: 0;
-          right: 0;
-          padding: 16px;
-          background: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
-          opacity: 0;
-          transition: opacity 0.25s ease;
-          font-size: 12px;
-          text-transform: uppercase;
-          letter-spacing: 0.5px;
-          color: rgba(255,255,255,0.9);
-        }
 
-        .featured-card.is-active .featured-card-label {
-          opacity: 1;
-        }
-
-        /* ---- BOTTOM : centered scroll hint ---- */
-        .featured-hint {
-          position: absolute;
-          bottom: 4vh;
           left: 50%;
-          transform: translateX(-50%);
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 10px;
-          z-index: 20;
+
+          top: 50%;
+
+          transform:
+            translate(
+              -50%,
+              -50%
+            );
+
+          overflow: hidden;
+
+          border-radius: 3px;
+
+          box-sizing: border-box;
+
+          background: #111;
+
+          will-change:
+            transform,
+            width,
+            height,
+            opacity;
         }
 
-        .featured-hint .circle {
+
+        /* =====================================
+           IMAGE
+        ====================================== */
+
+        .oryzo-card img {
+          display: block;
+
+          width: 100%;
+
+          height: 100%;
+
+          object-fit: cover;
+
+          object-position: center;
+
+          user-select: none;
+
+          -webkit-user-drag: none;
+        }
+
+
+        /* =====================================
+           CENTER DOTTED BORDER
+        ====================================== */
+
+        .oryzo-active-border {
+          position: absolute;
+
+          left: 50%;
+
+          top: 50%;
+
+          width: 418px;
+
+          height: 558px;
+
+          transform:
+            translate(
+              -50%,
+              -50%
+            );
+
+          box-sizing: border-box;
+
+          border:
+            2px dashed
+            rgba(
+              255,
+              245,
+              242,
+              0.9
+            );
+
+          z-index: 50;
+
+          pointer-events: none;
+        }
+
+
+        /* =====================================
+           LEFT TEXT
+        ====================================== */
+
+        .oryzo-text {
+          position: absolute;
+
+          left: 50px;
+
+          top:
+            calc(
+              50% - 205px
+            );
+
+          z-index: 60;
+
+          width: 420px;
+
+          text-align: left;
+
+          color: #fff5f2;
+
+          pointer-events: none;
+        }
+
+
+        /* =====================================
+           SMALL TEXT
+        ====================================== */
+
+        .oryzo-text-small {
+          font-family:
+            "Inter",
+            sans-serif;
+
+          font-size: 1rem;
+
+          font-weight: 600;
+
+          line-height: 1.1;
+
+          margin-bottom: 4px;
+
+          color: #fff5f2;
+        }
+
+
+        /* =====================================
+           LARGE TEXT
+        ====================================== */
+
+        .oryzo-text-large {
+          font-family:
+            "Poppins",
+            sans-serif;
+
+          font-size: 2.7rem;
+
+          font-weight: 600;
+
+          line-height: 0.95;
+
+          letter-spacing:
+            -0.055em;
+
+          color: #fff5f2;
+
+          white-space: nowrap;
+        }
+
+
+        /* =====================================
+           SCROLL INDICATOR
+        ====================================== */
+
+        .oryzo-scroll {
+          position: absolute;
+
+          left: 50%;
+
+          bottom: 30px;
+
+          transform:
+            translateX(-50%);
+
+          z-index: 100;
+
+          display: flex;
+
+          align-items: center;
+
+          gap: 12px;
+
+          font-family:
+            "Inter",
+            sans-serif;
+
+          font-size: 0.68rem;
+
+          font-weight: 500;
+
+          letter-spacing:
+            0.12em;
+
+          white-space: nowrap;
+
+          color:
+            rgba(
+              255,
+              245,
+              242,
+              0.9
+            );
+        }
+
+
+        /* =====================================
+           SCROLL CIRCLE
+        ====================================== */
+
+        .oryzo-scroll-circle {
           width: 34px;
+
           height: 34px;
-          border-radius: 50%;
-          border: 1px solid rgba(255, 255, 255, 0.4);
+
           display: flex;
+
           align-items: center;
+
           justify-content: center;
-          font-size: 14px;
-          animation: hint-bounce 2s ease-in-out infinite;
+
+          border:
+            1px solid
+            rgba(
+              255,
+              245,
+              242,
+              0.75
+            );
+
+          border-radius: 50%;
+
+          font-size: 1.15rem;
+
+          line-height: 1;
+
+          animation:
+            oryzo-arrow
+            1.8s
+            ease-in-out
+            infinite;
         }
 
-        .featured-hint span {
-          font-size: 11px;
-          letter-spacing: 1.5px;
-          text-transform: uppercase;
-          color: rgba(255, 255, 255, 0.6);
+
+        /* =====================================
+           ARROW
+        ====================================== */
+
+        @keyframes oryzo-arrow {
+
+          0%,
+          100% {
+            transform:
+              translateY(0);
+          }
+
+          50% {
+            transform:
+              translateY(5px);
+          }
+
         }
 
-        @keyframes hint-bounce {
-          0%, 100% { transform: translateY(0); opacity: 0.5; }
-          50% { transform: translateY(4px); opacity: 1; }
+
+        /* =====================================
+           LARGE SCREEN
+        ====================================== */
+
+        @media (min-width: 1500px) {
+
+          .oryzo-name {
+            top: 34px;
+
+            left: 44px;
+
+            font-size: 1.4rem;
+          }
+
+          .oryzo-text {
+            left: 50px;
+
+            top:
+              calc(
+                50% - 205px
+              );
+          }
+
         }
+
+
+        /* =====================================
+           TABLET
+        ====================================== */
+
+        @media (max-width: 1200px) {
+
+          .oryzo-text {
+            left: 35px;
+
+            top:
+              calc(
+                50% - 190px
+              );
+
+            width: 300px;
+          }
+
+          .oryzo-text-small {
+            font-size: 0.9rem;
+          }
+
+          .oryzo-text-large {
+            font-size: 2.35rem;
+          }
+
+        }
+
+
+        /* =====================================
+           MOBILE
+        ====================================== */
 
         @media (max-width: 768px) {
-          .featured-card { height: ${SIZES.mobile.far.height}vh; }
-          .featured-card.is-near { height: ${SIZES.mobile.near.height}vh; }
-          .featured-card.is-active {
-            height: ${SIZES.mobile.active.height}vh;
-            outline-offset: 8px;
+
+          .oryzo-scroll-section {
+            height: 100vh;
           }
-          .featured-track { gap: ${SIZES.mobile.gap}px; }
+
+          .oryzo-stage {
+            min-height: 600px;
+          }
+
+          .oryzo-name {
+            top: 22px;
+
+            left: 20px;
+
+            font-size: 1rem;
+          }
+
+          .oryzo-active-border {
+            width: 310px;
+
+            height: 450px;
+          }
+
+          .oryzo-text {
+            left: 20px;
+
+            top: 105px;
+
+            width: 250px;
+          }
+
+          .oryzo-text-small {
+            font-size: 0.7rem;
+          }
+
+          .oryzo-text-large {
+            font-size: 1.6rem;
+          }
+
+          .oryzo-scroll {
+            bottom: 18px;
+
+            font-size: 0.55rem;
+          }
+
+          .oryzo-scroll-circle {
+            width: 29px;
+
+            height: 29px;
+
+            font-size: 0.95rem;
+          }
+
         }
+
       `}</style>
 
-      <div className="featured-inner">
-        <div className="featured-cards-viewport" ref={viewportRef}>
-          <div className="featured-track" ref={trackRef}>
-            {PROJECTS.map((project, index) => {
-              const distance = Math.abs(index - activeIndex);
-              const stateClass =
-                distance === 0 ? 'is-active' : distance === 1 ? 'is-near' : '';
-              return (
-                <div
-                  key={project.id}
-                  ref={(el) => setCardRef(el, index)}
-                  className={`featured-card ${stateClass}`}
-                  onClick={() => setActiveIndex(index)}
-                >
-                  <img src={process.env.PUBLIC_URL + project.image} alt={project.title} loading="lazy" />
-                  <div className="featured-card-label">
-                    {project.title} — {project.tag} · {project.year}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-
-      <div className="featured-hint">
-        <div className="circle">↓</div>
-        <span>Scroll to explore</span>
-      </div>
-    </div>
+    </section>
   );
 };
 
