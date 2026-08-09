@@ -81,6 +81,18 @@ const ScrollShowcase = () => {
 
       /*
       =====================================================
+      SCROLL SPEED
+      =====================================================
+      How many viewport-heights of physical scrolling it takes
+      to go through all the images. LOWER = FASTER scroll feel,
+      HIGHER = SLOWER (more scrolling needed per image change).
+      Was 5 (felt slow) — lowered to 2.2.
+      */
+
+      const SCROLL_DISTANCE_MULTIPLIER = 2.2;
+
+      /*
+      =====================================================
       POSITION ALL CARDS
       =====================================================
       */
@@ -248,7 +260,7 @@ const ScrollShowcase = () => {
         */
 
         end: () =>
-          `+=${window.innerHeight * 5}`,
+          `+=${window.innerHeight * SCROLL_DISTANCE_MULTIPLIER}`,
 
         /*
         THIS IS THE IMPORTANT PART.
@@ -260,7 +272,7 @@ const ScrollShowcase = () => {
 
         pinSpacing: true,
 
-        scrub: -10000,
+        scrub: true,
 
         anticipatePin: 1,
 

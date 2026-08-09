@@ -1086,13 +1086,17 @@ function App() {
 
 
         {/* ==========================================
-            FOOTER GRID
+            GUESS THE BRAND — full-screen standalone game
+        ========================================== */}
+
+        <GuessTheBrand />
+
+
+        {/* ==========================================
+            CONNECT
         ========================================== */}
 
         <section className="footer-grid">
-
-          <GuessTheBrand />
-
 
           <div
             className="connect-card"

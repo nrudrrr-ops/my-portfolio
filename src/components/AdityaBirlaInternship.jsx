@@ -1,7 +1,9 @@
-import React from "react";
-import './AdityaBirlaInternship.css';
+﻿import React, { useState } from "react";
+import "./AdityaBirlaInternship.css";
 
-const Internship = () => {
+const AdityaBirlaInternship = () => {
+  const [logoFailed, setLogoFailed] = useState(false);
+
   return (
     <section className="internship-page">
 
@@ -9,13 +11,12 @@ const Internship = () => {
       <div className="internship-hero">
 
         <div className="hero-left">
+
           <div className="experience-badge">
             💼 &nbsp; INTERNSHIP EXPERIENCE
           </div>
 
-          <h1>
-            ADITYA BIRLA GROUP
-          </h1>
+          <h1>ADITYA BIRLA GROUP</h1>
 
           <div className="hero-line"></div>
 
@@ -26,51 +27,65 @@ const Internship = () => {
             financial reporting, GST reconciliation, and process workflows
             in a large-scale manufacturing environment.
           </p>
+
         </div>
 
+
+        {/* LOGO */}
         <div className="hero-logo">
           <div className="logo-box">
-            <div className="aditya-symbol">
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-
-            <div className="aditya-text">
-              ADITYA BIRLA
-            </div>
+            {!logoFailed ? (
+              <img
+                src={process.env.PUBLIC_URL + "/images/aditya-birla-logo.png"}
+                alt="Aditya Birla Group"
+                className="aditya-birla-logo"
+                onError={() => setLogoFailed(true)}
+              />
+            ) : (
+              <div className="logo-fallback">
+                <span>ADITYA BIRLA</span>
+              </div>
+            )}
           </div>
         </div>
 
+
+        {/* HERO DETAILS */}
         <div className="hero-details">
 
           <div className="detail-item">
             <div className="detail-icon">▣</div>
+
             <div>
               <strong>Internship Duration</strong>
               <span>June 2025 – July 2025 (2 Months)</span>
             </div>
           </div>
 
+
           <div className="detail-item">
             <div className="detail-icon">⌖</div>
+
             <div>
               <strong>Location</strong>
               <span>Aditya Birla Group (Manufacturing Unit)</span>
             </div>
           </div>
 
+
           <div className="detail-item">
             <div className="detail-icon">♧</div>
+
             <div>
               <strong>Department</strong>
               <span>Finance & Operations</span>
             </div>
           </div>
 
+
           <div className="detail-item">
             <div className="detail-icon">♙</div>
+
             <div>
               <strong>Role</strong>
               <span>Account Intern</span>
@@ -78,26 +93,33 @@ const Internship = () => {
           </div>
 
         </div>
+
       </div>
 
 
       {/* ================= MAIN CONTENT ================= */}
       <div className="internship-content">
 
+
         {/* ABOUT */}
         <div className="content-column about-column">
 
           <h2>ABOUT ADITYA BIRLA GROUP</h2>
+
           <div className="section-line"></div>
 
           <div className="about-intro">
-            <div className="about-icon">▦</div>
+
+            <div className="about-icon">
+              ▦
+            </div>
 
             <p>
               Aditya Birla Group is a global conglomerate with a strong
               presence in 36 countries across diverse industries including
               cement, metals, telecom, financial services, and more.
             </p>
+
           </div>
 
           <p className="about-text">
@@ -114,6 +136,7 @@ const Internship = () => {
         <div className="content-column responsibilities-column">
 
           <h2>MY KEY RESPONSIBILITIES</h2>
+
           <div className="section-line"></div>
 
           <ul className="responsibility-list">
@@ -169,6 +192,7 @@ const Internship = () => {
         <div className="content-column tools-column">
 
           <h2>TOOLS & SYSTEMS USED</h2>
+
           <div className="section-line"></div>
 
           <div className="tools-grid">
@@ -244,17 +268,19 @@ const Internship = () => {
 
 
       {/* ================= PROJECTS ================= */}
-      <div className="projects-section">
+      <div className="ab-projects-section">
 
-        <div className="projects-left">
+        <div className="ab-projects-left">
 
           <h2>PROJECTS & WORK HIGHLIGHTS</h2>
+
           <div className="section-line"></div>
 
-          <div className="projects-grid">
+          <div className="ab-projects-grid">
 
-            <div className="project-card">
-              <div className="project-icon">▧</div>
+            <div className="ab-project-card">
+
+              <div className="ab-project-icon">▧</div>
 
               <h3>TPP Fuel Cost Analytics</h3>
 
@@ -262,11 +288,13 @@ const Internship = () => {
                 Prepared daily fuel consumption reports
                 and analyzed cost variances.
               </p>
+
             </div>
 
 
-            <div className="project-card">
-              <div className="project-icon">▤</div>
+            <div className="ab-project-card">
+
+              <div className="ab-project-icon">▤</div>
 
               <h3>GST Reconciliation</h3>
 
@@ -274,11 +302,13 @@ const Internship = () => {
                 Reconciled GSTR-1 data with
                 GSTR-1 vs 2B and resolved mismatches.
               </p>
+
             </div>
 
 
-            <div className="project-card">
-              <div className="project-icon blue">▱</div>
+            <div className="ab-project-card">
+
+              <div className="ab-project-icon blue">▱</div>
 
               <h3>Procurement Workflow</h3>
 
@@ -286,11 +316,13 @@ const Internship = () => {
                 Observed complete flow from
                 PR → PO → GRN → Invoice → Payment.
               </p>
+
             </div>
 
 
-            <div className="project-card">
-              <div className="project-icon">▥</div>
+            <div className="ab-project-card">
+
+              <div className="ab-project-icon">▥</div>
 
               <h3>Vendor Verification</h3>
 
@@ -298,11 +330,13 @@ const Internship = () => {
                 Verified vendor GSTIN, filing
                 status and maintained compliance.
               </p>
+
             </div>
 
 
-            <div className="project-card">
-              <div className="project-icon">▣</div>
+            <div className="ab-project-card">
+
+              <div className="ab-project-icon">▣</div>
 
               <h3>Payment Request (PRCV)</h3>
 
@@ -310,6 +344,7 @@ const Internship = () => {
                 Understood and observed
                 Payment Request Cum Voucher process.
               </p>
+
             </div>
 
           </div>
@@ -321,8 +356,15 @@ const Internship = () => {
         <div className="takeaway-card">
 
           <div className="takeaway-title">
-            <div className="star">★</div>
-            <h2>INTERNSHIP TAKEAWAY</h2>
+
+            <div className="star">
+              ★
+            </div>
+
+            <h2>
+              INTERNSHIP TAKEAWAY
+            </h2>
+
           </div>
 
           <p>
@@ -339,7 +381,9 @@ const Internship = () => {
             and grow with Aditya Birla Group.
           </strong>
 
-          <span className="heart">♥</span>
+          <span className="heart">
+            ♥
+          </span>
 
         </div>
 
@@ -350,7 +394,7 @@ const Internship = () => {
       <div className="internship-footer">
 
         <div className="quote">
-          <span>“</span>
+          <span>"</span>
           Learning never exhausts the mind.
         </div>
 
@@ -364,4 +408,4 @@ const Internship = () => {
   );
 };
 
-export default Internship;
+export default AdityaBirlaInternship;

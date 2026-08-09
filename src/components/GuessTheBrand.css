@@ -1,313 +1,2437 @@
-/* ═══════════════════════════════════════════════════════
-   GUESS THE BRAND — footer mini-game card
-   Sits inside the two-column .footer-grid alongside the Connect card.
-   Reuses the portfolio's existing color variables.
-═══════════════════════════════════════════════════════ */
+/* =========================================================
+   GUESS THE BRAND
+   FULL WIDTH GAME + PROGRESS + FOOTER
+========================================================= */
 
-.gtb-card {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  padding: 32px 30px 30px;
-  border-radius: var(--radius-xl, 28px);
-  background: linear-gradient(160deg, rgba(40, 6, 8, 0.75) 0%, rgba(80, 8, 10, 0.55) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  box-shadow: 0 24px 60px rgba(20, 0, 0, 0.45);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  overflow: hidden;
+* {
   box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+
+/* =========================================================
+   MAIN PAGE
+========================================================= */
+
+.gtb-page {
+  width: 100vw;
+  max-width: none;
+
+  height: 100vh;
+  min-height: 100vh;
+
+  margin-left: calc(50% - 50vw);
+
+  padding: 8px 16px 0;
+
   display: flex;
   flex-direction: column;
+
+  gap: 8px;
+
+  box-sizing: border-box;
+
+  overflow: hidden;
+
+  font-family:
+    "Poppins",
+    "Inter",
+    Arial,
+    sans-serif;
+
+  color: #171717;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ef1010 0%,
+      #d40000 45%,
+      #730000 100%
+    );
 }
 
-/* ── HEADER ── */
-.gtb-header {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  margin-bottom: 16px;
-}
 
-.gtb-icon-badge {
-  flex-shrink: 0;
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: rgba(255, 107, 129, 0.16);
-  font-size: 1.3rem;
-}
+/* =========================================================
+   MAIN GAME CARD
+========================================================= */
 
-.gtb-header-text { flex: 1; min-width: 0; }
-
-.gtb-title {
-  font-family: var(--font-display, sans-serif);
-  font-weight: 800;
-  font-size: 1.3rem;
-  color: var(--ink, #fff5f2);
-  letter-spacing: -0.01em;
-}
-
-.gtb-subtitle {
-  margin-top: 4px;
-  font-size: 0.84rem;
-  color: var(--ink-soft, rgba(255,245,242,0.7));
-  line-height: 1.4;
-}
-
-.gtb-score-badge {
-  flex-shrink: 0;
-  padding: 6px 14px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: var(--ink, #fff5f2);
-  white-space: nowrap;
-}
-
-.gtb-divider {
-  height: 1px;
-  background: rgba(255, 255, 255, 0.12);
-  margin-bottom: 22px;
-}
-
-/* ── META ROW ── */
-.gtb-meta-row {
-  margin-bottom: 16px;
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  color: var(--ink-soft, rgba(255,245,242,0.7));
-}
-
-/* ── TAGLINE BOX ── */
-.gtb-tagline-box {
-  position: relative;
-  padding: 18px 22px;
-  margin-bottom: 20px;
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  text-align: center;
-  font-family: var(--font-display, sans-serif);
-  font-weight: 700;
-  font-size: 1.1rem;
-  color: var(--ink, #fff5f2);
-  line-height: 1.4;
-}
-
-.gtb-quote-mark {
-  color: var(--purple-2, #b1a4f8);
-  font-size: 1.3rem;
-  opacity: 0.7;
-}
-
-/* ── OPTIONS ── */
-.gtb-options {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-
-.gtb-option {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  padding: 12px 16px;
-  border-radius: 999px;
-  border: 1.5px solid rgba(255, 255, 255, 0.18);
-  background: rgba(255, 255, 255, 0.04);
-  color: var(--ink, #fff5f2);
-  font-size: 0.88rem;
-  font-weight: 600;
-  cursor: pointer;
-  text-align: left;
-  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
-}
-
-.gtb-option-dot {
-  flex-shrink: 0;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.4);
-  transition: border-color 0.2s ease, background 0.2s ease;
-}
-
-.gtb-option:hover:not(:disabled) {
-  border-color: rgba(255, 255, 255, 0.4);
-  background: rgba(255, 255, 255, 0.08);
-  transform: translateY(-2px);
-}
-
-.gtb-option:focus-visible {
-  outline: 2px solid var(--purple-2, #b1a4f8);
-  outline-offset: 2px;
-}
-
-.gtb-option.is-selected {
-  border-color: #78dfaf;
-  background: rgba(120, 223, 175, 0.14);
-}
-.gtb-option.is-selected .gtb-option-dot {
-  border-color: #78dfaf;
-  background: #78dfaf;
-}
-
-.gtb-option:disabled { cursor: default; }
-
-.gtb-option.is-reveal-correct {
-  border-color: rgba(120, 223, 175, 0.7);
-  background: rgba(120, 223, 175, 0.14);
-}
-.gtb-option.is-reveal-correct .gtb-option-dot {
-  border-color: #78dfaf;
-  background: #78dfaf;
-}
-
-.gtb-option.is-reveal-wrong {
-  border-color: rgba(255, 107, 107, 0.7);
-  background: rgba(255, 107, 107, 0.14);
-}
-.gtb-option.is-reveal-wrong .gtb-option-dot {
-  border-color: #ff6b6b;
-  background: #ff6b6b;
-}
-
-@media (max-width: 480px) {
-  .gtb-options { grid-template-columns: 1fr; }
-}
-
-/* ── BUTTONS ── */
-.gtb-submit-btn,
-.gtb-next-btn {
+.gtb-page > .gtb-progress {
   width: 100%;
-  padding: 13px 24px;
-  border-radius: 999px;
-  border: none;
-  background: linear-gradient(135deg, #ff6b81, #ff4757);
-  color: #fff;
-  font-size: 0.92rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.25s ease, opacity 0.2s ease;
+  max-width: 1380px;
+
+  flex: 1 1 auto;
+  min-height: 0;
+
+  margin: 0 auto;
+
+  padding: 16px 34px 10px;
+
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow: hidden;
+
+  border-radius: 23px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff 0%,
+      #fffafa 100%
+    );
+
+  border: 1px solid
+    rgba(255, 255, 255, 0.85);
+
+  box-shadow:
+    0 15px 45px
+    rgba(80, 0, 0, 0.13);
+
+  z-index: 1;
 }
 
-.gtb-submit-btn:hover:not(:disabled),
-.gtb-next-btn:hover {
-  transform: scale(1.03);
-  box-shadow: 0 10px 26px rgba(255, 71, 87, 0.35);
-}
 
-.gtb-submit-btn:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-}
+/* =========================================================
+   CONFETTI
+========================================================= */
 
-.gtb-submit-btn:focus-visible,
-.gtb-next-btn:focus-visible {
-  outline: 2px solid var(--purple-2, #b1a4f8);
-  outline-offset: 3px;
-}
-
-/* ── FEEDBACK ── */
-.gtb-feedback {
-  text-align: center;
-  animation: gtbFadeUp 0.35s ease both;
-}
-
-.gtb-feedback-title {
-  font-family: var(--font-display, sans-serif);
-  font-weight: 800;
-  font-size: 1.15rem;
-  margin-bottom: 8px;
-}
-.gtb-feedback-correct { color: #78dfaf; }
-.gtb-feedback-wrong { color: #ff6b6b; }
-
-.gtb-feedback-text {
-  font-size: 0.86rem;
-  color: var(--ink-soft, rgba(255,245,242,0.7));
-  margin-bottom: 6px;
-  line-height: 1.5;
-}
-.gtb-feedback-text strong { color: var(--ink, #fff5f2); }
-
-.gtb-feedback-points {
-  display: inline-block;
-  padding: 3px 12px;
-  border-radius: 999px;
-  background: rgba(120, 223, 175, 0.14);
-  font-family: var(--font-display, sans-serif);
-  font-weight: 700;
-  color: #78dfaf;
-  margin-bottom: 18px;
-  font-size: 0.85rem;
-}
-
-@keyframes gtbFadeUp {
-  from { opacity: 0; transform: translateY(10px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* ── COMPLETION SCREEN ── */
-.gtb-complete {
-  text-align: center;
-  animation: gtbFadeUp 0.45s ease both;
-  margin: auto 0;
-}
-
-.gtb-complete-title {
-  font-family: var(--font-display, sans-serif);
-  font-weight: 800;
-  font-size: 1.4rem;
-  color: var(--ink, #fff5f2);
-  margin-bottom: 8px;
-}
-
-.gtb-complete-score {
-  font-size: 1rem;
-  color: var(--purple-2, #b1a4f8);
-  font-weight: 700;
-  margin-bottom: 22px;
-}
-
-/* ── CONFETTI ── */
 .gtb-confetti {
   position: absolute;
+
   inset: 0;
-  overflow: hidden;
+
   pointer-events: none;
-  z-index: 5;
+
+  overflow: hidden;
+
+  z-index: 100;
 }
 
 .gtb-confetti-piece {
   position: absolute;
-  top: -12px;
-  width: 8px;
-  height: 8px;
+
+  top: -15px;
+
+  width: 7px;
+  height: 14px;
+
   border-radius: 2px;
-  opacity: 0.9;
-  animation-name: gtbFall;
-  animation-timing-function: ease-in;
-  animation-fill-mode: forwards;
+
+  animation:
+    gtb-confetti-fall
+    1.2s
+    ease-out
+    forwards;
 }
 
-@keyframes gtbFall {
-  to {
-    transform: translateY(340px) rotate(340deg);
+@keyframes gtb-confetti-fall {
+
+  0% {
+    transform:
+      translateY(0)
+      rotate(0deg);
+
+    opacity: 1;
+  }
+
+  100% {
+    transform:
+      translateY(700px)
+      rotate(540deg);
+
     opacity: 0;
   }
 }
 
-@media (max-width: 640px) {
-  .gtb-card { padding: 26px 22px 24px; }
-  .gtb-title { font-size: 1.15rem; }
-  .gtb-tagline-box { font-size: 1rem; padding: 16px 18px; }
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.gtb-header {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    52px
+    minmax(0, 1fr)
+    170px;
+
+  align-items: center;
+
+  gap: 15px;
+
+  min-height: 58px;
+
+  flex: 0 0 auto;
+}
+
+
+/* =========================================================
+   HEADER ICON
+========================================================= */
+
+.gtb-icon-badge {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #fff0f0;
+
+  border:
+    1px solid
+    #f5cccc;
+
+  font-size: 23px;
+}
+
+
+/* =========================================================
+   HEADER TEXT
+========================================================= */
+
+.gtb-header-text {
+  min-width: 0;
+
+  text-align: center;
+}
+
+.gtb-title {
+  margin: 0;
+
+  color: #760606;
+
+  font-size:
+    clamp(
+      30px,
+      3vw,
+      44px
+    );
+
+  line-height: 1;
+
+  font-weight: 900;
+
+  letter-spacing: -1.5px;
+
+  text-transform: uppercase;
+}
+
+.gtb-subtitle {
+  margin: 6px 0 0;
+
+  color: #333;
+
+  font-size: 13px;
+
+  line-height: 1.3;
+}
+
+
+/* =========================================================
+   SCORE
+========================================================= */
+
+.gtb-score-badge {
+  height: 40px;
+
+  padding: 0 15px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 999px;
+
+  border:
+    1px solid
+    #efcaca;
+
+  color: #a50000;
+
+  background: #fff;
+
+  font-size: 13px;
+
+  font-weight: 800;
+
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.gtb-divider {
+  width: 100%;
+
+  height: 1px;
+
+  flex: 0 0 1px;
+
+  margin: 5px 0 7px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #e9baba,
+      transparent
+    );
+}
+
+
+/* =========================================================
+   QUESTION META
+========================================================= */
+
+.gtb-meta-row {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: flex-start;
+
+  margin-bottom: 6px;
+
+  flex: 0 0 auto;
+}
+
+
+/*
+   IMPORTANT:
+   This selector is intentionally NOT .gtb-progress
+   because .gtb-progress is already the game container.
+*/
+
+.gtb-meta-row .gtb-progress {
+  color: #a60000;
+
+  font-size: 13px;
+
+  font-weight: 800;
+}
+
+
+/* =========================================================
+   TAGLINE BOX
+========================================================= */
+
+.gtb-tagline-box {
+  width: 100%;
+
+  min-height: 52px;
+
+  padding: 7px 18px;
+
+  margin-bottom: 10px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  border-radius: 13px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #fff0f0,
+      #fff8f8
+    );
+
+  border:
+    1px solid
+    #efcccc;
+
+  color: #720000;
+
+  font-size:
+    clamp(
+      18px,
+      1.8vw,
+      24px
+    );
+
+  line-height: 1.2;
+
+  font-weight: 800;
+
+  text-align: center;
+
+  flex: 0 0 auto;
+}
+
+.gtb-quote-mark {
+  color: #d40000;
+
+  font-size: 25px;
+
+  line-height: 1;
+
+  font-weight: 900;
+}
+
+
+/* =========================================================
+   OPTIONS
+========================================================= */
+
+.gtb-options {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  gap: 9px;
+
+  flex: 0 0 auto;
+}
+
+.gtb-option {
+  min-width: 0;
+
+  min-height: 52px;
+
+  padding: 7px 16px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 11px;
+
+  border-radius: 12px;
+
+  border:
+    1px solid
+    #eacaca;
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.9
+    );
+
+  color: #222;
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  font-weight: 600;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.gtb-option:hover:not(:disabled) {
+  transform:
+    translateY(-2px);
+
+  border-color: #d60000;
+
+  background: #fff5f5;
+
+  box-shadow:
+    0 7px 17px
+    rgba(190, 0, 0, 0.08);
+}
+
+.gtb-option:disabled {
+  cursor: default;
+}
+
+.gtb-option.is-selected {
+  border-color: #d40000;
+
+  background: #fff0f0;
+
+  box-shadow:
+    0 5px 15px
+    rgba(200, 0, 0, 0.08);
+}
+
+.gtb-option.is-reveal-correct {
+  border-color: #16a34a;
+
+  background: #ecfdf5;
+}
+
+.gtb-option.is-reveal-wrong {
+  border-color: #dc2626;
+
+  background: #fef2f2;
+}
+
+
+/* =========================================================
+   OPTION RADIO
+========================================================= */
+
+.gtb-option-dot {
+  width: 20px;
+  height: 20px;
+
+  flex:
+    0 0 20px;
+
+  position: relative;
+
+  border:
+    2px solid
+    #bdbdbd;
+
+  border-radius: 50%;
+}
+
+.gtb-option.is-selected
+.gtb-option-dot {
+  border-color: #d40000;
+}
+
+.gtb-option.is-selected
+.gtb-option-dot::after {
+  content: "";
+
+  position: absolute;
+
+  width: 8px;
+  height: 8px;
+
+  top: 50%;
+  left: 50%;
+
+  transform:
+    translate(
+      -50%,
+      -50%
+    );
+
+  border-radius: 50%;
+
+  background: #d40000;
+}
+
+.gtb-option-text {
+  min-width: 0;
+
+  flex: 1;
+}
+
+
+/* =========================================================
+   CHECK ANSWER
+========================================================= */
+
+.gtb-submit-btn {
+  width: 245px;
+
+  height: 45px;
+
+  margin:
+    11px
+    auto
+    0;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #d40000,
+      #b00000
+    );
+
+  color: #fff;
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 12px;
+
+  box-shadow:
+    0 8px 20px
+    rgba(190, 0, 0, 0.18);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.gtb-submit-btn span {
+  font-size: 19px;
+}
+
+.gtb-submit-btn:hover:not(:disabled) {
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+    0 11px 25px
+    rgba(190, 0, 0, 0.24);
+}
+
+.gtb-submit-btn:disabled {
+  background: #ed9a9a;
+
+  cursor: not-allowed;
+
+  box-shadow: none;
+}
+
+
+/* =========================================================
+   FEEDBACK
+========================================================= */
+
+.gtb-feedback {
+  margin-top: 7px;
+
+  text-align: center;
+
+  flex: 0 0 auto;
+}
+
+.gtb-feedback-title {
+  margin: 0;
+
+  font-size: 16px;
+
+  font-weight: 900;
+}
+
+.gtb-feedback-correct {
+  color: #15803d;
+}
+
+.gtb-feedback-wrong {
+  color: #c40000;
+}
+
+.gtb-feedback-text {
+  margin: 3px 0;
+
+  color: #444;
+
+  font-size: 11px;
+
+  line-height: 1.35;
+}
+
+.gtb-feedback-points {
+  margin: 2px 0;
+
+  color: #15803d;
+
+  font-size: 12px;
+
+  font-weight: 800;
+}
+
+.gtb-next-btn {
+  margin-top: 5px;
+
+  padding: 7px 19px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: #a90000;
+
+  color: #fff;
+
+  font-family: inherit;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   PROGRESS AREA
+========================================================= */
+
+.gtb-progress-area {
+  width: 100%;
+
+  margin-top: auto;
+
+  padding-top: 9px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 20px;
+
+  flex: 0 0 auto;
+}
+
+.gtb-progress-track {
+  flex: 1;
+
+  min-width: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+}
+
+.gtb-progress-item {
+  width: 32px;
+  height: 32px;
+
+  flex:
+    0 0 32px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+
+  border:
+    1px solid
+    #efcaca;
+
+  border-radius: 50%;
+
+  background: #fff;
+
+  color: #333;
+
+  font-size: 12px;
+
+  font-weight: 700;
+}
+
+.gtb-progress-item:not(:last-child)::after {
+  content: "";
+
+  position: absolute;
+
+  left: 100%;
+
+  top: 50%;
+
+  width: 29px;
+
+  height: 1px;
+
+  transform:
+    translateY(-50%);
+
+  background:
+    repeating-linear-gradient(
+      90deg,
+      #d40000 0 4px,
+      transparent 4px 8px
+    );
+}
+
+.gtb-progress-item.active {
+  color: #fff;
+
+  background: #d40000;
+
+  border-color: #d40000;
+
+  box-shadow:
+    0 5px 14px
+    rgba(210, 0, 0, 0.25);
+}
+
+.gtb-progress-item.done {
+  color: #a50000;
+
+  background: #ffe6e6;
+
+  border-color: #e8aaaa;
+}
+
+
+/* =========================================================
+   NEW BRANDS
+========================================================= */
+
+.gtb-new-brands {
+  height: 38px;
+
+  padding: 0 17px;
+
+  border:
+    1px solid
+    #e9baba;
+
+  border-radius: 9px;
+
+  background: #fff;
+
+  color: #b00000;
+
+  font-family: inherit;
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.gtb-new-brands:hover {
+  background: #fff1f1;
+
+  transform:
+    translateY(-1px);
+}
+
+
+/* =========================================================
+   COMPLETE / RESULT
+========================================================= */
+
+.gtb-complete {
+  flex: 1;
+
+  min-height: 0;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+}
+
+.gtb-complete-icon {
+  width: 72px;
+  height: 72px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #ffe5e5;
+
+  font-size: 35px;
+
+  margin-bottom: 10px;
+}
+
+.gtb-complete-title {
+  margin: 0;
+
+  color: #a00000;
+
+  font-size: 32px;
+
+  font-weight: 900;
+}
+
+.gtb-complete-score {
+  margin: 5px 0;
+
+  color: #333;
+
+  font-size: 17px;
+}
+
+
+/* =========================================================
+   FULL WIDTH FOOTER
+========================================================= */
+
+.gtb-footer {
+  width: 100%;
+
+  max-width: none;
+
+  flex:
+    0 0 150px;
+
+  margin: 0;
+
+  padding:
+    15px
+    32px
+    8px;
+
+  box-sizing: border-box;
+
+  color: #fff;
+
+  background:
+    linear-gradient(
+      135deg,
+      #980000 0%,
+      #780000 52%,
+      #650000 100%
+    );
+
+  border-radius:
+    17px
+    17px
+    5px
+    5px;
+
+  box-shadow:
+    0 10px 28px
+    rgba(70, 0, 0, 0.18);
+
+  overflow: hidden;
+
+  position: relative;
+
+  z-index: 2;
+}
+
+
+/* =========================================================
+   FOOTER MAIN — 5 COLUMNS
+========================================================= */
+
+.gtb-footer-main {
+  width: 100%;
+
+  max-width: none;
+
+  margin: 0;
+
+  padding: 0;
+
+  display: grid;
+
+  grid-template-columns:
+    1.35fr
+    0.9fr
+    0.9fr
+    1.2fr
+    1.25fr;
+
+  gap: 38px;
+
+  align-items: start;
+}
+
+.gtb-footer-main > * {
+  min-width: 0;
+}
+
+
+/* =========================================================
+   FOOTER BRAND
+========================================================= */
+
+.gtb-footer-brand {
+  min-width: 0;
+}
+
+.gtb-footer-brand h3 {
+  margin: 0 0 6px;
+
+  color: #fff;
+
+  font-size: 18px;
+
+  font-weight: 900;
+
+  letter-spacing: 0.2px;
+}
+
+.gtb-footer-brand p {
+  margin: 0;
+
+  max-width: 310px;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.95
+    );
+
+  font-size: 10px;
+
+  line-height: 1.45;
+}
+
+
+/* =========================================================
+   SOCIAL ICONS
+========================================================= */
+
+.gtb-socials {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin-top: 8px;
+}
+
+.gtb-socials a {
+  width: 29px;
+  height: 29px;
+
+  flex:
+    0 0 29px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.4
+    );
+
+  border-radius: 50%;
+
+  color: #fff;
+
+  text-decoration: none;
+
+  font-size: 10px;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.gtb-socials a:hover {
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.15
+    );
+
+  transform:
+    translateY(-2px);
+}
+
+
+/* =========================================================
+   FOOTER COLUMNS
+========================================================= */
+
+.gtb-footer-column,
+.gtb-newsletter {
+  min-width: 0;
+}
+
+.gtb-footer-column h4,
+.gtb-newsletter h4 {
+  margin: 0 0 8px;
+
+  color: #fff;
+
+  font-size: 11px;
+
+  font-weight: 900;
+
+  text-transform: uppercase;
+}
+
+.gtb-footer-column h4::after,
+.gtb-newsletter h4::after {
+  content: "";
+
+  display: block;
+
+  width: 28px;
+  height: 3px;
+
+  margin-top: 5px;
+
+  background: #ff2929;
+
+  border-radius: 5px;
+}
+
+.gtb-footer-column span {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.92
+    );
+
+  font-size: 9.5px;
+
+  line-height: 1.35;
+}
+
+
+/* =========================================================
+   CONTACT
+========================================================= */
+
+.gtb-contact-column span {
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   NEWSLETTER
+========================================================= */
+
+.gtb-newsletter p {
+  margin: 0 0 8px;
+
+  max-width: 270px;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.92
+    );
+
+  font-size: 9.5px;
+
+  line-height: 1.4;
+}
+
+.gtb-email-box {
+  width: 100%;
+
+  max-width: 320px;
+
+  height: 31px;
+
+  display: flex;
+
+  overflow: hidden;
+
+  border-radius: 7px;
+
+  background: #fff;
+}
+
+.gtb-email-box input {
+  flex: 1;
+
+  min-width: 0;
+
+  border: 0;
+
+  outline: 0;
+
+  padding:
+    0
+    10px;
+
+  color: #333;
+
+  font-family: inherit;
+
+  font-size: 9px;
+}
+
+.gtb-email-box button {
+  flex:
+    0 0 auto;
+
+  border: 0;
+
+  padding:
+    0
+    15px;
+
+  background: #e00000;
+
+  color: #fff;
+
+  font-family: inherit;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   FOOTER BOTTOM
+========================================================= */
+
+.gtb-footer-bottom {
+  width: 100%;
+
+  margin-top: 8px;
+
+  padding-top: 6px;
+
+  border-top:
+    1px solid
+    rgba(
+      255,
+      255,
+      255,
+      0.2
+    );
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  color:
+    rgba(
+      255,
+      255,
+      255,
+      0.9
+    );
+
+  font-size: 8px;
+}
+
+.gtb-footer-bottom b {
+  color: #ff2929;
+
+  font-size: 12px;
+
+  margin-right: 4px;
+}
+
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+
+@media (min-width: 1200px) {
+
+  .gtb-page {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .gtb-page > .gtb-progress {
+    padding-left: 34px;
+    padding-right: 34px;
+  }
+
+  .gtb-footer {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .gtb-footer-main {
+    grid-template-columns:
+      1.35fr
+      0.9fr
+      0.9fr
+      1.2fr
+      1.25fr;
+
+    gap: 42px;
+  }
+}
+
+
+/* =========================================================
+   SMALL LAPTOP
+========================================================= */
+
+@media
+  (min-width: 1000px)
+  and (max-height: 800px) {
+
+  .gtb-page {
+    padding:
+      6px
+      16px
+      0;
+
+    gap: 6px;
+  }
+
+  .gtb-page > .gtb-progress {
+    padding:
+      13px
+      30px
+      8px;
+
+    border-radius: 21px;
+  }
+
+  .gtb-header {
+    min-height: 52px;
+  }
+
+  .gtb-icon-badge {
+    width: 42px;
+    height: 42px;
+
+    font-size: 20px;
+  }
+
+  .gtb-title {
+    font-size: 32px;
+  }
+
+  .gtb-subtitle {
+    margin-top: 4px;
+
+    font-size: 11px;
+  }
+
+  .gtb-score-badge {
+    height: 35px;
+
+    font-size: 11px;
+  }
+
+  .gtb-tagline-box {
+    min-height: 46px;
+
+    margin-bottom: 8px;
+
+    font-size: 19px;
+  }
+
+  .gtb-option {
+    min-height: 45px;
+
+    font-size: 12px;
+  }
+
+  .gtb-option-dot {
+    width: 17px;
+    height: 17px;
+
+    flex-basis: 17px;
+  }
+
+  .gtb-submit-btn {
+    height: 39px;
+
+    margin-top: 8px;
+
+    font-size: 12px;
+  }
+
+  .gtb-progress-area {
+    padding-top: 7px;
+  }
+
+  .gtb-progress-item {
+    width: 28px;
+    height: 28px;
+
+    flex-basis: 28px;
+
+    font-size: 10px;
+  }
+
+  .gtb-progress-item:not(:last-child)::after {
+    width: 25px;
+  }
+
+  .gtb-new-brands {
+    height: 33px;
+
+    font-size: 10px;
+  }
+
+  .gtb-footer {
+    flex-basis: 132px;
+
+    padding:
+      11px
+      28px
+      6px;
+  }
+
+  .gtb-footer-main {
+    gap: 28px;
+  }
+
+  .gtb-footer-brand h3 {
+    font-size: 15px;
+  }
+
+  .gtb-footer-brand p,
+  .gtb-footer-column span,
+  .gtb-newsletter p {
+    font-size: 8px;
+  }
+
+  .gtb-footer-column h4,
+  .gtb-newsletter h4 {
+    font-size: 9px;
+  }
+
+  .gtb-socials {
+    margin-top: 5px;
+  }
+
+  .gtb-socials a {
+    width: 24px;
+    height: 24px;
+
+    flex-basis: 24px;
+
+    font-size: 8px;
+  }
+
+  .gtb-email-box {
+    height: 26px;
+  }
+
+  .gtb-email-box input,
+  .gtb-email-box button {
+    font-size: 8px;
+  }
+
+  .gtb-footer-bottom {
+    margin-top: 5px;
+
+    padding-top: 5px;
+
+    font-size: 7px;
+  }
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .gtb-page {
+    width: 100vw;
+
+    height: auto;
+
+    min-height: 100vh;
+
+    margin-left:
+      calc(50% - 50vw);
+
+    padding:
+      8px
+      12px
+      0;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .gtb-page > .gtb-progress {
+    flex: none;
+
+    min-height: auto;
+
+    padding:
+      18px
+      22px
+      15px;
+  }
+
+  .gtb-header {
+    grid-template-columns:
+      45px
+      minmax(0, 1fr)
+      130px;
+  }
+
+  .gtb-title {
+    font-size: 30px;
+  }
+
+  .gtb-subtitle {
+    font-size: 11px;
+  }
+
+  .gtb-options {
+    gap: 8px;
+  }
+
+  .gtb-footer {
+    flex: none;
+
+    padding:
+      22px
+      24px
+      12px;
+  }
+
+  .gtb-footer-main {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+
+    gap: 25px;
+  }
+
+  .gtb-contact-column span {
+    white-space: normal;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .gtb-page {
+    width: 100vw;
+
+    height: auto;
+
+    min-height: 100vh;
+
+    margin-left:
+      calc(50% - 50vw);
+
+    padding:
+      7px
+      8px
+      0;
+
+    gap: 8px;
+
+    overflow-y: auto;
+  }
+
+  .gtb-page > .gtb-progress {
+    flex: none;
+
+    padding:
+      15px
+      14px
+      14px;
+
+    border-radius: 17px;
+  }
+
+  .gtb-header {
+    grid-template-columns:
+      40px
+      minmax(0, 1fr);
+
+    gap: 9px;
+  }
+
+  .gtb-icon-badge {
+    width: 38px;
+    height: 38px;
+
+    font-size: 18px;
+  }
+
+  .gtb-score-badge {
+    grid-column: 1 / -1;
+
+    width: 100%;
+
+    height: 35px;
+  }
+
+  .gtb-title {
+    font-size: 25px;
+
+    letter-spacing: -0.8px;
+  }
+
+  .gtb-subtitle {
+    font-size: 10px;
+  }
+
+  .gtb-options {
+    grid-template-columns: 1fr;
+  }
+
+  .gtb-option {
+    min-height: 47px;
+
+    font-size: 12px;
+  }
+
+  .gtb-submit-btn {
+    width: 100%;
+
+    max-width: 245px;
+  }
+
+  .gtb-progress-area {
+    flex-direction: column;
+
+    gap: 12px;
+
+    margin-top: 18px;
+  }
+
+  .gtb-progress-track {
+    width: 100%;
+
+    justify-content: flex-start;
+
+    overflow-x: auto;
+
+    padding:
+      2px
+      8px;
+  }
+
+  .gtb-new-brands {
+    width: 100%;
+  }
+
+  .gtb-footer {
+    width: 100%;
+
+    flex: none;
+
+    padding:
+      20px
+      17px
+      12px;
+
+    border-radius:
+      15px
+      15px
+      5px
+      5px;
+  }
+
+  .gtb-footer-main {
+    grid-template-columns: 1fr;
+
+    gap: 18px;
+  }
+
+  .gtb-footer-brand p,
+  .gtb-newsletter p {
+    max-width: none;
+  }
+
+  .gtb-contact-column span {
+    white-space: normal;
+  }
+
+  .gtb-email-box {
+    max-width: none;
+  }
+
+  .gtb-footer-bottom {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 5px;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+  .gtb-title {
+    font-size: 22px;
+  }
+
+  .gtb-tagline-box {
+    font-size: 16px;
+  }
+
+  .gtb-option {
+    font-size: 11px;
+  }
+
+  .gtb-footer {
+    padding:
+      18px
+      14px
+      10px;
+  }
+}
+
+/* =========================================================
+   FINAL VIEWPORT FIX
+   Game + Progress + Footer = ONE SCREEN
+========================================================= */
+
+@media (min-width: 901px) {
+
+  .gtb-page {
+    height: 100vh;
+    min-height: 100vh;
+
+    padding:
+      6px
+      16px
+      6px;
+
+    gap: 7px;
+
+    overflow: hidden;
+  }
+
+  /* MAIN GAME */
+  .gtb-page > .gtb-progress {
+    width: 100%;
+    max-width: none;
+
+    flex: 1 1 auto;
+    min-height: 0;
+
+    margin: 0;
+
+    padding:
+      14px
+      32px
+      8px;
+
+    border-radius: 22px;
+
+    overflow: hidden;
+  }
+
+  /* HEADER */
+  .gtb-header {
+    min-height: 48px;
+
+    grid-template-columns:
+      45px
+      minmax(0, 1fr)
+      160px;
+
+    gap: 12px;
+  }
+
+  .gtb-icon-badge {
+    width: 42px;
+    height: 42px;
+
+    font-size: 20px;
+  }
+
+  .gtb-title {
+    font-size: 34px;
+
+    line-height: 1;
+  }
+
+  .gtb-subtitle {
+    margin-top: 4px;
+
+    font-size: 11px;
+  }
+
+  .gtb-score-badge {
+    height: 36px;
+
+    font-size: 11px;
+  }
+
+  /* DIVIDER */
+  .gtb-divider {
+    margin:
+      4px
+      0
+      5px;
+  }
+
+  /* QUESTION */
+  .gtb-meta-row {
+    margin-bottom: 5px;
+  }
+
+  .gtb-meta-row .gtb-progress {
+    font-size: 12px;
+  }
+
+  /* TAGLINE */
+  .gtb-tagline-box {
+    min-height: 48px;
+
+    margin-bottom: 8px;
+
+    padding:
+      6px
+      15px;
+
+    font-size: 20px;
+  }
+
+  /* OPTIONS */
+  .gtb-options {
+    gap: 8px;
+  }
+
+  .gtb-option {
+    min-height: 47px;
+
+    padding:
+      6px
+      15px;
+
+    font-size: 12px;
+  }
+
+  .gtb-option-dot {
+    width: 18px;
+    height: 18px;
+
+    flex-basis: 18px;
+  }
+
+  /* CHECK ANSWER */
+  .gtb-submit-btn {
+    width: 235px;
+
+    height: 40px;
+
+    margin-top: 8px;
+
+    font-size: 12px;
+  }
+
+  /* PROGRESS */
+  .gtb-progress-area {
+    padding-top: 6px;
+
+    gap: 16px;
+  }
+
+  .gtb-progress-item {
+    width: 30px;
+    height: 30px;
+
+    flex-basis: 30px;
+
+    font-size: 11px;
+  }
+
+  .gtb-progress-item:not(:last-child)::after {
+    width: 25px;
+  }
+
+  .gtb-new-brands {
+    height: 34px;
+
+    padding:
+      0
+      15px;
+
+    font-size: 10px;
+  }
+
+  /* =====================================================
+     FOOTER
+  ===================================================== */
+
+  .gtb-footer {
+    width: 100%;
+    max-width: none;
+
+    flex:
+      0 0 136px;
+
+    margin: 0;
+
+    padding:
+      12px
+      32px
+      6px;
+
+    border-radius:
+      16px
+      16px
+      5px
+      5px;
+
+    overflow: hidden;
+  }
+
+  .gtb-footer-main {
+    width: 100%;
+    max-width: none;
+
+    grid-template-columns:
+      1.35fr
+      0.9fr
+      0.9fr
+      1.2fr
+      1.25fr;
+
+    gap: 32px;
+
+    align-items: start;
+  }
+
+  /* BRAND */
+  .gtb-footer-brand h3 {
+    margin-bottom: 5px;
+
+    font-size: 16px;
+  }
+
+  .gtb-footer-brand p {
+    max-width: 260px;
+
+    font-size: 8.5px;
+
+    line-height: 1.35;
+  }
+
+  /* SOCIAL */
+  .gtb-socials {
+    gap: 7px;
+
+    margin-top: 6px;
+  }
+
+  .gtb-socials a {
+    width: 27px;
+    height: 27px;
+
+    flex-basis: 27px;
+
+    font-size: 9px;
+  }
+
+  /* FOOTER HEADINGS */
+  .gtb-footer-column h4,
+  .gtb-newsletter h4 {
+    margin-bottom: 7px;
+
+    font-size: 9.5px;
+  }
+
+  .gtb-footer-column h4::after,
+  .gtb-newsletter h4::after {
+    width: 25px;
+
+    height: 2px;
+
+    margin-top: 4px;
+  }
+
+  /* FOOTER LINKS */
+  .gtb-footer-column span {
+    margin-bottom: 4px;
+
+    font-size: 8px;
+
+    line-height: 1.25;
+  }
+
+  /* CONTACT */
+  .gtb-contact-column span {
+    white-space: nowrap;
+  }
+
+  /* NEWSLETTER */
+  .gtb-newsletter p {
+    max-width: 230px;
+
+    margin-bottom: 6px;
+
+    font-size: 8px;
+
+    line-height: 1.3;
+  }
+
+  .gtb-email-box {
+    max-width: 300px;
+
+    height: 28px;
+  }
+
+  .gtb-email-box input {
+    padding:
+      0
+      9px;
+
+    font-size: 8px;
+  }
+
+  .gtb-email-box button {
+    padding:
+      0
+      13px;
+
+    font-size: 8px;
+  }
+
+  /* FOOTER BOTTOM */
+  .gtb-footer-bottom {
+    margin-top: 6px;
+
+    padding-top: 5px;
+
+    font-size: 7px;
+  }
+}
+
+
+/* =========================================================
+   EXTRA SMALL DESKTOP / LAPTOP
+========================================================= */
+
+@media
+  (min-width: 901px)
+  and (max-height: 750px) {
+
+  .gtb-page {
+    padding:
+      4px
+      16px
+      4px;
+
+    gap: 5px;
+  }
+
+  .gtb-page > .gtb-progress {
+    padding:
+      10px
+      28px
+      6px;
+  }
+
+  .gtb-header {
+    min-height: 43px;
+  }
+
+  .gtb-icon-badge {
+    width: 37px;
+    height: 37px;
+
+    font-size: 18px;
+  }
+
+  .gtb-title {
+    font-size: 29px;
+  }
+
+  .gtb-subtitle {
+    font-size: 10px;
+  }
+
+  .gtb-score-badge {
+    height: 32px;
+  }
+
+  .gtb-tagline-box {
+    min-height: 42px;
+
+    font-size: 18px;
+  }
+
+  .gtb-option {
+    min-height: 42px;
+
+    font-size: 11px;
+  }
+
+  .gtb-submit-btn {
+    height: 36px;
+
+    width: 220px;
+
+    margin-top: 6px;
+  }
+
+  .gtb-progress-item {
+    width: 27px;
+    height: 27px;
+
+    flex-basis: 27px;
+  }
+
+  .gtb-new-brands {
+    height: 31px;
+  }
+
+  .gtb-footer {
+    flex-basis: 120px;
+
+    padding:
+      9px
+      28px
+      5px;
+  }
+
+  .gtb-footer-main {
+    gap: 25px;
+  }
+
+  .gtb-footer-brand h3 {
+    font-size: 14px;
+  }
+
+  .gtb-footer-brand p,
+  .gtb-footer-column span,
+  .gtb-newsletter p {
+    font-size: 7px;
+  }
+
+  .gtb-footer-column h4,
+  .gtb-newsletter h4 {
+    font-size: 8px;
+  }
+
+  .gtb-socials {
+    margin-top: 4px;
+  }
+
+  .gtb-socials a {
+    width: 23px;
+    height: 23px;
+
+    flex-basis: 23px;
+  }
+
+  .gtb-email-box {
+    height: 24px;
+  }
+
+  .gtb-footer-bottom {
+    margin-top: 4px;
+
+    padding-top: 4px;
+
+    font-size: 6px;
+  }
+}
+
+
+/* =========================================================
+   IMPORTANT — FOOTER MUST NOT BECOME NARROW
+========================================================= */
+
+.gtb-footer,
+.gtb-footer-main {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+
+/* =========================================================
+   MOBILE — KEEP NORMAL SCROLL
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .gtb-page {
+    height: auto;
+
+    min-height: 100vh;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .gtb-footer {
+    width: 100%;
+
+    max-width: none;
+
+    flex: none;
+  }
+}
+/* =========================================================
+   LOGO-BASED QUESTION LAYOUT — added on top of existing rules
+========================================================= */
+
+/* HEADER v2: score left / title center / question-counter right */
+.gtb-header-v2 {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 170px minmax(0, 1fr) 170px;
+  align-items: center;
+  gap: 15px;
+  min-height: 58px;
+  flex: 0 0 auto;
+}
+
+.gtb-header-v2 .gtb-score-badge:first-child { justify-self: start; }
+.gtb-header-v2 .gtb-score-badge:last-child { justify-self: end; }
+.gtb-header-v2 .gtb-header-text { text-align: center; }
+
+.gtb-title-icon {
+  display: inline-block;
+  margin-right: 10px;
+  color: #d40000;
+  font-size: 0.85em;
+}
+
+/* QUESTION CARD: logo box on the left, question + options on the right */
+.gtb-question-card {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 28px;
+  align-items: start;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.gtb-logo-box {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 16px;
+  overflow: hidden;
+  background: linear-gradient(160deg, #ffe3e3, #ffc9c9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gtb-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 24px;
+  box-sizing: border-box;
+  display: block;
+}
+
+.gtb-logo-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-size: 4.5rem;
+}
+
+.gtb-question-right {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.gtb-question-text {
+  margin: 0 0 18px;
+  color: #171717;
+  font-size: clamp(16px, 1.6vw, 20px);
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.gtb-question-num {
+  color: #d40000;
+  font-weight: 800;
+}
+
+/* Letter badge replaces the old plain radio dot */
+.gtb-letter-badge {
+  flex: 0 0 26px;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+  background: #ffd7d7;
+  color: #a50000;
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.gtb-option.is-selected .gtb-letter-badge {
+  background: #d40000;
+  color: #fff;
+}
+.gtb-option.is-reveal-correct .gtb-letter-badge {
+  background: #16a34a;
+  color: #fff;
+}
+.gtb-option.is-reveal-wrong .gtb-letter-badge {
+  background: #dc2626;
+  color: #fff;
+}
+
+/* Options grid inside the new layout: 2x2 like the reference screenshot */
+.gtb-question-right .gtb-options {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.gtb-question-right .gtb-submit-btn {
+  margin-left: 0;
+  align-self: flex-start;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .gtb-header-v2 {
+    grid-template-columns: 1fr;
+    text-align: center;
+    row-gap: 8px;
+  }
+  .gtb-header-v2 .gtb-score-badge:first-child,
+  .gtb-header-v2 .gtb-score-badge:last-child {
+    justify-self: center;
+  }
+
+  .gtb-question-card {
+    grid-template-columns: 1fr;
+  }
+
+  .gtb-logo-box {
+    max-width: 260px;
+    margin: 0 auto;
+  }
+
+  .gtb-question-right .gtb-options {
+    grid-template-columns: 1fr;
+  }
+
+  .gtb-question-right .gtb-submit-btn {
+    align-self: center;
+  }
+}
+
+/* =========================================================
+   FIX: the portfolio's sitewide navbar is position:fixed and
+   was overlapping the top of this full-height game section.
+   Push the section content down below the navbar's height.
+========================================================= */
+.gtb-page {
+  padding-top: 110px !important;
+}
+
+@media (min-width: 901px) {
+  .gtb-page {
+    padding-top: 110px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .gtb-page {
+    padding-top: 90px !important;
+  }
+}
+
+/* =========================================================
+   RESIZE FIX (round 2):
+   1. Stronger navbar clearance — previous 110px still let the
+      title get clipped behind the fixed nav pill.
+   2. The question-card no longer force-stretches to fill the
+      full 100vh height (which left a big empty gap below the
+      Check Answer button) — it now sizes to its own content
+      and centers vertically in the leftover space instead.
+========================================================= */
+
+.gtb-page {
+  padding-top: 140px !important;
+}
+
+@media (min-width: 901px) {
+  .gtb-page {
+    padding-top: 140px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .gtb-page {
+    padding-top: 100px !important;
+  }
+}
+
+.gtb-question-card {
+  flex: 0 1 auto;
+  margin: auto 0;
+  width: 100%;
 }
