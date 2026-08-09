@@ -1,188 +1,988 @@
-.abi-wrap{
-  --abi-red:#c81e1e;
-  --abi-red-soft:#e0402c;
-  --abi-orange:#f0a03c;
-  --abi-text:#f5efe9;
-  --abi-text-soft:rgba(245,239,233,0.6);
-  --abi-card-border:rgba(255,255,255,0.08);
+/* =====================================================
+   INTERNSHIP PAGE
+===================================================== */
+
+.internship-page {
+  width: 100%;
+  min-height: 100vh;
+  background: #f8f7f6;
+  color: #262626;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.internship-hero {
+  width: 100%;
+  min-height: 320px;
+  padding: 34px 5%;
+  box-sizing: border-box;
+
+  display: grid;
+  grid-template-columns: 1.55fr 1fr 1.1fr;
+  align-items: center;
+  gap: 45px;
+
+  color: white;
 
   background:
-    radial-gradient(ellipse 900px 500px at 8% 0%, rgba(220,50,20,0.25), transparent 60%),
-    linear-gradient(180deg,#0d0505 0%, #060303 100%);
-  color:var(--abi-text);
-  font-family:'Segoe UI', Arial, sans-serif;
-  padding:48px 56px 40px;
-  position:relative;
-  overflow-x:hidden;
-  border-radius:20px;
-}
-.abi-wrap *{ box-sizing:border-box; }
+    radial-gradient(
+      circle at 72% 50%,
+      rgba(255, 80, 80, 0.28),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #9f0000 0%,
+      #c90000 45%,
+      #a40000 100%
+    );
 
-/* decorative triangles top-left */
-.abi-tri-field{ position:absolute; top:0; left:0; width:340px; height:220px; pointer-events:none; z-index:0; }
-.abi-tri{ position:absolute; width:0; height:0; border-style:solid; }
-.abi-tri-1{ border-width:0 0 160px 200px; border-color:transparent transparent rgba(200,30,30,0.55) transparent; top:0; left:0; }
-.abi-tri-2{ border-width:0 0 90px 110px; border-color:transparent transparent rgba(240,160,60,0.45) transparent; top:20px; left:60px; }
-.abi-tri-3{ border-width:0 0 60px 70px; border-color:transparent transparent rgba(240,160,60,0.6) transparent; top:100px; left:140px; }
-.abi-tri-4{ border-width:0 0 40px 50px; border-color:transparent transparent rgba(200,30,30,0.4) transparent; top:150px; left:40px; }
-
-.abi-container{ position:relative; z-index:1; max-width:1280px; margin:0 auto; }
-
-/* HEADER */
-.abi-header{ text-align:center; position:relative; margin-bottom:34px; }
-.abi-pill{
-  display:inline-flex; align-items:center; gap:8px;
-  border:1px solid rgba(255,255,255,0.2);
-  background:rgba(255,255,255,0.03);
-  padding:8px 20px; border-radius:999px;
-  font-size:0.72rem; font-weight:700; letter-spacing:0.12em;
-  color:#eee;
-}
-.abi-dot{ width:6px; height:6px; border-radius:50%; background:var(--abi-orange); box-shadow:0 0 8px var(--abi-orange); }
-.abi-title{ margin-top:18px; font-size:3.2rem; font-weight:800; letter-spacing:-0.01em; }
-.abi-accent{
-  background:linear-gradient(90deg,var(--abi-red-soft),var(--abi-orange));
-  -webkit-background-clip:text; background-clip:text; color:transparent;
-}
-.abi-subtitle{
-  margin-top:10px; color:var(--abi-text-soft); font-size:1.05rem; font-weight:500;
-  position:relative; display:inline-block; padding-bottom:10px;
-}
-.abi-subtitle::after{
-  content:""; position:absolute; bottom:0; left:50%; transform:translateX(-50%);
-  width:36px; height:2px; background:var(--abi-red-soft);
-}
-.abi-logo-corner{ position:absolute; top:0; right:0; display:flex; flex-direction:column; align-items:center; gap:6px; }
-.abi-logo-mark{
-  width:72px; height:72px; border-radius:14px; overflow:hidden; position:relative;
-  display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr;
-}
-.abi-logo-mark div:nth-child(1){ background:#c81e1e; }
-.abi-logo-mark div:nth-child(2){ background:#f0a03c; }
-.abi-logo-mark div:nth-child(3){ background:#f0a03c; }
-.abi-logo-mark div:nth-child(4){ background:#c81e1e; }
-.abi-logo-mark::after{
-  content:""; position:absolute; inset:0; border-radius:50% 50% 0 0 / 60% 60% 0 0;
-  background:radial-gradient(circle at 50% 100%, #6b0f0f 0%, transparent 65%);
-}
-.abi-logo-caption{ font-size:0.68rem; font-weight:800; letter-spacing:0.08em; color:var(--abi-red-soft); }
-
-/* MAIN ROW */
-.abi-main-row{
-  display:grid; grid-template-columns:420px 300px 1fr; gap:28px;
-  margin-top:44px; align-items:start;
+  position: relative;
 }
 
-/* laptop mockup */
-.abi-laptop{ position:relative; }
-.abi-screen{
-  background:#111; border-radius:14px 14px 4px 4px; padding:14px 14px 30px;
-  box-shadow:0 30px 60px rgba(0,0,0,0.55);
-  border:1px solid #222;
-}
-.abi-screen-inner{ background:#f4f6f8; border-radius:6px; padding:12px; color:#222; font-size:0.62rem; }
-.abi-sap-topbar{ display:flex; align-items:center; gap:8px; margin-bottom:8px; }
-.abi-sap-badge{ background:#0854a0; color:#fff; font-weight:800; font-size:0.6rem; padding:2px 6px; border-radius:3px; }
-.abi-sap-title{ font-weight:700; color:#333; font-size:0.68rem; }
-.abi-sap-icons{ display:flex; gap:5px; margin:6px 0 8px; }
-.abi-sap-icons span{ width:14px; height:12px; background:#dbe2ea; border-radius:2px; display:inline-block; }
-.abi-ledger-grid{ display:grid; grid-template-columns:1fr 1fr; gap:8px; }
-.abi-ledger-table{ background:#fff; border-radius:4px; padding:6px; }
-.abi-ledger-row{ display:flex; justify-content:space-between; font-size:0.5rem; color:#555; padding:2px 0; border-bottom:1px solid #eee; }
-.abi-ledger-row span:first-child{ color:#888; }
-.abi-chart-box{ background:#fff; border-radius:4px; padding:8px; display:flex; flex-direction:column; gap:6px; }
-.abi-chart-label{ font-size:0.55rem; color:#666; font-weight:700; }
-.abi-donut{
-  width:56px; height:56px; border-radius:50%; align-self:center;
-  background:conic-gradient(#2fa8e0 0 40%, #6be0a8 40% 70%, #f0a03c 70% 100%);
-  display:flex; align-items:center; justify-content:center; position:relative;
-}
-.abi-donut::after{
-  content:"8.35M"; position:absolute; width:32px; height:32px; background:#fff; border-radius:50%;
-  display:flex; align-items:center; justify-content:center; font-size:0.42rem; font-weight:800; color:#222;
-}
-.abi-bars{ display:flex; align-items:flex-end; gap:4px; height:44px; }
-.abi-bars i{ display:block; width:8px; border-radius:2px 2px 0 0; }
-.abi-keyboard-base{
-  height:14px; background:linear-gradient(#2a2a2a,#151515);
-  border-radius:0 0 10px 10px; margin-top:-6px;
-  box-shadow:0 8px 18px rgba(0,0,0,0.5);
+
+/* small background shape */
+
+.internship-hero::after {
+  content: "";
+  position: absolute;
+
+  width: 230px;
+  height: 230px;
+
+  right: -80px;
+  top: -100px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.04);
+
+  pointer-events: none;
 }
 
-/* middle info column */
-.abi-info-col{ padding-top:6px; }
-.abi-role-pill{
-  display:inline-flex; align-items:center; gap:8px;
-  border:1px solid rgba(255,255,255,0.18); border-radius:999px;
-  padding:8px 16px; font-size:0.8rem; font-weight:700; color:var(--abi-red-soft);
-  background:rgba(200,30,30,0.08);
-}
-.abi-company{ font-size:1.6rem; font-weight:800; margin-top:16px; }
-.abi-desc{ margin-top:12px; color:var(--abi-text-soft); font-size:0.92rem; line-height:1.6; }
-.abi-meta-box{
-  margin-top:22px; border:1px solid var(--abi-card-border); border-radius:12px;
-  padding:14px 16px; font-size:0.82rem; color:var(--abi-text-soft);
-  display:flex; flex-direction:column; gap:8px;
-}
-.abi-row{ display:flex; align-items:center; gap:8px; }
 
-/* feature grid (right) */
-.abi-feature-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
-.abi-feature-card{
-  background:linear-gradient(160deg, rgba(120,10,10,0.35), rgba(40,4,4,0.5));
-  border:1px solid var(--abi-card-border); border-radius:14px; padding:16px;
-}
-.abi-feature-icon{
-  width:38px; height:38px; border-radius:50%; background:#c81e1e; color:#fff;
-  display:flex; align-items:center; justify-content:center; font-size:0.9rem; font-weight:800; margin-bottom:10px;
-}
-.abi-feature-card h4{ font-size:0.95rem; font-weight:800; margin-bottom:6px; }
-.abi-feature-card p{ font-size:0.76rem; color:var(--abi-text-soft); line-height:1.4; }
+/* =====================================================
+   HERO LEFT
+===================================================== */
 
-/* PROJECTS SECTION */
-.abi-projects-section{ margin-top:60px; }
-.abi-projects-heading{ display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; }
-.abi-projects-heading h2{ font-size:1.3rem; font-weight:800; display:flex; align-items:center; gap:10px; }
-.abi-projects-heading h2::before{ content:""; width:4px; height:20px; background:var(--abi-red-soft); border-radius:2px; }
-.abi-view-all{ color:var(--abi-red-soft); font-size:0.85rem; font-weight:700; }
+.hero-left {
+  position: relative;
+  z-index: 2;
+}
 
-.abi-projects-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
-.abi-project-card{
-  background:linear-gradient(165deg, rgba(90,8,8,0.4), rgba(20,4,4,0.6));
-  border:1px solid var(--abi-card-border); border-radius:16px; padding:16px;
-}
-.abi-project-card .abi-top{ display:flex; align-items:center; gap:10px; margin-bottom:10px; }
-.abi-project-icon{
-  width:32px; height:32px; border-radius:50%; background:#c81e1e; color:#fff;
-  display:flex; align-items:center; justify-content:center; font-size:0.85rem; flex-shrink:0;
-}
-.abi-project-card h4{ font-size:0.9rem; font-weight:700; }
-.abi-project-card p{ font-size:0.75rem; color:var(--abi-text-soft); line-height:1.4; margin-bottom:10px; }
-.abi-thumb{ height:70px; border-radius:8px; background:#fff; position:relative; overflow:hidden; }
-.abi-chart-thumb{ background:linear-gradient(180deg,#fff,#eee); display:flex; align-items:flex-end; gap:3px; padding:8px; }
-.abi-chart-thumb i{ flex:1; border-radius:2px 2px 0 0; }
-.abi-people-thumb{ background:#fff; display:flex; align-items:center; justify-content:center; gap:6px; }
-.abi-people-thumb span{ width:18px; height:18px; border-radius:50%; background:#c9c9d8; }
-.abi-flow-thumb{ background:#fff; }
+.experience-badge {
+  display: inline-flex;
+  align-items: center;
 
-/* STATS BAR */
-.abi-stats-bar{
-  margin-top:48px; border:1px solid var(--abi-card-border); border-radius:18px;
-  background:rgba(120,10,10,0.12);
-  display:grid; grid-template-columns:repeat(4,1fr);
-  padding:30px 10px;
-}
-.abi-stat{ display:flex; align-items:center; gap:14px; justify-content:center; }
-.abi-stat-icon{
-  width:42px; height:42px; border-radius:50%; background:#c81e1e; color:#fff;
-  display:flex; align-items:center; justify-content:center; font-size:1rem; flex-shrink:0;
-}
-.abi-stat strong{ font-size:1.6rem; font-weight:800; display:block; }
-.abi-num-accent{ color:var(--abi-red-soft); }
-.abi-stat span{ font-size:0.78rem; color:var(--abi-text-soft); }
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 30px;
 
-@media (max-width: 1100px){
-  .abi-main-row{ grid-template-columns:1fr; }
-  .abi-projects-grid{ grid-template-columns:1fr 1fr; }
-  .abi-stats-bar{ grid-template-columns:1fr 1fr; gap:20px; }
+  padding: 8px 15px;
+
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+
+  margin-bottom: 15px;
+}
+
+.hero-left h1 {
+  margin: 0;
+
+  font-size: clamp(34px, 4vw, 52px);
+
+  line-height: 1.05;
+
+  font-weight: 800;
+
+  letter-spacing: -1.5px;
+}
+
+.hero-line {
+  width: 48px;
+  height: 2px;
+
+  background: white;
+
+  margin: 16px 0;
+}
+
+.hero-left h3 {
+  margin: 0 0 14px;
+
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.hero-left p {
+  max-width: 540px;
+
+  margin: 0;
+
+  font-size: 14px;
+
+  line-height: 1.7;
+
+  color: rgba(255, 255, 255, 0.92);
+}
+
+
+/* =====================================================
+   ADITYA BIRLA LOGO AREA
+===================================================== */
+
+.hero-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-box {
+  width: 290px;
+  height: 245px;
+
+  background: white;
+
+  border-radius: 5px;
+
+  border: 5px solid rgba(255, 255, 255, 0.95);
+
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Fake Aditya Birla symbol */
+
+.aditya-symbol {
+  width: 190px;
+  height: 125px;
+
+  position: relative;
+
+  overflow: hidden;
+
+  background:
+    conic-gradient(
+      from 135deg,
+      #ed1b24 0deg 45deg,
+      #f5b81b 45deg 90deg,
+      #e72525 90deg 135deg,
+      #f5c31a 135deg 180deg,
+      #d71920 180deg 225deg,
+      #f1a91b 225deg 270deg,
+      #e31b23 270deg 315deg,
+      #f4c51d 315deg 360deg
+    );
+}
+
+.aditya-symbol span {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgba(255,255,255,0.35);
+}
+
+.aditya-symbol span:nth-child(1) {
+  transform: rotate(45deg) scale(1.4);
+}
+
+.aditya-symbol span:nth-child(2) {
+  transform: rotate(-45deg) scale(1.4);
+}
+
+.aditya-symbol span:nth-child(3) {
+  transform: rotate(90deg) scale(1.4);
+}
+
+.aditya-symbol span:nth-child(4) {
+  transform: rotate(0deg) scale(1.4);
+}
+
+.aditya-text {
+  margin-top: 9px;
+
+  font-size: 25px;
+
+  letter-spacing: 2px;
+
+  font-weight: 700;
+
+  color: #a30000;
+}
+
+
+/* =====================================================
+   HERO DETAILS
+===================================================== */
+
+.hero-details {
+  border-left: 1px solid rgba(255,255,255,0.4);
+
+  padding-left: 30px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 18px;
+
+  position: relative;
+  z-index: 2;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+}
+
+.detail-icon {
+  width: 38px;
+  height: 38px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: rgba(255,255,255,0.08);
+
+  border: 1px solid rgba(255,255,255,0.2);
+
+  font-size: 19px;
+}
+
+.detail-item strong {
+  display: block;
+
+  font-size: 13px;
+
+  margin-bottom: 5px;
+}
+
+.detail-item span {
+  display: block;
+
+  font-size: 12px;
+
+  line-height: 1.4;
+
+  color: rgba(255,255,255,0.95);
+}
+
+
+/* =====================================================
+   MAIN CONTENT
+===================================================== */
+
+.internship-content {
+  width: 100%;
+
+  padding: 28px 4%;
+
+  box-sizing: border-box;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    1fr
+    1.25fr;
+
+  gap: 30px;
+
+  background: #f8f7f6;
+
+  border-bottom: 1px solid #ddd;
+}
+
+.content-column {
+  min-width: 0;
+}
+
+.about-column,
+.responsibilities-column {
+  border-right: 1px solid #ddd;
+
+  padding-right: 30px;
+}
+
+
+/* =====================================================
+   HEADINGS
+===================================================== */
+
+.content-column h2,
+.projects-left h2 {
+  margin: 0;
+
+  font-size: 17px;
+
+  font-weight: 800;
+
+  color: #5b0909;
+
+  letter-spacing: 0.2px;
+}
+
+.section-line {
+  width: 40px;
+  height: 2px;
+
+  margin: 7px 0 18px;
+
+  background: #c50000;
+}
+
+
+/* =====================================================
+   ABOUT
+===================================================== */
+
+.about-intro {
+  display: flex;
+
+  gap: 20px;
+
+  align-items: flex-start;
+}
+
+.about-icon {
+  width: 78px;
+  height: 78px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 17px;
+
+  background: #f7eaea;
+
+  color: #9f3030;
+
+  font-size: 40px;
+}
+
+.about-intro p,
+.about-text {
+  font-size: 13px;
+
+  line-height: 1.65;
+
+  margin: 0;
+
+  color: #333;
+}
+
+.about-text {
+  margin-top: 17px;
+}
+
+
+/* =====================================================
+   RESPONSIBILITIES
+===================================================== */
+
+.responsibility-list {
+  list-style: none;
+
+  padding: 0;
+  margin: 0;
+}
+
+.responsibility-list li {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 10px;
+
+  font-size: 13px;
+
+  line-height: 1.45;
+
+  margin-bottom: 12px;
+}
+
+.check {
+  width: 20px;
+  height: 20px;
+
+  min-width: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #a90000;
+
+  color: white;
+
+  font-size: 12px;
+
+  font-weight: bold;
+}
+
+
+/* =====================================================
+   TOOLS
+===================================================== */
+
+.tools-grid {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 10px;
+}
+
+.tool-card {
+  min-height: 88px;
+
+  padding: 10px 7px;
+
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  border-radius: 10px;
+
+  background: white;
+
+  border: 1px solid #e8e8e8;
+
+  box-shadow:
+    0 3px 10px rgba(0,0,0,0.05);
+
+  text-align: center;
+}
+
+.tool-logo {
+  width: 45px;
+  height: 35px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  font-size: 18px;
+
+  font-weight: 800;
+}
+
+.sap-logo {
+  color: #0878c9;
+
+  font-size: 19px;
+}
+
+.excel-logo {
+  color: #168544;
+
+  border-radius: 5px;
+
+  background: #e7f5eb;
+}
+
+.gmail-logo {
+  color: #db4437;
+
+  font-size: 30px;
+}
+
+.baw-logo {
+  color: #96343e;
+
+  font-size: 25px;
+}
+
+.tool-card strong {
+  font-size: 11px;
+}
+
+
+/* =====================================================
+   KEY LEARNINGS
+===================================================== */
+
+.learning-heading {
+  margin-top: 23px !important;
+}
+
+.learning-grid {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 8px;
+}
+
+.learning-card {
+  min-height: 60px;
+
+  padding: 8px;
+
+  border-radius: 9px;
+
+  background: white;
+
+  border: 1px solid #e8e8e8;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  box-shadow:
+    0 2px 8px rgba(0,0,0,0.04);
+}
+
+.learning-card span {
+  width: 28px;
+  height: 28px;
+
+  min-width: 28px;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background: #fff0f0;
+
+  color: #c00000;
+
+  font-size: 13px;
+}
+
+.learning-card p {
+  margin: 0;
+
+  font-size: 9px;
+
+  line-height: 1.35;
+}
+
+
+/* =====================================================
+   PROJECTS
+===================================================== */
+
+.projects-section {
+  width: 100%;
+
+  padding: 20px 3% 24px;
+
+  box-sizing: border-box;
+
+  display: grid;
+
+  grid-template-columns: 3.2fr 1.2fr;
+
+  gap: 25px;
+
+  background: #f8f7f6;
+}
+
+.projects-left {
+  min-width: 0;
+}
+
+.projects-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(5, 1fr);
+
+  gap: 10px;
+}
+
+.project-card {
+  min-height: 180px;
+
+  padding: 14px;
+
+  background: white;
+
+  border: 1px solid #e7e7e7;
+
+  border-radius: 10px;
+
+  box-sizing: border-box;
+
+  text-align: center;
+
+  box-shadow:
+    0 3px 12px rgba(0,0,0,0.04);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.project-icon {
+  width: 48px;
+  height: 48px;
+
+  border-radius: 50%;
+
+  background: #f8eaea;
+
+  color: #c00000;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  font-size: 23px;
+
+  margin-bottom: 11px;
+}
+
+.project-icon.blue {
+  background: #edf2fb;
+
+  color: #315e9d;
+}
+
+.project-card h3 {
+  margin: 0 0 9px;
+
+  font-size: 12px;
+
+  line-height: 1.3;
+}
+
+.project-card p {
+  margin: 0;
+
+  font-size: 10px;
+
+  line-height: 1.55;
+
+  color: #444;
+}
+
+
+/* =====================================================
+   TAKEAWAY
+===================================================== */
+
+.takeaway-card {
+  background:
+    linear-gradient(
+      145deg,
+      #b30000,
+      #8d0000
+    );
+
+  color: white;
+
+  border-radius: 14px;
+
+  padding: 25px;
+
+  box-sizing: border-box;
+
+  min-height: 220px;
+
+  align-self: stretch;
+
+  box-shadow:
+    0 8px 25px rgba(100,0,0,0.15);
+}
+
+.takeaway-title {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 20px;
+}
+
+.star {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(255,255,255,0.18);
+
+  border-radius: 50%;
+
+  font-size: 22px;
+}
+
+.takeaway-title h2 {
+  margin: 0;
+
+  color: white;
+
+  font-size: 15px;
+}
+
+.takeaway-card p {
+  margin: 0;
+
+  font-size: 13px;
+
+  line-height: 1.6;
+
+  color: rgba(255,255,255,0.94);
+}
+
+.takeaway-divider {
+  height: 1px;
+
+  width: 100%;
+
+  background: rgba(255,255,255,0.2);
+
+  margin: 20px 0;
+}
+
+.takeaway-card strong {
+  display: block;
+
+  font-size: 13px;
+
+  line-height: 1.5;
+}
+
+.heart {
+  display: block;
+
+  margin-top: 8px;
+
+  color: #ffb8b8;
+
+  font-size: 18px;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.internship-footer {
+  min-height: 45px;
+
+  padding: 10px 4%;
+
+  box-sizing: border-box;
+
+  background: #760000;
+
+  color: white;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+.quote {
+  font-size: 12px;
+
+  font-style: italic;
+}
+
+.quote span {
+  font-size: 30px;
+
+  font-weight: bold;
+
+  vertical-align: middle;
+
+  margin-right: 8px;
+}
+
+.copyright {
+  font-size: 11px;
+
+  opacity: 0.9;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 1100px) {
+
+  .internship-hero {
+    grid-template-columns: 1.4fr 0.9fr 1fr;
+
+    gap: 25px;
+
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+
+  .logo-box {
+    width: 230px;
+    height: 200px;
+  }
+
+  .aditya-symbol {
+    width: 150px;
+    height: 100px;
+  }
+
+  .aditya-text {
+    font-size: 20px;
+  }
+
+  .projects-grid {
+    grid-template-columns:
+      repeat(3, 1fr);
+  }
+
+  .takeaway-card {
+    grid-column: span 3;
+  }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 800px) {
+
+  .internship-hero {
+    grid-template-columns: 1fr;
+
+    padding: 30px 22px;
+
+    gap: 28px;
+  }
+
+  .hero-left h1 {
+    font-size: 38px;
+  }
+
+  .hero-logo {
+    justify-content: flex-start;
+  }
+
+  .hero-details {
+    border-left: none;
+
+    border-top: 1px solid rgba(255,255,255,0.3);
+
+    padding-left: 0;
+
+    padding-top: 20px;
+  }
+
+  .internship-content {
+    grid-template-columns: 1fr;
+
+    padding: 25px 20px;
+  }
+
+  .about-column,
+  .responsibilities-column {
+    border-right: none;
+
+    border-bottom: 1px solid #ddd;
+
+    padding-right: 0;
+
+    padding-bottom: 25px;
+  }
+
+  .tools-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .learning-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .projects-section {
+    grid-template-columns: 1fr;
+
+    padding: 25px 20px;
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .takeaway-card {
+    grid-column: auto;
+  }
+
+  .internship-footer {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+}
+
+
+@media (max-width: 500px) {
+
+  .hero-left h1 {
+    font-size: 32px;
+  }
+
+  .logo-box {
+    width: 100%;
+
+    max-width: 290px;
+  }
+
+  .tools-grid,
+  .learning-grid,
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card {
+    min-height: auto;
+
+    padding: 20px;
+  }
 }

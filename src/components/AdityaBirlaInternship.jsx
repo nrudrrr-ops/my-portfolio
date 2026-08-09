@@ -1,208 +1,367 @@
 import React from "react";
-import "./AdityaBirlaInternship.css";
+import "./Internship.css";
 
-export default function AdityaBirlaInternship() {
+const Internship = () => {
   return (
-    <section className="abi-wrap">
-      <div className="abi-tri-field">
-        <div className="abi-tri abi-tri-1"></div>
-        <div className="abi-tri abi-tri-2"></div>
-        <div className="abi-tri abi-tri-3"></div>
-        <div className="abi-tri abi-tri-4"></div>
-      </div>
+    <section className="internship-page">
 
-      <div className="abi-container">
-        <div className="abi-header">
-          <div className="abi-logo-corner">
-            <div className="abi-logo-mark">
-              <div></div><div></div><div></div><div></div>
-            </div>
-            <div className="abi-logo-caption">ADITYA BIRLA GROUP</div>
+      {/* ================= HERO ================= */}
+      <div className="internship-hero">
+
+        <div className="hero-left">
+          <div className="experience-badge">
+            💼 &nbsp; INTERNSHIP EXPERIENCE
           </div>
-          <span className="abi-pill">
-            <span className="abi-dot"></span> INTERNSHIP EXPERIENCE
-          </span>
-          <h1 className="abi-title">
-            Inside <span className="abi-accent">Aditya Birla</span>
+
+          <h1>
+            ADITYA BIRLA GROUP
           </h1>
-          <p className="abi-subtitle">Learning. Analyzing. Improving.</p>
+
+          <div className="hero-line"></div>
+
+          <h3>Operations & Finance Department</h3>
+
+          <p>
+            Gained hands-on exposure to real-time business operations,
+            financial reporting, GST reconciliation, and process workflows
+            in a large-scale manufacturing environment.
+          </p>
         </div>
 
-        <div className="abi-main-row">
-          {/* Laptop mockup */}
-          <div className="abi-laptop">
-            <div className="abi-screen">
-              <div className="abi-screen-inner">
-                <div className="abi-sap-topbar">
-                  <span className="abi-sap-badge">SAP</span>
-                  <span className="abi-sap-title">Display Document: General Ledger View</span>
-                </div>
-                <div className="abi-sap-icons">
-                  <span></span><span></span><span></span><span></span><span></span><span></span>
-                </div>
-                <div className="abi-ledger-grid">
-                  <div className="abi-ledger-table">
-                    <div className="abi-ledger-row"><span>Document Number</span><span>Line</span><span>Account</span></div>
-                    <div className="abi-ledger-row"><span>1200236</span><span>10</span><span>Travel Expense</span></div>
-                    <div className="abi-ledger-row"><span>1200235</span><span>20</span><span>Vendor Payable</span></div>
-                    <div className="abi-ledger-row"><span>2200890</span><span>10</span><span>Fuel Charges</span></div>
-                    <div className="abi-ledger-row"><span>3300123</span><span>30</span><span>Freight Inward</span></div>
-                    <div className="abi-ledger-row"><span>2200109</span><span>10</span><span>Repairs Maint.</span></div>
-                    <div className="abi-ledger-row"><span>2200820</span><span>10</span><span>Consumables</span></div>
-                    <div className="abi-ledger-row"><span>2200560</span><span>20</span><span>Cement Sales</span></div>
-                  </div>
-                  <div>
-                    <div className="abi-chart-box" style={{ marginBottom: 6 }}>
-                      <div className="abi-chart-label">Monthly Spend Analysis</div>
-                      <div className="abi-donut"></div>
-                    </div>
-                    <div className="abi-chart-box">
-                      <div className="abi-chart-label">Spend by Vendor</div>
-                      <div className="abi-bars">
-                        <i style={{ height: "70%", background: "#2fa8e0" }}></i>
-                        <i style={{ height: "45%", background: "#6be0a8" }}></i>
-                        <i style={{ height: "90%", background: "#f0a03c" }}></i>
-                        <i style={{ height: "30%", background: "#c9c9d8" }}></i>
-                        <i style={{ height: "55%", background: "#c81e1e" }}></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+        <div className="hero-logo">
+          <div className="logo-box">
+            <div className="aditya-symbol">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
             </div>
-            <div className="abi-keyboard-base"></div>
-          </div>
 
-          {/* Info */}
-          <div className="abi-info-col">
-            <span className="abi-role-pill">💼 Finance Intern</span>
-            <div className="abi-company">Aditya Birla Group</div>
-            <p className="abi-desc">
-              Working closely with the finance team to support daily operations,
-              analysis, and reporting using SAP, Excel and other digital tools.
-            </p>
-            <div className="abi-meta-box">
-              <div className="abi-row">📅 May 2026 – July 2026</div>
-              <div className="abi-row">📍 Cement Division</div>
-            </div>
-          </div>
-
-          {/* Feature grid */}
-          <div className="abi-feature-grid">
-            <div className="abi-feature-card">
-              <div className="abi-feature-icon">📄</div>
-              <h4>GST Reconciliation</h4>
-              <p>3-way match, GSTR-1 vs 2B validation</p>
-            </div>
-            <div className="abi-feature-card">
-              <div className="abi-feature-icon">SAP</div>
-              <h4>SAP S/4HANA</h4>
-              <p>Daily reports, FBL51, GR/IR tracking</p>
-            </div>
-            <div className="abi-feature-card">
-              <div className="abi-feature-icon">📊</div>
-              <h4>Excel Analytics</h4>
-              <p>Pivot dashboards, variance analysis</p>
-            </div>
-            <div className="abi-feature-card">
-              <div className="abi-feature-icon">🏭</div>
-              <h4>Cement Operations</h4>
-              <p>Fuel reports, cost analysis, tracking</p>
+            <div className="aditya-text">
+              ADITYA BIRLA
             </div>
           </div>
         </div>
 
-        {/* Projects section */}
-        <div className="abi-projects-section">
-          <div className="abi-projects-heading">
-            <h2>Key Projects &amp; Tasks</h2>
-            <span className="abi-view-all">View All →</span>
-          </div>
-          <div className="abi-projects-grid">
-            <div className="abi-project-card">
-              <div className="abi-top">
-                <span className="abi-project-icon">📄</span>
-                <h4>GST Reconciliation</h4>
-              </div>
-              <p>Reconciled vendor data with GSTR-1 and GSTR-2B. Identified mismatches and resolved filing issues.</p>
-              <div className="abi-thumb abi-chart-thumb">
-                <i style={{ height: "40%", background: "#c81e1e" }}></i>
-                <i style={{ height: "70%", background: "#f0a03c" }}></i>
-                <i style={{ height: "55%", background: "#2fa8e0" }}></i>
-                <i style={{ height: "85%", background: "#6be0a8" }}></i>
-                <i style={{ height: "30%", background: "#c9c9d8" }}></i>
-              </div>
-            </div>
+        <div className="hero-details">
 
-            <div className="abi-project-card">
-              <div className="abi-top">
-                <span className="abi-project-icon">📈</span>
-                <h4>Fuel Cost Analytics</h4>
-              </div>
-              <p>Prepared daily fuel reports for TPP. Analyzed cost variance and created pivot dashboards for insights.</p>
-              <div className="abi-thumb abi-chart-thumb">
-                <i style={{ height: "60%", background: "#2fa8e0" }}></i>
-                <i style={{ height: "80%", background: "#c81e1e" }}></i>
-                <i style={{ height: "40%", background: "#f0a03c" }}></i>
-                <i style={{ height: "65%", background: "#6be0a8" }}></i>
-                <i style={{ height: "50%", background: "#c9c9d8" }}></i>
-              </div>
+          <div className="detail-item">
+            <div className="detail-icon">▣</div>
+            <div>
+              <strong>Internship Duration</strong>
+              <span>June 2025 – July 2025 (2 Months)</span>
             </div>
+          </div>
 
-            <div className="abi-project-card">
-              <div className="abi-top">
-                <span className="abi-project-icon">👥</span>
-                <h4>Vendor Reports</h4>
-              </div>
-              <p>Generated vendor-wise reports using SAP (FBL51) and analyzed outstanding &amp; payment status.</p>
-              <div className="abi-thumb abi-people-thumb">
-                <span></span><span></span><span></span>
-              </div>
+          <div className="detail-item">
+            <div className="detail-icon">⌖</div>
+            <div>
+              <strong>Location</strong>
+              <span>Aditya Birla Group (Manufacturing Unit)</span>
             </div>
+          </div>
 
-            <div className="abi-project-card">
-              <div className="abi-top">
-                <span className="abi-project-icon">📋</span>
-                <h4>Process Tracking</h4>
-              </div>
-              <p>Tracked procurement to payment process. Ensured timely GRN, invoice &amp; payment closure.</p>
-              <div className="abi-thumb abi-flow-thumb"></div>
+          <div className="detail-item">
+            <div className="detail-icon">♧</div>
+            <div>
+              <strong>Department</strong>
+              <span>Finance & Operations</span>
             </div>
           </div>
-        </div>
 
-        {/* Stats bar */}
-        <div className="abi-stats-bar">
-          <div className="abi-stat">
-            <div className="abi-stat-icon">📅</div>
+          <div className="detail-item">
+            <div className="detail-icon">♙</div>
             <div>
-              <strong><span className="abi-num-accent">30+</span></strong>
-              <span>Days Of Internship</span>
+              <strong>Role</strong>
+              <span>Account Intern</span>
             </div>
           </div>
-          <div className="abi-stat">
-            <div className="abi-stat-icon">📋</div>
-            <div>
-              <strong><span className="abi-num-accent">15+</span></strong>
-              <span>SAP Reports Generated</span>
-            </div>
-          </div>
-          <div className="abi-stat">
-            <div className="abi-stat-icon">✅</div>
-            <div>
-              <strong><span className="abi-num-accent">20+</span></strong>
-              <span>GST Checks Completed</span>
-            </div>
-          </div>
-          <div className="abi-stat">
-            <div className="abi-stat-icon">⏱️</div>
-            <div>
-              <strong><span className="abi-num-accent">100+</span></strong>
-              <span>Hours Hands-on Learning</span>
-            </div>
-          </div>
+
         </div>
       </div>
+
+
+      {/* ================= MAIN CONTENT ================= */}
+      <div className="internship-content">
+
+        {/* ABOUT */}
+        <div className="content-column about-column">
+
+          <h2>ABOUT ADITYA BIRLA GROUP</h2>
+          <div className="section-line"></div>
+
+          <div className="about-intro">
+            <div className="about-icon">▦</div>
+
+            <p>
+              Aditya Birla Group is a global conglomerate with a strong
+              presence in 36 countries across diverse industries including
+              cement, metals, telecom, financial services, and more.
+            </p>
+          </div>
+
+          <p className="about-text">
+            I had the opportunity to intern in the{" "}
+            <strong>Finance & Operations</strong> department, where I
+            observed end-to-end business processes and contributed to key
+            financial and operational activities.
+          </p>
+
+        </div>
+
+
+        {/* RESPONSIBILITIES */}
+        <div className="content-column responsibilities-column">
+
+          <h2>MY KEY RESPONSIBILITIES</h2>
+          <div className="section-line"></div>
+
+          <ul className="responsibility-list">
+
+            <li>
+              <span className="check">✓</span>
+              <span>
+                Prepared daily TPP Fuel reports and performed cost analytics
+              </span>
+            </li>
+
+            <li>
+              <span className="check">✓</span>
+              <span>
+                Assisted in GST reconciliation (GSTR-1 vs 2B)
+              </span>
+            </li>
+
+            <li>
+              <span className="check">✓</span>
+              <span>
+                Verified vendor details, GSTIN & filing dates
+              </span>
+            </li>
+
+            <li>
+              <span className="check">✓</span>
+              <span>
+                Worked on SAP (FBL51, GRN, GR/IR) & Excel reports
+              </span>
+            </li>
+
+            <li>
+              <span className="check">✓</span>
+              <span>
+                Observed PR to PO to GRN to Invoice workflow
+              </span>
+            </li>
+
+            <li>
+              <span className="check">✓</span>
+              <span>
+                Supported in payment request (PRCV) processing
+              </span>
+            </li>
+
+          </ul>
+
+        </div>
+
+
+        {/* TOOLS + LEARNINGS */}
+        <div className="content-column tools-column">
+
+          <h2>TOOLS & SYSTEMS USED</h2>
+          <div className="section-line"></div>
+
+          <div className="tools-grid">
+
+            <div className="tool-card">
+              <div className="tool-logo sap-logo">SAP</div>
+              <strong>SAP S/4HANA</strong>
+            </div>
+
+            <div className="tool-card">
+              <div className="tool-logo excel-logo">X</div>
+              <strong>Microsoft Excel</strong>
+            </div>
+
+            <div className="tool-card">
+              <div className="tool-logo gmail-logo">M</div>
+              <strong>Gmail</strong>
+            </div>
+
+            <div className="tool-card">
+              <div className="tool-logo baw-logo">▣</div>
+              <strong>BAW Portal</strong>
+            </div>
+
+          </div>
+
+
+          <h2 className="learning-heading">
+            KEY LEARNINGS
+          </h2>
+
+          <div className="section-line"></div>
+
+          <div className="learning-grid">
+
+            <div className="learning-card">
+              <span>⌁</span>
+              <p>
+                Understanding real-time
+                business processes
+              </p>
+            </div>
+
+            <div className="learning-card">
+              <span>▤</span>
+              <p>
+                Importance of accuracy
+                in financial data
+              </p>
+            </div>
+
+            <div className="learning-card">
+              <span>▣</span>
+              <p>
+                Exposure to ERP
+                systems (SAP)
+              </p>
+            </div>
+
+            <div className="learning-card">
+              <span>♧</span>
+              <p>
+                Team collaboration in a
+                corporate setup
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      {/* ================= PROJECTS ================= */}
+      <div className="projects-section">
+
+        <div className="projects-left">
+
+          <h2>PROJECTS & WORK HIGHLIGHTS</h2>
+          <div className="section-line"></div>
+
+          <div className="projects-grid">
+
+            <div className="project-card">
+              <div className="project-icon">▧</div>
+
+              <h3>TPP Fuel Cost Analytics</h3>
+
+              <p>
+                Prepared daily fuel consumption reports
+                and analyzed cost variances.
+              </p>
+            </div>
+
+
+            <div className="project-card">
+              <div className="project-icon">▤</div>
+
+              <h3>GST Reconciliation</h3>
+
+              <p>
+                Reconciled GSTR-1 data with
+                GSTR-1 vs 2B and resolved mismatches.
+              </p>
+            </div>
+
+
+            <div className="project-card">
+              <div className="project-icon blue">▱</div>
+
+              <h3>Procurement Workflow</h3>
+
+              <p>
+                Observed complete flow from
+                PR → PO → GRN → Invoice → Payment.
+              </p>
+            </div>
+
+
+            <div className="project-card">
+              <div className="project-icon">▥</div>
+
+              <h3>Vendor Verification</h3>
+
+              <p>
+                Verified vendor GSTIN, filing
+                status and maintained compliance.
+              </p>
+            </div>
+
+
+            <div className="project-card">
+              <div className="project-icon">▣</div>
+
+              <h3>Payment Request (PRCV)</h3>
+
+              <p>
+                Understood and observed
+                Payment Request Cum Voucher process.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        {/* TAKEAWAY */}
+        <div className="takeaway-card">
+
+          <div className="takeaway-title">
+            <div className="star">★</div>
+            <h2>INTERNSHIP TAKEAWAY</h2>
+          </div>
+
+          <p>
+            This internship provided me with invaluable exposure to
+            corporate operations, financial processes, and ERP systems.
+            It enhanced my analytical thinking, attention to detail,
+            and professional communication.
+          </p>
+
+          <div className="takeaway-divider"></div>
+
+          <strong>
+            Grateful for the opportunity to learn
+            and grow with Aditya Birla Group.
+          </strong>
+
+          <span className="heart">♥</span>
+
+        </div>
+
+      </div>
+
+
+      {/* ================= FOOTER ================= */}
+      <div className="internship-footer">
+
+        <div className="quote">
+          <span>“</span>
+          Learning never exhausts the mind.
+        </div>
+
+        <div className="copyright">
+          © 2025 Nitesh Singh. All Rights Reserved.
+        </div>
+
+      </div>
+
     </section>
   );
-}
+};
+
+export default Internship;

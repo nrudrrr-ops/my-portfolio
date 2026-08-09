@@ -260,7 +260,7 @@ const ScrollShowcase = () => {
 
         pinSpacing: true,
 
-        scrub: true,
+        scrub: -10000,
 
         anticipatePin: 1,
 
