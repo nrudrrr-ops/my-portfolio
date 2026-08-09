@@ -1,38 +1,248 @@
-/* =====================================================
-   INTERNSHIP PAGE
-===================================================== */
+/* =========================================================
+   IMPORTANT FIX
+   Scope internship styles ONLY inside internship-page
+   So main Portfolio Projects page is NOT affected.
+   ========================================================= */
 
-.internship-page {
+
+/* ---------- INTERNSHIP ONLY: PROJECT AREA ---------- */
+
+.internship-page .projects-section {
   width: 100%;
-  min-height: 100vh;
-  background: #f8f7f6;
-  color: #262626;
-  font-family: Arial, Helvetica, sans-serif;
-  overflow: hidden;
-}
-
-
-/* =====================================================
-   HERO
-===================================================== */
-
-.internship-hero {
-  width: 100%;
-  min-height: 320px;
-  padding: 34px 5%;
+  padding: 18px 3% 22px;
   box-sizing: border-box;
 
   display: grid;
-  grid-template-columns: 1.55fr 1fr 1.1fr;
+  grid-template-columns: 3.5fr 1.2fr;
+  gap: 22px;
+
+  background: #f8f7f6;
+}
+
+.internship-page .projects-left {
+  min-width: 0;
+}
+
+.internship-page .projects-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(5, minmax(0, 1fr));
+
+  gap: 10px;
+
+  height: auto;
+}
+
+.internship-page .project-card {
+  min-height: 175px;
+  height: 175px;
+
+  padding: 14px 10px;
+
+  box-sizing: border-box;
+
+  background: #fff;
+
+  border: 1px solid #e7e7e7;
+
+  border-radius: 10px;
+
+  text-align: center;
+
+  box-shadow:
+    0 3px 12px rgba(0,0,0,0.04);
+
+  display: flex;
+
+  flex-direction: column;
+
   align-items: center;
-  gap: 45px;
+
+  justify-content: center;
+}
+
+.internship-page .project-icon {
+  width: 48px;
+  height: 48px;
+
+  min-width: 48px;
+
+  border-radius: 50%;
+
+  background: #f8eaea;
+
+  color: #c00000;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  font-size: 23px;
+
+  margin-bottom: 11px;
+}
+
+.internship-page .project-icon.blue {
+  background: #edf2fb;
+  color: #315e9d;
+}
+
+.internship-page .project-card h3 {
+  margin: 0 0 9px;
+
+  font-size: 12px;
+
+  line-height: 1.3;
+}
+
+.internship-page .project-card p {
+  margin: 0;
+
+  font-size: 10px;
+
+  line-height: 1.55;
+
+  color: #444;
+}
+
+
+/* ---------- INTERNSHIP TAKEAWAY ---------- */
+
+.internship-page .takeaway-card {
+  background:
+    linear-gradient(
+      145deg,
+      #b30000,
+      #8d0000
+    );
+
+  color: white;
+
+  border-radius: 14px;
+
+  padding: 22px;
+
+  box-sizing: border-box;
+
+  min-height: 175px;
+
+  height: 175px;
+
+  align-self: stretch;
+
+  box-shadow:
+    0 8px 25px rgba(100,0,0,0.15);
+}
+
+.internship-page .takeaway-title {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-bottom: 14px;
+}
+
+.internship-page .star {
+  width: 38px;
+  height: 38px;
+
+  min-width: 38px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: rgba(255,255,255,0.18);
+
+  border-radius: 50%;
+
+  font-size: 20px;
+}
+
+.internship-page .takeaway-title h2 {
+  margin: 0;
+
+  color: white;
+
+  font-size: 14px;
+}
+
+.internship-page .takeaway-card p {
+  margin: 0;
+
+  font-size: 11px;
+
+  line-height: 1.55;
+
+  color: rgba(255,255,255,0.94);
+}
+
+.internship-page .takeaway-divider {
+  height: 1px;
+
+  width: 100%;
+
+  background: rgba(255,255,255,0.2);
+
+  margin: 14px 0;
+}
+
+.internship-page .takeaway-card strong {
+  display: block;
+
+  font-size: 11px;
+
+  line-height: 1.5;
+}
+
+.internship-page .heart {
+  display: block;
+
+  margin-top: 6px;
+
+  color: #ffb8b8;
+
+  font-size: 17px;
+}
+
+
+/* =========================================================
+   INTERNSHIP HERO
+   ========================================================= */
+
+.internship-page .internship-hero {
+  width: 100%;
+
+  min-height: 320px;
+
+  padding: 28px 4.5%;
+
+  box-sizing: border-box;
+
+  display: grid;
+
+  grid-template-columns:
+    1.55fr
+    0.95fr
+    1.05fr;
+
+  align-items: center;
+
+  gap: 35px;
 
   color: white;
 
   background:
     radial-gradient(
-      circle at 72% 50%,
-      rgba(255, 80, 80, 0.28),
+      circle at 72% 35%,
+      rgba(255,80,80,0.28),
       transparent 30%
     ),
     linear-gradient(
@@ -43,68 +253,48 @@
     );
 
   position: relative;
+
+  overflow: hidden;
 }
 
-
-/* small background shape */
-
-.internship-hero::after {
-  content: "";
-  position: absolute;
-
-  width: 230px;
-  height: 230px;
-
-  right: -80px;
-  top: -100px;
-
-  border-radius: 50%;
-
-  background: rgba(255, 255, 255, 0.04);
-
-  pointer-events: none;
-}
-
-
-/* =====================================================
-   HERO LEFT
-===================================================== */
-
-.hero-left {
+.internship-page .hero-left {
   position: relative;
   z-index: 2;
 }
 
-.experience-badge {
+.internship-page .experience-badge {
   display: inline-flex;
+
   align-items: center;
 
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255,255,255,0.8);
+
   border-radius: 30px;
 
-  padding: 8px 15px;
+  padding: 7px 14px;
 
-  font-size: 13px;
+  font-size: 12px;
+
   font-weight: 700;
-  letter-spacing: 0.3px;
 
-  margin-bottom: 15px;
+  margin-bottom: 14px;
 }
 
-.hero-left h1 {
+.internship-page .hero-left h1 {
   margin: 0;
 
-  font-size: clamp(34px, 4vw, 52px);
+  font-size: clamp(40px,4vw,56px);
 
-  line-height: 1.05;
+  line-height: 1.02;
 
   font-weight: 800;
 
   letter-spacing: -1.5px;
 }
 
-.hero-line {
+.internship-page .hero-line {
   width: 48px;
+
   height: 2px;
 
   background: white;
@@ -112,61 +302,62 @@
   margin: 16px 0;
 }
 
-.hero-left h3 {
-  margin: 0 0 14px;
+.internship-page .hero-left h3 {
+  margin: 0 0 13px;
 
-  font-size: 18px;
+  font-size: 17px;
+
   font-weight: 500;
 }
 
-.hero-left p {
+.internship-page .hero-left p {
   max-width: 540px;
 
   margin: 0;
 
-  font-size: 14px;
+  font-size: 13px;
 
-  line-height: 1.7;
+  line-height: 1.65;
 
-  color: rgba(255, 255, 255, 0.92);
+  color: rgba(255,255,255,0.92);
 }
 
 
-/* =====================================================
-   ADITYA BIRLA LOGO AREA
-===================================================== */
+/* ---------- LOGO ---------- */
 
-.hero-logo {
+.internship-page .hero-logo {
   display: flex;
+
   justify-content: center;
+
   align-items: center;
 }
 
-.logo-box {
-  width: 290px;
+.internship-page .logo-box {
+  width: 285px;
   height: 245px;
 
   background: white;
 
   border-radius: 5px;
 
-  border: 5px solid rgba(255, 255, 255, 0.95);
+  border: 5px solid rgba(255,255,255,0.95);
 
   box-sizing: border-box;
 
   display: flex;
+
   flex-direction: column;
+
   justify-content: center;
+
   align-items: center;
 
   box-shadow:
-    0 15px 40px rgba(0, 0, 0, 0.15);
+    0 15px 40px rgba(0,0,0,0.15);
 }
 
-
-/* Fake Aditya Birla symbol */
-
-.aditya-symbol {
+.internship-page .aditya-symbol {
   width: 190px;
   height: 125px;
 
@@ -188,33 +379,35 @@
     );
 }
 
-.aditya-symbol span {
+.internship-page .aditya-symbol span {
   position: absolute;
+
   width: 100%;
   height: 100%;
+
   border: 1px solid rgba(255,255,255,0.35);
 }
 
-.aditya-symbol span:nth-child(1) {
+.internship-page .aditya-symbol span:nth-child(1) {
   transform: rotate(45deg) scale(1.4);
 }
 
-.aditya-symbol span:nth-child(2) {
+.internship-page .aditya-symbol span:nth-child(2) {
   transform: rotate(-45deg) scale(1.4);
 }
 
-.aditya-symbol span:nth-child(3) {
+.internship-page .aditya-symbol span:nth-child(3) {
   transform: rotate(90deg) scale(1.4);
 }
 
-.aditya-symbol span:nth-child(4) {
+.internship-page .aditya-symbol span:nth-child(4) {
   transform: rotate(0deg) scale(1.4);
 }
 
-.aditya-text {
+.internship-page .aditya-text {
   margin-top: 9px;
 
-  font-size: 25px;
+  font-size: 24px;
 
   letter-spacing: 2px;
 
@@ -224,39 +417,42 @@
 }
 
 
-/* =====================================================
-   HERO DETAILS
-===================================================== */
+/* ---------- HERO DETAILS ---------- */
 
-.hero-details {
+.internship-page .hero-details {
   border-left: 1px solid rgba(255,255,255,0.4);
 
-  padding-left: 30px;
+  padding-left: 28px;
 
   display: flex;
+
   flex-direction: column;
 
-  gap: 18px;
+  gap: 17px;
 
   position: relative;
+
   z-index: 2;
 }
 
-.detail-item {
+.internship-page .detail-item {
   display: flex;
+
   align-items: center;
 
-  gap: 14px;
+  gap: 13px;
 }
 
-.detail-icon {
-  width: 38px;
-  height: 38px;
+.internship-page .detail-icon {
+  width: 39px;
+  height: 39px;
 
-  flex-shrink: 0;
+  min-width: 39px;
 
   display: flex;
+
   align-items: center;
+
   justify-content: center;
 
   border-radius: 50%;
@@ -265,36 +461,34 @@
 
   border: 1px solid rgba(255,255,255,0.2);
 
-  font-size: 19px;
+  font-size: 18px;
 }
 
-.detail-item strong {
-  display: block;
-
-  font-size: 13px;
-
-  margin-bottom: 5px;
-}
-
-.detail-item span {
+.internship-page .detail-item strong {
   display: block;
 
   font-size: 12px;
 
-  line-height: 1.4;
+  margin-bottom: 4px;
+}
 
-  color: rgba(255,255,255,0.95);
+.internship-page .detail-item span {
+  display: block;
+
+  font-size: 11px;
+
+  line-height: 1.4;
 }
 
 
-/* =====================================================
-   MAIN CONTENT
-===================================================== */
+/* =========================================================
+   INTERNSHIP CONTENT
+   ========================================================= */
 
-.internship-content {
+.internship-page .internship-content {
   width: 100%;
 
-  padding: 28px 4%;
+  padding: 22px 4%;
 
   box-sizing: border-box;
 
@@ -305,132 +499,129 @@
     1fr
     1.25fr;
 
-  gap: 30px;
+  gap: 27px;
 
   background: #f8f7f6;
-
-  border-bottom: 1px solid #ddd;
 }
 
-.content-column {
+.internship-page .content-column {
   min-width: 0;
 }
 
-.about-column,
-.responsibilities-column {
+.internship-page .about-column,
+.internship-page .responsibilities-column {
   border-right: 1px solid #ddd;
 
-  padding-right: 30px;
+  padding-right: 27px;
 }
 
-
-/* =====================================================
-   HEADINGS
-===================================================== */
-
-.content-column h2,
-.projects-left h2 {
+.internship-page .content-column h2,
+.internship-page .projects-left h2 {
   margin: 0;
 
-  font-size: 17px;
+  font-size: 16px;
 
   font-weight: 800;
 
   color: #5b0909;
-
-  letter-spacing: 0.2px;
 }
 
-.section-line {
+.internship-page .section-line {
   width: 40px;
+
   height: 2px;
 
-  margin: 7px 0 18px;
+  margin: 6px 0 15px;
 
   background: #c50000;
 }
 
 
-/* =====================================================
+/* =========================================================
    ABOUT
-===================================================== */
+   ========================================================= */
 
-.about-intro {
+.internship-page .about-intro {
   display: flex;
 
-  gap: 20px;
+  gap: 18px;
 
   align-items: flex-start;
 }
 
-.about-icon {
-  width: 78px;
-  height: 78px;
+.internship-page .about-icon {
+  width: 72px;
+  height: 72px;
 
-  flex-shrink: 0;
+  min-width: 72px;
 
   display: flex;
+
   justify-content: center;
+
   align-items: center;
 
-  border-radius: 17px;
+  border-radius: 16px;
 
   background: #f7eaea;
 
   color: #9f3030;
 
-  font-size: 40px;
+  font-size: 36px;
 }
 
-.about-intro p,
-.about-text {
-  font-size: 13px;
+.internship-page .about-intro p,
+.internship-page .about-text {
+  font-size: 11px;
 
-  line-height: 1.65;
+  line-height: 1.55;
 
   margin: 0;
 
   color: #333;
 }
 
-.about-text {
-  margin-top: 17px;
+.internship-page .about-text {
+  margin-top: 14px;
 }
 
 
-/* =====================================================
+/* =========================================================
    RESPONSIBILITIES
-===================================================== */
+   ========================================================= */
 
-.responsibility-list {
+.internship-page .responsibility-list {
   list-style: none;
 
   padding: 0;
+
   margin: 0;
 }
 
-.responsibility-list li {
+.internship-page .responsibility-list li {
   display: flex;
 
   align-items: flex-start;
 
-  gap: 10px;
+  gap: 9px;
 
-  font-size: 13px;
+  font-size: 11px;
 
-  line-height: 1.45;
+  line-height: 1.4;
 
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
-.check {
-  width: 20px;
-  height: 20px;
+.internship-page .check {
+  width: 19px;
+  height: 19px;
 
-  min-width: 20px;
+  min-width: 19px;
 
   display: flex;
+
   align-items: center;
+
   justify-content: center;
 
   border-radius: 50%;
@@ -439,40 +630,43 @@
 
   color: white;
 
-  font-size: 12px;
+  font-size: 10px;
 
   font-weight: bold;
 }
 
 
-/* =====================================================
+/* =========================================================
    TOOLS
-===================================================== */
+   ========================================================= */
 
-.tools-grid {
+.internship-page .tools-grid {
   display: grid;
 
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns:
+    repeat(4,1fr);
 
-  gap: 10px;
+  gap: 9px;
 }
 
-.tool-card {
-  min-height: 88px;
+.internship-page .tool-card {
+  min-height: 75px;
 
-  padding: 10px 7px;
+  padding: 8px 5px;
 
   box-sizing: border-box;
 
   display: flex;
+
   flex-direction: column;
 
   align-items: center;
+
   justify-content: center;
 
-  gap: 8px;
+  gap: 5px;
 
-  border-radius: 10px;
+  border-radius: 9px;
 
   background: white;
 
@@ -484,13 +678,14 @@
   text-align: center;
 }
 
-.tool-logo {
-  width: 45px;
-  height: 35px;
+.internship-page .tool-logo {
+  width: 42px;
+  height: 30px;
 
   display: flex;
 
   align-items: center;
+
   justify-content: center;
 
   font-size: 18px;
@@ -498,13 +693,11 @@
   font-weight: 800;
 }
 
-.sap-logo {
+.internship-page .sap-logo {
   color: #0878c9;
-
-  font-size: 19px;
 }
 
-.excel-logo {
+.internship-page .excel-logo {
   color: #168544;
 
   border-radius: 5px;
@@ -512,45 +705,46 @@
   background: #e7f5eb;
 }
 
-.gmail-logo {
+.internship-page .gmail-logo {
   color: #db4437;
 
-  font-size: 30px;
+  font-size: 28px;
 }
 
-.baw-logo {
+.internship-page .baw-logo {
   color: #96343e;
 
-  font-size: 25px;
+  font-size: 24px;
 }
 
-.tool-card strong {
-  font-size: 11px;
+.internship-page .tool-card strong {
+  font-size: 9px;
 }
 
 
-/* =====================================================
-   KEY LEARNINGS
-===================================================== */
+/* =========================================================
+   LEARNINGS
+   ========================================================= */
 
-.learning-heading {
-  margin-top: 23px !important;
+.internship-page .learning-heading {
+  margin-top: 15px !important;
 }
 
-.learning-grid {
+.internship-page .learning-grid {
   display: grid;
 
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns:
+    repeat(4,1fr);
 
-  gap: 8px;
+  gap: 7px;
 }
 
-.learning-card {
-  min-height: 60px;
+.internship-page .learning-card {
+  min-height: 52px;
 
-  padding: 8px;
+  padding: 7px;
 
-  border-radius: 9px;
+  border-radius: 8px;
 
   background: white;
 
@@ -560,250 +754,50 @@
 
   align-items: center;
 
-  gap: 8px;
+  gap: 6px;
 
   box-shadow:
     0 2px 8px rgba(0,0,0,0.04);
 }
 
-.learning-card span {
-  width: 28px;
-  height: 28px;
+.internship-page .learning-card span {
+  width: 25px;
+  height: 25px;
 
-  min-width: 28px;
+  min-width: 25px;
 
   border-radius: 50%;
 
   display: flex;
 
   align-items: center;
+
   justify-content: center;
 
   background: #fff0f0;
 
   color: #c00000;
 
-  font-size: 13px;
+  font-size: 11px;
 }
 
-.learning-card p {
+.internship-page .learning-card p {
   margin: 0;
 
-  font-size: 9px;
-
-  line-height: 1.35;
-}
-
-
-/* =====================================================
-   PROJECTS
-===================================================== */
-
-.projects-section {
-  width: 100%;
-
-  padding: 20px 3% 24px;
-
-  box-sizing: border-box;
-
-  display: grid;
-
-  grid-template-columns: 3.2fr 1.2fr;
-
-  gap: 25px;
-
-  background: #f8f7f6;
-}
-
-.projects-left {
-  min-width: 0;
-}
-
-.projects-grid {
-  display: grid;
-
-  grid-template-columns:
-    repeat(5, 1fr);
-
-  gap: 10px;
-}
-
-.project-card {
-  min-height: 180px;
-
-  padding: 14px;
-
-  background: white;
-
-  border: 1px solid #e7e7e7;
-
-  border-radius: 10px;
-
-  box-sizing: border-box;
-
-  text-align: center;
-
-  box-shadow:
-    0 3px 12px rgba(0,0,0,0.04);
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.project-icon {
-  width: 48px;
-  height: 48px;
-
-  border-radius: 50%;
-
-  background: #f8eaea;
-
-  color: #c00000;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  font-size: 23px;
-
-  margin-bottom: 11px;
-}
-
-.project-icon.blue {
-  background: #edf2fb;
-
-  color: #315e9d;
-}
-
-.project-card h3 {
-  margin: 0 0 9px;
-
-  font-size: 12px;
+  font-size: 7.5px;
 
   line-height: 1.3;
 }
 
-.project-card p {
-  margin: 0;
 
-  font-size: 10px;
-
-  line-height: 1.55;
-
-  color: #444;
-}
-
-
-/* =====================================================
-   TAKEAWAY
-===================================================== */
-
-.takeaway-card {
-  background:
-    linear-gradient(
-      145deg,
-      #b30000,
-      #8d0000
-    );
-
-  color: white;
-
-  border-radius: 14px;
-
-  padding: 25px;
-
-  box-sizing: border-box;
-
-  min-height: 220px;
-
-  align-self: stretch;
-
-  box-shadow:
-    0 8px 25px rgba(100,0,0,0.15);
-}
-
-.takeaway-title {
-  display: flex;
-
-  align-items: center;
-
-  gap: 12px;
-
-  margin-bottom: 20px;
-}
-
-.star {
-  width: 42px;
-  height: 42px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  background: rgba(255,255,255,0.18);
-
-  border-radius: 50%;
-
-  font-size: 22px;
-}
-
-.takeaway-title h2 {
-  margin: 0;
-
-  color: white;
-
-  font-size: 15px;
-}
-
-.takeaway-card p {
-  margin: 0;
-
-  font-size: 13px;
-
-  line-height: 1.6;
-
-  color: rgba(255,255,255,0.94);
-}
-
-.takeaway-divider {
-  height: 1px;
-
-  width: 100%;
-
-  background: rgba(255,255,255,0.2);
-
-  margin: 20px 0;
-}
-
-.takeaway-card strong {
-  display: block;
-
-  font-size: 13px;
-
-  line-height: 1.5;
-}
-
-.heart {
-  display: block;
-
-  margin-top: 8px;
-
-  color: #ffb8b8;
-
-  font-size: 18px;
-}
-
-
-/* =====================================================
+/* =========================================================
    FOOTER
-===================================================== */
+   ========================================================= */
 
-.internship-footer {
+.internship-page .internship-footer {
   min-height: 45px;
 
-  padding: 10px 4%;
+  padding: 8px 4%;
 
   box-sizing: border-box;
 
@@ -816,96 +810,81 @@
   align-items: center;
 
   justify-content: space-between;
-
-  gap: 20px;
 }
 
-.quote {
-  font-size: 12px;
+.internship-page .quote {
+  font-size: 11px;
 
   font-style: italic;
 }
 
-.quote span {
-  font-size: 30px;
+.internship-page .quote span {
+  font-size: 27px;
 
   font-weight: bold;
 
   vertical-align: middle;
 
-  margin-right: 8px;
+  margin-right: 7px;
 }
 
-.copyright {
-  font-size: 11px;
+.internship-page .copyright {
+  font-size: 10px;
 
   opacity: 0.9;
 }
 
 
-/* =====================================================
-   TABLET
-===================================================== */
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
 
 @media (max-width: 1100px) {
 
-  .internship-hero {
-    grid-template-columns: 1.4fr 0.9fr 1fr;
+  .internship-page .internship-hero {
+    grid-template-columns:
+      1.4fr
+      0.9fr
+      1fr;
 
-    gap: 25px;
-
-    padding-left: 4%;
-    padding-right: 4%;
+    gap: 22px;
   }
 
-  .logo-box {
+  .internship-page .logo-box {
     width: 230px;
     height: 200px;
   }
 
-  .aditya-symbol {
+  .internship-page .aditya-symbol {
     width: 150px;
     height: 100px;
   }
 
-  .aditya-text {
-    font-size: 20px;
-  }
-
-  .projects-grid {
+  .internship-page .projects-grid {
     grid-template-columns:
-      repeat(3, 1fr);
+      repeat(5,minmax(0,1fr));
   }
 
-  .takeaway-card {
-    grid-column: span 3;
-  }
 }
 
 
-/* =====================================================
-   MOBILE
-===================================================== */
-
 @media (max-width: 800px) {
 
-  .internship-hero {
+  .internship-page .internship-hero {
     grid-template-columns: 1fr;
+
+    height: auto;
 
     padding: 30px 22px;
 
-    gap: 28px;
+    gap: 25px;
   }
 
-  .hero-left h1 {
+  .internship-page .hero-left h1 {
     font-size: 38px;
   }
 
-  .hero-logo {
-    justify-content: flex-start;
-  }
-
-  .hero-details {
+  .internship-page .hero-details {
     border-left: none;
 
     border-top: 1px solid rgba(255,255,255,0.3);
@@ -915,74 +894,461 @@
     padding-top: 20px;
   }
 
-  .internship-content {
+  .internship-page .internship-content {
     grid-template-columns: 1fr;
+
+    height: auto;
 
     padding: 25px 20px;
   }
 
-  .about-column,
-  .responsibilities-column {
+  .internship-page .about-column,
+  .internship-page .responsibilities-column {
     border-right: none;
 
     border-bottom: 1px solid #ddd;
 
     padding-right: 0;
 
-    padding-bottom: 25px;
+    padding-bottom: 22px;
   }
 
-  .tools-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .learning-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .projects-section {
+  .internship-page .projects-section {
     grid-template-columns: 1fr;
+
+    height: auto;
 
     padding: 25px 20px;
   }
 
-  .projects-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .internship-page .projects-grid {
+    grid-template-columns:
+      repeat(2,minmax(0,1fr));
   }
 
-  .takeaway-card {
-    grid-column: auto;
+  .internship-page .project-card {
+    height: auto;
+
+    min-height: 150px;
   }
 
-  .internship-footer {
-    flex-direction: column;
+  .internship-page .takeaway-card {
+    height: auto;
 
-    align-items: flex-start;
+    min-height: 200px;
   }
+
 }
 
 
 @media (max-width: 500px) {
 
-  .hero-left h1 {
-    font-size: 32px;
-  }
-
-  .logo-box {
-    width: 100%;
-
-    max-width: 290px;
-  }
-
-  .tools-grid,
-  .learning-grid,
-  .projects-grid {
+  .internship-page .tools-grid,
+  .internship-page .learning-grid,
+  .internship-page .projects-grid {
     grid-template-columns: 1fr;
   }
 
-  .project-card {
-    min-height: auto;
-
-    padding: 20px;
+  .internship-page .hero-left h1 {
+    font-size: 32px;
   }
+
+}
+/* =========================================================
+   FINAL FIX — ADITYA BIRLA INTERNSHIP ONLY
+   ========================================================= */
+
+.internship-page .projects-section {
+  width: 100%;
+  box-sizing: border-box;
+
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(280px, 1.45fr);
+
+  gap: 28px;
+
+  padding: 22px 3% 25px;
+
+  background: #f8f7f6;
+
+  color: #222;
+}
+
+
+/* LEFT PROJECT AREA */
+.internship-page .projects-left {
+  min-width: 0;
+  width: 100%;
+}
+
+
+/* PROJECT HEADING */
+.internship-page .projects-left h2 {
+  color: #5b0909 !important;
+
+  font-size: 17px !important;
+
+  font-weight: 800;
+
+  margin: 0 0 7px;
+
+  line-height: 1.2;
+}
+
+.internship-page .projects-left .section-line {
+  width: 40px;
+  height: 2px;
+
+  background: #c40000;
+
+  margin-bottom: 15px;
+}
+
+
+/* =========================================================
+   FIVE PROJECT CARDS IN ONE ROW
+   ========================================================= */
+
+.internship-page .projects-grid {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(5, minmax(0, 1fr));
+
+  gap: 10px;
+
+  align-items: stretch;
+}
+
+
+/* PROJECT CARD */
+.internship-page .projects-grid .project-card {
+  width: 100%;
+  min-width: 0;
+
+  height: 205px;
+  min-height: 205px;
+
+  box-sizing: border-box;
+
+  padding: 18px 10px 14px;
+
+  background: #ffffff !important;
+
+  color: #222 !important;
+
+  border: 1px solid #e4e4e4;
+
+  border-radius: 10px;
+
+  box-shadow:
+    0 3px 12px rgba(0,0,0,0.06);
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+}
+
+
+/* PROJECT ICON */
+.internship-page .projects-grid .project-icon {
+  width: 48px;
+  height: 48px;
+
+  min-width: 48px;
+
+  margin-bottom: 12px;
+
+  border-radius: 50%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: #f9eaea !important;
+
+  color: #c00000 !important;
+
+  font-size: 21px;
+}
+
+
+/* PROJECT TITLE */
+.internship-page .projects-grid .project-card h3 {
+  color: #222 !important;
+
+  margin: 0 0 9px;
+
+  font-size: 12px !important;
+
+  font-weight: 700;
+
+  line-height: 1.35;
+
+  text-align: center;
+}
+
+
+/* PROJECT DESCRIPTION */
+.internship-page .projects-grid .project-card p {
+  color: #444 !important;
+
+  margin: 0;
+
+  font-size: 9.5px !important;
+
+  line-height: 1.5;
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   TAKEAWAY CARD
+   ========================================================= */
+
+.internship-page .takeaway-card {
+  width: 100%;
+
+  min-width: 0;
+
+  height: 205px;
+  min-height: 205px;
+
+  box-sizing: border-box;
+
+  padding: 20px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #b60000 0%,
+      #8f0000 100%
+    ) !important;
+
+  color: #ffffff !important;
+
+  border-radius: 14px;
+
+  box-shadow:
+    0 8px 25px rgba(120,0,0,0.16);
+
+  align-self: stretch;
+
+  overflow: hidden;
+}
+
+
+/* TAKEAWAY TITLE */
+.internship-page .takeaway-card .takeaway-title {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  margin-bottom: 13px;
+}
+
+
+/* STAR */
+.internship-page .takeaway-card .star {
+  width: 38px;
+  height: 38px;
+
+  min-width: 38px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: rgba(255,255,255,0.18);
+
+  color: white !important;
+
+  font-size: 19px;
+}
+
+
+/* TAKEAWAY HEADING */
+.internship-page .takeaway-card h2,
+.internship-page .takeaway-card .takeaway-title h2 {
+  color: #ffffff !important;
+
+  margin: 0;
+
+  font-size: 14px !important;
+
+  font-weight: 800;
+
+  line-height: 1.2;
+}
+
+
+/* TAKEAWAY TEXT */
+.internship-page .takeaway-card p {
+  color: #ffffff !important;
+
+  margin: 0;
+
+  font-size: 10px !important;
+
+  line-height: 1.55;
+}
+
+
+/* DIVIDER */
+.internship-page .takeaway-card .takeaway-divider {
+  width: 100%;
+
+  height: 1px;
+
+  margin: 13px 0;
+
+  background: rgba(255,255,255,0.25);
+}
+
+
+/* TAKEAWAY STRONG TEXT */
+.internship-page .takeaway-card strong {
+  display: block;
+
+  color: #ffffff !important;
+
+  font-size: 10px;
+
+  line-height: 1.45;
+}
+
+
+/* HEART */
+.internship-page .takeaway-card .heart {
+  display: block;
+
+  margin-top: 5px;
+
+  color: #ffb7b7 !important;
+
+  font-size: 17px;
+}
+
+
+/* =========================================================
+   MAKE SURE CONTENT TEXT IS VISIBLE
+   ========================================================= */
+
+.internship-page .about-column,
+.internship-page .responsibilities-column,
+.internship-page .content-column {
+  color: #222;
+}
+
+.internship-page .about-column p,
+.internship-page .responsibilities-column li,
+.internship-page .learning-card p,
+.internship-page .tool-card strong {
+  color: #333 !important;
+}
+
+
+/* RESPONSIBILITY TEXT */
+.internship-page .responsibility-list li {
+  color: #333 !important;
+}
+
+
+/* =========================================================
+   DESKTOP — KEEP IT COMPACT
+   ========================================================= */
+
+@media (min-width: 1200px) {
+
+  .internship-page .projects-section {
+    grid-template-columns:
+      minmax(0, 4.2fr)
+      minmax(290px, 1.45fr);
+
+    gap: 25px;
+
+    padding-left: 3%;
+    padding-right: 3%;
+  }
+
+  .internship-page .projects-grid {
+    grid-template-columns:
+      repeat(5, minmax(0, 1fr));
+
+    gap: 9px;
+  }
+
+  .internship-page .projects-grid .project-card {
+    height: 205px;
+    min-height: 205px;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+  .internship-page .projects-grid {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+  }
+
+  .internship-page .projects-section {
+    grid-template-columns: 1fr;
+  }
+
+  .internship-page .takeaway-card {
+    height: auto;
+    min-height: 180px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 650px) {
+
+  .internship-page .projects-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .internship-page .projects-grid .project-card {
+    height: 180px;
+    min-height: 180px;
+  }
+
+}
+
+
+@media (max-width: 420px) {
+
+  .internship-page .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
 }
