@@ -419,11 +419,11 @@ const ScrollShowcase = () => {
           <div className="oryzo-text">
 
             <div className="oryzo-text-small">
-              SO PORTABLE,
+              CRAFTED IN DETAIL
             </div>
 
             <div className="oryzo-text-large">
-              it’s wearable
+              built to perform
             </div>
 
           </div>

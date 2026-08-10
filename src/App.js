@@ -734,6 +734,10 @@ function App() {
 
             <div className="title-top">
 
+              <span className="section-kicker hero-kicker">
+                Portfolio
+              </span>
+
               <h1 className="display">
                 Operations
                 <br />
