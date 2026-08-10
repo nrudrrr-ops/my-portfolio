@@ -709,7 +709,7 @@ function App() {
                     href="#badgeCircle"
                     startOffset="0%"
                   >
-                    MY DESIGN PORTFOLIO • 2025 •
+                    MY DESIGN PORTFOLIO • 2026 •
                   </textPath>
 
                 </text>
@@ -733,10 +733,6 @@ function App() {
           <div className="title-area">
 
             <div className="title-top">
-
-              <span className="section-kicker hero-kicker">
-                Portfolio
-              </span>
 
               <h1 className="display">
                 Operations
@@ -857,8 +853,7 @@ function App() {
         year: '2026',
         title: 'Procurement & Vendor Performance Analytics Dashboard',
         desc: 'An analytics dashboard using Excel and Power BI to evaluate procurement performance, vendor efficiency, delivery, cost and supplier ratings.',
-        imageA: '/images/project01-a.jpg',
-        imageB: '/images/project01-b.jpg'
+        imageA: process.env.PUBLIC_URL + '/images/project01-a.jpeg'
       },
 
       {
@@ -868,8 +863,7 @@ function App() {
         year: '2026',
         title: 'Vendor Invoice Reconciliation Management Dashboard',
         desc: 'A reconciliation dashboard using Excel and Power BI to match POs, GRNs, vendor invoices and payments while identifying reconciliation exceptions.',
-        imageA: '/images/project02-a.jpg',
-        imageB: '/images/project02-b.jpg'
+        imageA: process.env.PUBLIC_URL + '/images/project02-a.jpeg'
       },
 
       {
@@ -879,8 +873,7 @@ function App() {
         year: '2026',
         title: 'JerseyKart – Customized Sports Jersey Platform',
         desc: 'A Framer-based website prototype for a customized sports jersey platform with jersey personalization and an online ordering experience.',
-        imageA: '/images/project03-a.jpg',
-        imageB: '/images/project03-b.jpg'
+        imageA: process.env.PUBLIC_URL + '/images/project03-a.jpeg'
       },
 
       {
@@ -890,8 +883,7 @@ function App() {
         year: '2024',
         title: 'Performance Dashboard',
         desc: 'A dashboard concept for monitoring operational performance and turning data into actionable insights.',
-        imageA: '/images/project04-a.jpg',
-        imageB: '/images/project04-b.jpg'
+        imageA: process.env.PUBLIC_URL + '/images/project04-a.jpeg'
       },
 
       {
@@ -901,8 +893,7 @@ function App() {
         year: '2024',
         title: 'Make It Matter',
         desc: 'A marketing design concept combining clear communication, visual consistency and storytelling.',
-        imageA: '/images/project05-a.jpg',
-        imageB: '/images/project05-b.jpg'
+        imageA: process.env.PUBLIC_URL + '/images/project05-a.jpeg'
       },
 
       {
@@ -912,8 +903,7 @@ function App() {
         year: '2024',
         title: 'Canvas Design System',
         desc: 'A reusable design system concept focused on consistency, collaboration and execution speed.',
-        imageA: '/images/project06-a.jpg',
-        imageB: '/images/project06-b.jpg'
+        imageA: process.env.PUBLIC_URL + '/images/project06-a.jpeg'
       }
 
     ].map((p) => (
@@ -930,12 +920,6 @@ function App() {
             src={p.imageA}
             alt={p.title}
             className="project-image project-image-a"
-          />
-
-          <img
-            src={p.imageB}
-            alt=""
-            className="project-image project-image-b"
           />
 
           <span className="project-number">

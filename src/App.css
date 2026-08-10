@@ -653,10 +653,6 @@ a { color: inherit; text-decoration: none; }
   text-transform: uppercase;
 }
 
-.hero-kicker {
-  margin-bottom: 14px;
-}
-
 /* Force projects heading color */
 .projects-heading h2 {
   color: #ffffff !important;
@@ -748,20 +744,10 @@ a { color: inherit; text-decoration: none; }
   opacity: 1;
 }
 
-.project-image-b {
-  opacity: 0;
-}
-
 /* HOVER IMAGE */
 
 .project-card:hover .project-image-a,
 .project-card:focus-visible .project-image-a {
-  opacity: 0;
-}
-
-.project-card:hover .project-image-b,
-.project-card:focus-visible .project-image-b {
-  opacity: 1;
   transform: scale(1.03);
 }
 .project-visual::after {
@@ -804,7 +790,7 @@ a { color: inherit; text-decoration: none; }
   z-index: 6;
   padding: 62px 20px 18px;
   background: linear-gradient(to top, rgba(13,4,8,.96) 0%, rgba(13,4,8,.78) 48%, transparent 100%);
-  transform: translateY(52px);
+  transform: translateY(100%);
   transition: transform 330ms cubic-bezier(.2,.8,.2,1), padding 330ms ease;
 }
 
