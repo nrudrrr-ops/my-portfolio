@@ -13,7 +13,7 @@ const AdityaBirlaInternship = () => {
         <div className="hero-left">
 
           <div className="experience-badge">
-            💼 &nbsp; INTERNSHIP EXPERIENCE
+            ðŸ’¼ &nbsp; INTERNSHIP EXPERIENCE
           </div>
 
           <h1>ADITYA BIRLA GROUP</h1>
@@ -54,17 +54,17 @@ const AdityaBirlaInternship = () => {
         <div className="hero-details">
 
           <div className="detail-item">
-            <div className="detail-icon">▣</div>
+            <div className="detail-icon">â–£</div>
 
             <div>
               <strong>Internship Duration</strong>
-              <span>June 2025 – July 2025 (2 Months)</span>
+              <span>June 2025 â€“ July 2025 (2 Months)</span>
             </div>
           </div>
 
 
           <div className="detail-item">
-            <div className="detail-icon">⌖</div>
+            <div className="detail-icon">âŒ–</div>
 
             <div>
               <strong>Location</strong>
@@ -74,7 +74,7 @@ const AdityaBirlaInternship = () => {
 
 
           <div className="detail-item">
-            <div className="detail-icon">♧</div>
+            <div className="detail-icon">â™§</div>
 
             <div>
               <strong>Department</strong>
@@ -84,7 +84,7 @@ const AdityaBirlaInternship = () => {
 
 
           <div className="detail-item">
-            <div className="detail-icon">♙</div>
+            <div className="detail-icon">â™™</div>
 
             <div>
               <strong>Role</strong>
@@ -111,7 +111,7 @@ const AdityaBirlaInternship = () => {
           <div className="about-intro">
 
             <div className="about-icon">
-              ▦
+              â–¦
             </div>
 
             <p>
@@ -142,42 +142,42 @@ const AdityaBirlaInternship = () => {
           <ul className="responsibility-list">
 
             <li>
-              <span className="check">✓</span>
+              <span className="check">âœ“</span>
               <span>
                 Prepared daily TPP Fuel reports and performed cost analytics
               </span>
             </li>
 
             <li>
-              <span className="check">✓</span>
+              <span className="check">âœ“</span>
               <span>
                 Assisted in GST reconciliation (GSTR-1 vs 2B)
               </span>
             </li>
 
             <li>
-              <span className="check">✓</span>
+              <span className="check">âœ“</span>
               <span>
                 Verified vendor details, GSTIN & filing dates
               </span>
             </li>
 
             <li>
-              <span className="check">✓</span>
+              <span className="check">âœ“</span>
               <span>
                 Worked on SAP (FBL51, GRN, GR/IR) & Excel reports
               </span>
             </li>
 
             <li>
-              <span className="check">✓</span>
+              <span className="check">âœ“</span>
               <span>
                 Observed PR to PO to GRN to Invoice workflow
               </span>
             </li>
 
             <li>
-              <span className="check">✓</span>
+              <span className="check">âœ“</span>
               <span>
                 Supported in payment request (PRCV) processing
               </span>
@@ -213,7 +213,7 @@ const AdityaBirlaInternship = () => {
             </div>
 
             <div className="tool-card">
-              <div className="tool-logo baw-logo">▣</div>
+              <div className="tool-logo baw-logo">â–£</div>
               <strong>BAW Portal</strong>
             </div>
 
@@ -229,7 +229,7 @@ const AdityaBirlaInternship = () => {
           <div className="learning-grid">
 
             <div className="learning-card">
-              <span>⌁</span>
+              <span>âŒ</span>
               <p>
                 Understanding real-time
                 business processes
@@ -237,7 +237,7 @@ const AdityaBirlaInternship = () => {
             </div>
 
             <div className="learning-card">
-              <span>▤</span>
+              <span>â–¤</span>
               <p>
                 Importance of accuracy
                 in financial data
@@ -245,7 +245,7 @@ const AdityaBirlaInternship = () => {
             </div>
 
             <div className="learning-card">
-              <span>▣</span>
+              <span>â–£</span>
               <p>
                 Exposure to ERP
                 systems (SAP)
@@ -253,7 +253,7 @@ const AdityaBirlaInternship = () => {
             </div>
 
             <div className="learning-card">
-              <span>♧</span>
+              <span>â™§</span>
               <p>
                 Team collaboration in a
                 corporate setup
@@ -280,7 +280,7 @@ const AdityaBirlaInternship = () => {
 
             <div className="ab-project-card">
 
-              <div className="ab-project-icon">▧</div>
+              <div className="ab-project-icon">â–§</div>
 
               <h3>TPP Fuel Cost Analytics</h3>
 
@@ -294,7 +294,7 @@ const AdityaBirlaInternship = () => {
 
             <div className="ab-project-card">
 
-              <div className="ab-project-icon">▤</div>
+              <div className="ab-project-icon">â–¤</div>
 
               <h3>GST Reconciliation</h3>
 
@@ -308,13 +308,13 @@ const AdityaBirlaInternship = () => {
 
             <div className="ab-project-card">
 
-              <div className="ab-project-icon blue">▱</div>
+              <div className="ab-project-icon blue">â–±</div>
 
               <h3>Procurement Workflow</h3>
 
               <p>
                 Observed complete flow from
-                PR → PO → GRN → Invoice → Payment.
+                PR â†’ PO â†’ GRN â†’ Invoice â†’ Payment.
               </p>
 
             </div>
@@ -322,7 +322,7 @@ const AdityaBirlaInternship = () => {
 
             <div className="ab-project-card">
 
-              <div className="ab-project-icon">▥</div>
+              <div className="ab-project-icon">â–¥</div>
 
               <h3>Vendor Verification</h3>
 
@@ -336,7 +336,7 @@ const AdityaBirlaInternship = () => {
 
             <div className="ab-project-card">
 
-              <div className="ab-project-icon">▣</div>
+              <div className="ab-project-icon">â–£</div>
 
               <h3>Payment Request (PRCV)</h3>
 
@@ -358,7 +358,7 @@ const AdityaBirlaInternship = () => {
           <div className="takeaway-title">
 
             <div className="star">
-              ★
+              â˜…
             </div>
 
             <h2>
@@ -382,7 +382,7 @@ const AdityaBirlaInternship = () => {
           </strong>
 
           <span className="heart">
-            ♥
+            â™¥
           </span>
 
         </div>
@@ -399,7 +399,7 @@ const AdityaBirlaInternship = () => {
         </div>
 
         <div className="copyright">
-          © 2025 Nitesh Singh. All Rights Reserved.
+          Â© 2025 Nitesh Singh. All Rights Reserved.
         </div>
 
       </div>
