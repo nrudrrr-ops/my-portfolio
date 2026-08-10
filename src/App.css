@@ -885,6 +885,8 @@ a { color: inherit; text-decoration: none; }
   .stats-row { margin-top: 40px; padding-top: 0; }
   .frame { padding: 24px 24px 48px; }
   .projects-section { margin-top: 80px; padding-top: 70px; }
+  .journey-section { margin-top: 80px; padding-top: 70px; }
+  .internship-section { margin-top: 80px; padding-top: 70px; }
   .projects-heading { grid-template-columns: 1fr; gap: 24px; }
   .projects-heading h2 br { display: initial; }
   .project-card,
@@ -908,6 +910,9 @@ a { color: inherit; text-decoration: none; }
   .badge { right: 4px; bottom: 20px; width: 76px; height: 76px; }
   .title-area { padding: 40px 0 250px; }
   .projects-section { margin-top: 50px; padding: 58px 0 80px; }
+  .journey-section { margin-top: 50px; padding-top: 58px; }
+  .internship-section { margin-top: 50px; padding-top: 58px; }
+  .featured-wrap { margin-top: 50px; padding-top: 58px; }
   .projects-heading { margin-bottom: 34px; }
   .projects-heading h2 { font-size: clamp(2.7rem,14vw,4.2rem); }
   .project-card,
@@ -1066,9 +1071,11 @@ a { color: inherit; text-decoration: none; }
   }
 }
 .journey-section {
-  margin-top: 100px;
-  padding-top: 80px;
+  margin-top: 24px;
+  padding-top: 34px;
   border-top: 1px solid rgba(255,255,255,0.12);
+  position: relative;
+  z-index: 3;
 }
 
 .journey-heading { max-width: 720px; margin: 0 auto 56px; text-align: center; }
@@ -1153,8 +1160,8 @@ a { color: inherit; text-decoration: none; }
 ════════════════════════════════════════════════════════ */
 
 .featured-wrap {
-  margin-top: 80px;
-  padding-top: 64px;
+  margin-top: 24px;
+  padding-top: 34px;
   border-top: 1px solid rgba(255,255,255,0.12);
   position: relative;
   z-index: 3;
@@ -1440,7 +1447,7 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 960px) {
   .featured-body { grid-template-columns: 68px 1fr; gap: 18px; }
   .thumb-btn { width: 54px; height: 54px; }
-  .featured-wrap { margin-top: 60px; }
+  .featured-wrap { margin-top: 80px; padding-top: 70px; }
 }
 
 @media (max-width: 640px) {
@@ -1523,9 +1530,11 @@ a { color: inherit; text-decoration: none; }
    INTERNSHIP SECTION — Aditya Birla
 ═══════════════════════════════════════════════════════ */
 .internship-section {
-  margin-top: 100px;
-  padding-top: 80px;
+  margin-top: 24px;
+  padding-top: 34px;
   border-top: 1px solid rgba(255,255,255,0.12);
+  position: relative;
+  z-index: 3;
 }
 
 .internship-heading { max-width: 720px; margin: 0 auto 48px; text-align: center; position: relative; }
