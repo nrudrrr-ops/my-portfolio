@@ -25,12 +25,12 @@ body,
   width: 100vw;
   max-width: none;
 
-  height: 100vh;
-  min-height: 100vh;
+  height: auto;
+  min-height: 0;
 
   margin-left: calc(50% - 50vw);
 
-  padding: 8px 16px 0;
+  padding: 8px 16px 24px;
 
   display: flex;
   flex-direction: column;
@@ -39,7 +39,7 @@ body,
 
   box-sizing: border-box;
 
-  overflow: hidden;
+  overflow: visible;
 
   font-family:
     "Poppins",
@@ -2257,8 +2257,8 @@ body,
 .gtb-question-card {
   width: 100%;
   display: grid;
-  grid-template-columns: 260px minmax(0, 1fr);
-  gap: 28px;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 14px;
   align-items: start;
   flex: 1 1 auto;
   min-height: 0;
@@ -2267,39 +2267,56 @@ body,
 .gtb-logo-box {
   width: 100%;
   aspect-ratio: 1 / 1;
-  border-radius: 16px;
+  border-radius: 18px;
   overflow: hidden;
-  background: linear-gradient(160deg, #ffe3e3, #ffc9c9);
+
+  /* Red character panel */
+  background:
+    linear-gradient(
+      145deg,
+      #ef0000 0%,
+      #c90000 48%,
+      #650000 100%
+    );
+
   display: flex;
   align-items: center;
   justify-content: center;
+
+  position: relative;
 }
 
-.gtb-logo-img {
+.gtb-character-box {
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  padding: 24px;
-  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+}
+
+.gtb-character-video {
+  width: 100%;
+  height: 100%;
+
   display: block;
-}
 
-.gtb-logo-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  font-family: "Poppins", sans-serif;
-  font-weight: 800;
-  font-size: 4.5rem;
+  object-fit: contain;
+
+  pointer-events: none;
+
+  background: transparent;
 }
 
 .gtb-question-right {
   display: flex;
   flex-direction: column;
   min-width: 0;
+
+  /* Slightly lower than the character panel top */
+  padding-top: 22px;
 }
 
 .gtb-question-text {
@@ -2370,8 +2387,12 @@ body,
   }
 
   .gtb-logo-box {
-    max-width: 260px;
+    max-width: 300px;
     margin: 0 auto;
+  }
+
+  .gtb-question-right {
+    padding-top: 6px;
   }
 
   .gtb-question-right .gtb-options {
@@ -2434,4 +2455,235 @@ body,
   flex: 0 1 auto;
   margin: auto 0;
   width: 100%;
+}
+
+/* =========================================================
+   RESIZE FIX (round 3):
+   - The white game card was sized to fill leftover space,
+     leaving empty white area below the progress dots.
+   - The footer was locked to a tiny fixed height (136px),
+     making it cramped and hard to read.
+   Now: the white card sizes to its own content (shrinks),
+   and the footer grows to fill the freed-up space, with
+   larger text and centered alignment so it's clearly visible.
+========================================================= */
+
+.gtb-page > .gtb-progress {
+  flex: 0 1 auto !important;
+}
+
+.gtb-footer {
+  flex: 1 1 auto !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.gtb-footer-main {
+  align-items: center;
+}
+
+@media (min-width: 901px) {
+  .gtb-footer-brand h3 { font-size: 19px !important; }
+
+  .gtb-footer-brand p,
+  .gtb-newsletter p { font-size: 11px !important; line-height: 1.5 !important; }
+
+  .gtb-footer-column h4,
+  .gtb-newsletter h4 { font-size: 12px !important; margin-bottom: 10px !important; }
+
+  .gtb-footer-column span { font-size: 10.5px !important; margin-bottom: 7px !important; }
+
+  .gtb-contact-column span { font-size: 10.5px !important; }
+
+  .gtb-socials a { width: 32px !important; height: 32px !important; flex-basis: 32px !important; font-size: 11px !important; }
+
+  .gtb-email-box { height: 34px !important; }
+  .gtb-email-box input,
+  .gtb-email-box button { font-size: 10.5px !important; }
+
+  .gtb-footer-bottom { font-size: 9px !important; margin-top: 14px !important; padding-top: 10px !important; }
+}
+
+/* =========================================================
+   RESIZE FIX (round 3):
+   1. Stop forcing the page/card to a rigid 100vh — that's
+      what was leaving a huge blank gap below "Check Answer".
+      Let the white card size itself to its actual content
+      instead (min-height:100vh only, not a fixed height).
+   2. Enlarge + realign the bottom footer (Quick Links /
+      Resources / Contact / Newsletter) — it was shrunk down
+      to tiny 7-9px text by the old "fit everything in one
+      screen" rules, which no longer applies now that the
+      page can breathe naturally.
+========================================================= */
+
+/* ---- Page: natural height instead of forced 100vh ---- */
+.gtb-page {
+  height: auto !important;
+  min-height: 100vh !important;
+  overflow: visible !important;
+}
+
+@media (min-width: 901px) {
+  .gtb-page {
+    height: auto !important;
+    min-height: 100vh !important;
+    overflow: visible !important;
+  }
+}
+
+/* ---- White card: hug its content, don't stretch to fill leftover vh ---- */
+.gtb-page > .gtb-progress {
+  flex: 0 1 auto !important;
+  min-height: 0 !important;
+  overflow: visible !important;
+  padding-bottom: 28px !important;
+}
+
+.gtb-question-card {
+  margin: 0 !important;
+}
+
+/* ---- Footer: bigger, better-aligned text ---- */
+.gtb-footer {
+  flex: none !important;
+  padding: 30px 40px 20px !important;
+}
+
+.gtb-footer-main {
+  gap: 40px !important;
+  align-items: start !important;
+}
+
+.gtb-footer-brand h3 {
+  font-size: 20px !important;
+  margin-bottom: 8px !important;
+}
+
+.gtb-footer-brand p {
+  max-width: 280px !important;
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+}
+
+.gtb-socials {
+  margin-top: 14px !important;
+  gap: 10px !important;
+}
+
+.gtb-socials a {
+  width: 34px !important;
+  height: 34px !important;
+  flex-basis: 34px !important;
+  font-size: 13px !important;
+}
+
+.gtb-footer-column h4,
+.gtb-newsletter h4 {
+  font-size: 13px !important;
+  margin-bottom: 12px !important;
+}
+
+.gtb-footer-column h4::after,
+.gtb-newsletter h4::after {
+  width: 30px !important;
+  height: 2px !important;
+  margin-top: 6px !important;
+}
+
+.gtb-footer-column span {
+  display: block;
+  margin-bottom: 9px !important;
+  font-size: 13px !important;
+  line-height: 1.4 !important;
+}
+
+.gtb-contact-column span {
+  white-space: nowrap !important;
+  font-size: 13px !important;
+}
+
+.gtb-newsletter p {
+  max-width: 260px !important;
+  margin-bottom: 12px !important;
+  font-size: 13px !important;
+  line-height: 1.5 !important;
+}
+
+.gtb-email-box {
+  max-width: 320px !important;
+  height: 42px !important;
+}
+
+.gtb-email-box input {
+  font-size: 13px !important;
+  padding: 0 14px !important;
+}
+
+.gtb-email-box button {
+  font-size: 13px !important;
+  padding: 0 18px !important;
+}
+
+.gtb-footer-bottom {
+  margin-top: 20px !important;
+  padding-top: 16px !important;
+  font-size: 12px !important;
+}
+
+@media (max-width: 900px) {
+  .gtb-footer-brand p,
+  .gtb-footer-column span,
+  .gtb-newsletter p,
+  .gtb-contact-column span {
+    font-size: 12px !important;
+  }
+}
+
+/* =========================================================
+   REACTION MASCOT — FINAL OVERRIDES
+   thinking.mp4 = default
+   correct.mp4 = correct answer
+   wrong.mp4   = wrong answer
+========================================================= */
+
+@media (min-width: 901px) {
+
+  .gtb-question-card {
+    grid-template-columns: 580px minmax(0, 1fr) !important;
+    gap: 14px !important;
+  }
+
+  .gtb-logo-box {
+    width: 580px !important;
+    max-width: 580px !important;
+
+    height: 300px !important;
+
+    aspect-ratio: auto !important;
+  }
+
+}
+
+@media (max-width: 900px) {
+  .gtb-question-right {
+    padding-top: 6px;
+  }
+}
+
+.gtb-character-gif {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+@media (min-width: 901px) {
+  .gtb-page > .gtb-progress {
+    width: 80% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
 }

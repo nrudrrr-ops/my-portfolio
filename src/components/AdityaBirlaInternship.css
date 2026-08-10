@@ -341,8 +341,8 @@
 .about-text {
   margin: 0;
 
-  font-size: 14px;
-  line-height: 1.65;
+  font-size: 20px;
+  line-height: 1.95;
 
   color: #444;
 }
@@ -1252,8 +1252,8 @@
 
   .about-intro p,
   .about-text {
-    font-size: 10px;
-    line-height: 1.45;
+    font-size: 13px;
+    line-height: 1.55;
   }
 
 
@@ -1326,9 +1326,12 @@
   }
 
   .learning-card p {
-    font-size: 7px;
-    line-height: 1.15;
-  }
+  margin: 0;
+  font-size: 7px;
+  line-height: 1.25;
+  font-weight: 700;
+  color: #333;
+}
 
 
   /* ---------- PROJECTS ---------- */
@@ -1356,12 +1359,12 @@
   }
 
   .ab-project-card h3 {
-    font-size: 9px;
+    font-size: 12px;
     margin-bottom: 5px;
   }
 
   .ab-project-card p {
-    font-size: 7px;
+    font-size: 10px;
     line-height: 1.3;
   }
 

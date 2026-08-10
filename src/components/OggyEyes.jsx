@@ -7,8 +7,8 @@ import "./OggyEyes.css";
    If the eyes look off-center on your image, adjust these numbers
    (0 = far left/top of image, 1 = far right/bottom of image). */
 const eyes = {
-  left:  { xPct: 180 / 564, yPct: 0.87 },
-  right: { xPct: 369 / 564, yPct: 0.87 }
+  left:  { xPct: 180 / 564, yPct: 0.82 },
+  right: { xPct: 369 / 564, yPct: 0.82 }
 };
 
 /* ---------- MOVEMENT RANGE ----------

@@ -1,4 +1,4 @@
-import { useState, useMemo, useCallback } from 'react';
+import { useState, useMemo, useCallback, useEffect } from 'react';
 import './GuessTheBrand.css';
 
 /* =========================================================
@@ -139,27 +139,27 @@ function Confetti() {
    doesn't exist yet, so the site never shows a broken image.
 ========================================================= */
 
-function BrandLogoBox({ slug, color, answer }) {
-  const [broken, setBroken] = useState(false);
-
-  if (broken) {
-    return (
-      <div
-        className="gtb-logo-placeholder"
-        style={{ background: `linear-gradient(160deg, ${color}, #000)` }}
-      >
-        {answer.charAt(0)}
-      </div>
-    );
-  }
+function CharacterReaction({ state }) {
+  const images = {
+    thinking: process.env.PUBLIC_URL + '/images/thinking.gif',
+    correct: process.env.PUBLIC_URL + '/images/correct.gif',
+    wrong: process.env.PUBLIC_URL + '/images/wrong.gif'
+  };
 
   return (
-    <img
-      className="gtb-logo-img"
-      src={process.env.PUBLIC_URL + `/images/brands/${slug}.png`}
-      alt={`${answer} logo`}
-      onError={() => setBroken(true)}
-    />
+    <div className="gtb-character-box">
+      <img
+        className="gtb-character-gif"
+        src={images[state]}
+        alt={
+          state === 'correct'
+            ? 'Happy reaction'
+            : state === 'wrong'
+              ? 'Wrong answer reaction'
+              : 'Thinking reaction'
+        }
+      />
+    </div>
   );
 }
 
@@ -170,7 +170,7 @@ function BrandLogoBox({ slug, color, answer }) {
 
 function GuessBrandFooter() {
   return (
-    <footer className="gtb-footer">
+    <footer className="gtb-footer" id="connect">
 
       <div className="gtb-footer-main">
 
@@ -198,21 +198,25 @@ function GuessBrandFooter() {
             </a>
 
             <a
-              href="#linkedin"
+              href="https://www.linkedin.com/in/nitesh-singh-758650315"
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="LinkedIn"
             >
               in
             </a>
 
             <a
-              href="#twitter"
-              aria-label="Twitter"
+              href="https://www.instagram.com/niteshsingh7706?igsh=MWJlaTdxdG93czlicg=="
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram"
             >
-              ♥
+              📷
             </a>
 
             <a
-              href="#email"
+              href="mailto:v.nitttesh@gmail.com"
               aria-label="Email"
             >
               ✉
@@ -270,9 +274,14 @@ function GuessBrandFooter() {
             LeetCode
           </span>
 
-          <span>
+          <a
+            href={`${process.env.PUBLIC_URL}/images/Nitesh%20Singh%20Resume.pdf`}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "inherit", textDecoration: "none" }}
+          >
             Resume
-          </span>
+          </a>
 
           <span>
             Blog
@@ -289,9 +298,12 @@ function GuessBrandFooter() {
             CONTACT
           </h4>
 
-          <span>
-            ✉ &nbsp; niteshsingh@example.com
-          </span>
+          <a
+            href="mailto:v.nitttesh@gmail.com"
+            style={{ color: "inherit", textDecoration: "none" }}
+          >
+            ✉ &nbsp; v.nitttesh@gmail.com
+          </a>
 
           <span>
             ☎ &nbsp; +91 98765 43210
@@ -377,6 +389,9 @@ export default function GuessTheBrand() {
 
   const [showConfetti, setShowConfetti] = useState(false);
 
+  // Character starts in thinking mode for every new question.
+  const [characterState, setCharacterState] = useState('thinking');
+
 
   const current =
     QUESTIONS[order[pointer]];
@@ -388,6 +403,27 @@ export default function GuessTheBrand() {
   const maxScore =
     QUESTIONS.length *
     POINTS_PER_CORRECT;
+
+
+  /* =====================================================
+     CHARACTER REACTION RESET
+     Correct / wrong reaction plays, then returns to thinking.
+  ===================================================== */
+
+  useEffect(() => {
+    if (
+      characterState !== 'correct' &&
+      characterState !== 'wrong'
+    ) {
+      return undefined;
+    }
+
+    const timer = setTimeout(() => {
+      setCharacterState('thinking');
+    }, 1800);
+
+    return () => clearTimeout(timer);
+  }, [characterState]);
 
 
   /* =====================================================
@@ -418,6 +454,8 @@ export default function GuessTheBrand() {
 
     if (selected === current.answer) {
 
+      setCharacterState('correct');
+
       setScore(
         (s) =>
           s + POINTS_PER_CORRECT
@@ -426,10 +464,13 @@ export default function GuessTheBrand() {
       setShowConfetti(true);
 
       setTimeout(() => {
-
         setShowConfetti(false);
-
       }, 1200);
+
+    } else {
+
+      setCharacterState('wrong');
+
     }
 
   }, [
@@ -458,6 +499,8 @@ export default function GuessTheBrand() {
 
       setAnswered(false);
 
+      setCharacterState('thinking');
+
     } else {
 
       setCompleted(true);
@@ -485,6 +528,8 @@ export default function GuessTheBrand() {
       setSelected(null);
 
       setAnswered(false);
+
+      setCharacterState('thinking');
 
       setScore(0);
 
@@ -579,14 +624,12 @@ export default function GuessTheBrand() {
 
           <div className="gtb-question-card">
 
-            {/* LOGO */}
+            {/* REACTION CHARACTER */}
 
             <div className="gtb-logo-box">
 
-              <BrandLogoBox
-                slug={current.slug}
-                color={current.color}
-                answer={current.answer}
+              <CharacterReaction
+                state={characterState}
               />
 
             </div>
@@ -893,12 +936,7 @@ export default function GuessTheBrand() {
         )}
 
       </div>
-
-
-      {/* ===================================================
-          FOOTER
-      =================================================== */}
-
+      
       <GuessBrandFooter />
 
     </section>

@@ -397,10 +397,7 @@ const ScrollShowcase = () => {
             TOP LEFT NAME
         ====================================== */}
 
-        <div className="oryzo-name">
-          NITESH SINGH
-        </div>
-
+       
 
         {/* =====================================
             GALLERY
