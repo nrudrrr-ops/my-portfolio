@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Yatra+One&family=Mukta:wght@300;400;500;600&display=swap");
+
+.curtain-stage {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  background: transparent;
+  overflow: hidden;
+  font-family: "Mukta", sans-serif;
+  color: #c9bfa8;
+}
+
+.curtain-stage--compact {
+  height: 100%;
+  width: 100%;
+  min-height: 0;
+}
+
+.curtain-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none;
+  background: transparent;
+  z-index: 2;
+}
+
+.curtain-rod {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 12px;
+  background: linear-gradient(180deg, #4a3a22 0%, #5c4726 45%, #14100a 100%);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+  z-index: 3;
+}
+
+.curtain-rod::before,
+.curtain-rod::after {
+  content: "";
+  position: absolute;
+  top: -3px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #7a5f34, #5c4726 60%, #1a1409 100%);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.curtain-rod::before {
+  left: 1.5%;
+}
+
+.curtain-rod::after {
+  right: 1.5%;
+}
+
+.curtain-tag {
+  position: absolute;
+  top: 24px;
+  left: 18px;
+  z-index: 4;
+  border: 1.5px dashed #5c4726;
+  border-radius: 4px;
+  padding: 8px 14px 6px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  background: rgba(5, 5, 5, 0.3);
+  backdrop-filter: blur(4px);
+}
+
+.curtain-tag svg {
+  width: 24px;
+  height: 19px;
+}
+
+.curtain-tag span {
+  font-family: "Yatra One", cursive;
+  font-size: 0.95rem;
+  color: #c9bfa8;
+}
+
+.curtain-sound-toggle {
+  position: absolute;
+  top: 20px;
+  right: 16px;
+  z-index: 4;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #5c4726;
+  background: rgba(5, 5, 5, 0.35);
+  backdrop-filter: blur(6px);
+  color: #c9bfa8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.curtain-sound-toggle:hover {
+  transform: scale(1.06);
+  background: rgba(90, 60, 20, 0.3);
+}

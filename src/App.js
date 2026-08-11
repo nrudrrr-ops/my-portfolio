@@ -582,7 +582,9 @@ function App() {
 
 
           <a
-            href="mailto:v.nitttesh@gmail.com"
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=v.nitttesh@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
             className="cta-pill"
           >
             Let's talk ↗

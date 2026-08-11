@@ -1,5 +1,6 @@
-import { useState, useMemo, useCallback, useEffect } from 'react';
+﻿import { useState, useMemo, useCallback, useEffect } from 'react';
 import './GuessTheBrand.css';
+import CurtainCloth from './CurtainCloth';
 
 /* =========================================================
    QUESTION BANK
@@ -170,195 +171,90 @@ function CharacterReaction({ state }) {
 
 function GuessBrandFooter() {
   return (
-    <footer className="gtb-footer" id="connect">
+    <footer className="gtb-footer gtb-footer-v2" id="connect">
 
-      <div className="gtb-footer-main">
+      <div className="gtb-footer-v2-left">
 
-        {/* BRAND */}
+        <h3 className="gtb-footer-v2-name">
+          Nitesh Singh
+        </h3>
 
-        <div className="gtb-footer-brand">
-
-          <h3>
-            NITESH SINGH
-          </h3>
-
-          <p>
-            Aspiring Full Stack Developer
-            <br />
-            Building scalable web experiences.
-          </p>
-
-          <div className="gtb-socials">
-
-            <a
-              href="#github"
-              aria-label="GitHub"
-            >
-              ●
-            </a>
-
-            <a
-              href="https://www.linkedin.com/in/nitesh-singh-758650315"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-            >
-              in
-            </a>
-
-            <a
-              href="https://www.instagram.com/niteshsingh7706?igsh=MWJlaTdxdG93czlicg=="
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram"
-            >
-              📷
-            </a>
-
-            <a
-              href="mailto:v.nitttesh@gmail.com"
-              aria-label="Email"
-            >
-              ✉
-            </a>
-
-          </div>
-
-        </div>
-
-
-        {/* QUICK LINKS */}
-
-        <div className="gtb-footer-column">
-
-          <h4>
-            QUICK LINKS
-          </h4>
-
-          <span>
-            About Me
+        <p className="gtb-footer-v2-tagline">
+          A little Logic. A lot of Creativity.
+          <br />
+          <span className="gtb-footer-v2-chai-line">
+            Just enough <span className="gtb-footer-v2-chai-word">Chai</span>.
           </span>
+        </p>
 
-          <span>
-            Skills
-          </span>
-
-          <span>
-            Projects
-          </span>
-
-          <span>
-            Internship
-          </span>
-
-          <span>
-            Contact
-          </span>
-
-        </div>
-
-
-        {/* RESOURCES */}
-
-        <div className="gtb-footer-column">
-
-          <h4>
-            RESOURCES
-          </h4>
-
-          <span>
-            GitHub
-          </span>
-
-          <span>
-            LeetCode
-          </span>
-
-          <a
-            href={`${process.env.PUBLIC_URL}/images/Nitesh%20Singh%20Resume.pdf`}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: "inherit", textDecoration: "none" }}
-          >
-            Resume
-          </a>
-
-          <span>
-            Blog
-          </span>
-
-        </div>
-
-
-        {/* CONTACT */}
-
-        <div className="gtb-footer-column gtb-contact-column">
-
-          <h4>
-            CONTACT
-          </h4>
-
-          <a
-            href="mailto:v.nitttesh@gmail.com"
-            style={{ color: "inherit", textDecoration: "none" }}
-          >
-            ✉ &nbsp; v.nitttesh@gmail.com
-          </a>
-
-          <span>
-            ☎ &nbsp; +91 98765 43210
-          </span>
-
-          <span>
-            📍 &nbsp; India
-          </span>
-
-        </div>
-
-
-        {/* NEWSLETTER */}
-
-        <div className="gtb-newsletter">
-
-          <h4>
-            NEWSLETTER
-          </h4>
-
-          <p>
-            Stay updated with my latest
-            <br />
-            projects and articles.
-          </p>
-
-          <div className="gtb-email-box">
-
-            <input
-              type="email"
-              placeholder="Enter your email"
-            />
-
-            <button type="button">
-              Subscribe
-            </button>
-
-          </div>
-
-        </div>
+        <p className="gtb-footer-v2-copy">
+          &copy; 2026 Nitesh Singh. All rights reserved.
+        </p>
 
       </div>
 
 
-      {/* FOOTER BOTTOM */}
+      <div className="gtb-footer-v2-icons">
 
-      <div className="gtb-footer-bottom">
+        <a
+          href="mailto:v.nitttesh@gmail.com"
+          aria-label="Email"
+          className="gtb-footer-v2-icon"
+        >
+          <svg viewBox="0 0 24 24">
+            <rect x="3" y="5" width="18" height="14" rx="2" />
+            <path d="M4 7l8 6 8-6" />
+          </svg>
+        </a>
 
-        <span>
-          © 2025 Nitesh Singh. All Rights Reserved.
-        </span>
+        <a
+          href="https://www.linkedin.com/in/nitesh-singh-758650315"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn"
+          className="gtb-footer-v2-icon"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
+            <path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3.5a1.96 1.96 0 100 3.92 1.96 1.96 0 000-3.92zM20.5 20h-3.38v-5.9c0-1.4-.03-3.2-1.95-3.2-1.96 0-2.26 1.53-2.26 3.1V20H9.53V8.5h3.24v1.57h.05c.45-.85 1.56-1.75 3.21-1.75 3.43 0 4.06 2.26 4.06 5.2V20z" />
+          </svg>
+        </a>
 
-        <span>
-          <b>♥</b> Made with passion
-        </span>
+        <a
+          href="#"
+          aria-label="GitHub"
+          className="gtb-footer-v2-icon"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
+            <path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-.88-.01-1.72-2.78.62-3.37-1.36-3.37-1.36-.45-1.19-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.57 2.34 1.11 2.91.85.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.73 0 0 .84-.28 2.75 1.05a9.32 9.32 0 015 0c1.9-1.33 2.74-1.05 2.74-1.05.56 1.42.21 2.47.1 2.73.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.82 0 .27.18.6.69.49A10.26 10.26 0 0022 12.25C22 6.58 17.52 2 12 2z" />
+          </svg>
+        </a>
+
+        <a
+          href="#"
+          aria-label="X"
+          className="gtb-footer-v2-icon"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
+            <path d="M17.53 3H21l-7.5 8.57L22 21h-6.53l-5.11-6.19L4.5 21H1l8.02-9.17L2 3h6.68l4.62 5.62L17.53 3zm-1.15 16h1.8L7.7 5H5.8l10.58 14z" />
+          </svg>
+        </a>
+
+      </div>
+
+
+      <div className="gtb-footer-v2-image">
+
+        <div className="gtb-footer-v2-roof-crop">
+          <img
+            src={process.env.PUBLIC_URL + '/images/roof.jpeg'}
+            alt=""
+            className="gtb-footer-v2-roof"
+          />
+        </div>
+
+        <div className="gtb-footer-v2-curtain">
+          <CurtainCloth compact />
+        </div>
 
       </div>
 
