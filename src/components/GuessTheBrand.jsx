@@ -1,4 +1,4 @@
-﻿import { useState, useMemo, useCallback, useEffect } from 'react';
+import { useState, useMemo, useCallback, useEffect } from 'react';
 import './GuessTheBrand.css';
 import CurtainCloth from './CurtainCloth';
 
