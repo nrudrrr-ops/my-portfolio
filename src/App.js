@@ -4,6 +4,7 @@ import OggyEyes from './components/OggyEyes';
 import GuessTheBrand from './components/GuessTheBrand';
 import ScrollShowcase from './components/ScrollShowcase';
 import AdityaBirlaInternship from './components/AdityaBirlaInternship';
+import { Analytics } from '@vercel/analytics/react';
 
 
 function App() {
@@ -1191,6 +1192,8 @@ function App() {
 
 
       </div>
+
+      <Analytics />
 
     </div>
   );
